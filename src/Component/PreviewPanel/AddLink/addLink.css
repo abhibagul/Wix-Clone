@@ -1,0 +1,67 @@
+.LinkBoxOptions {
+    display: flex;
+    height: 100%;
+}
+
+.linkBox-types ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    padding: 0px 0px;
+    border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.linkBox-types ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+    min-width: 100px;
+}
+
+.linkBox-types ul li:first-child {
+    border-top: none;
+}
+
+
+.linkBox-types ul li:hover {
+    background: white;
+    color: #116dff;
+    cursor: pointer;
+}
+
+.settings_dragger_content {
+    height: calc(100% - 30px);
+}
+
+.linkbox_inner_panel {
+    padding: 0px 10px;
+}
+
+.no-link {
+    text-align: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.no-link-descriptor {
+    max-width: 200px;
+}
+
+.linkBox-types {
+    flex-shrink: 0;
+}
+
+.linkbox-settings {
+    flex-grow: 1;
+}
+
+.linkBox-types ul li.active {
+    background: #fff3cd;
+}
+
+.linkBox-types ul li.active:hover {
+    color: #000
+}

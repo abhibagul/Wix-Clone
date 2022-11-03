@@ -1,0 +1,46 @@
+.panel_container {
+    background-color: #ccc;
+    height: 100%;
+    overflow: auto;
+    box-shadow: inset 5px 5px 10px rgb(0 0 0 / 10%);
+    position: relative;
+}
+
+.panel_preview {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(0, 0, 0, 0.1);
+    margin: 0px auto;
+    background-color: white;
+    min-height: calc(100vh - 40px);
+    position: relative;
+}
+
+.panel_container_inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+.layout_panel_options {
+    position: absolute;
+    left: 0px;
+    padding: 4px;
+    background: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 300;
+    display: none;
+
+}
+
+.elemental_options {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.elemental_options li {
+    line-height: 24px;
+}
+
+.elemental_options li i:before {
+    font-size: 18px;
+}

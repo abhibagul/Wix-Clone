@@ -1,0 +1,81 @@
+.sidebar {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar_optionsbar {
+    width: 40px;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.sidebar_optionResults {
+    flex-grow: 1;
+    padding: 0px 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.sidebar_optionbar_options {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    padding-top: 10px;
+    height: 100%;
+}
+
+.sidebar_optionbar_options li {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    display: inline-block;
+}
+
+.sidebar_optionbar_options li.active a {
+    background-color: var(--primary-link-hover-background);
+    border-radius: 100%;
+    color: #116dff;
+}
+
+.sidebar_optionbar_options li a {
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    margin: 0px 5px;
+    font-size: 20px;
+    text-align: center;
+    z-index: 5;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: var(--primary-link)
+}
+
+.sidebar_option_highlighter {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 100%;
+    left: 5px;
+    transition: .3s ease-in-out;
+    scale: 0;
+}
+
+.sidebar_optionResults {
+    position: relative;
+    display: block;
+    overflow: auto;
+    height: calc(100vh - 40px);
+}
+
+.sidebar_optionResults:after {
+    content: "";
+    clear: both;
+    display: block;
+}

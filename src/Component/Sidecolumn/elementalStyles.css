@@ -1,0 +1,33 @@
+.item_drag {
+    margin: 10px;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    position: relative;
+    width: 100%;
+}
+
+.item_drag.half {
+    max-width: 150px;
+}
+
+.item_drag:hover {
+    background-color: #f7f7f7;
+}
+
+.item_drag_img {
+    width: 100%;
+    text-align: center;
+}
+
+/* .item_drag:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    cursor: move;
+} */
