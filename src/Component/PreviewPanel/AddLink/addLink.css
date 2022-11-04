@@ -34,7 +34,11 @@
 }
 
 .linkbox_inner_panel {
-    padding: 0px 10px;
+    height: calc(100%);
+}
+
+.hyperlink {
+    height: calc(100% - 40px);
 }
 
 .no-link {
@@ -56,6 +60,7 @@
 
 .linkbox-settings {
     flex-grow: 1;
+    height: calc(100% - 7px);
 }
 
 .linkBox-types ul li.active {
@@ -64,4 +69,105 @@
 
 .linkBox-types ul li.active:hover {
     color: #000
+}
+
+/*hyperlink*/
+.link_url_input h5 {
+    margin: 5px 0;
+}
+
+.link_url_input input[type="text"],
+.link_url_input input[type="email"],
+.link_url_input input[type="phone"],
+.link_url_input select {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.link_url_input {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 10px;
+}
+
+.link_url_input:first-child {
+    margin-top: 10px;
+}
+
+.linkbox-settings button {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    margin-left: auto;
+    outline: 0;
+    border: 0;
+    padding: 5px 10px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.link_checkbox label {
+    top: -3px;
+    position: relative;
+    margin-left: 5px;
+    font-size: 11px;
+}
+
+.link_url_input input[type="checkbox"] {
+    margin: 0px;
+}
+
+.button_footer_wrap_link {
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 0px 10px;
+    text-align: right;
+}
+
+.linkBox-types,
+.LinkBoxOptions {
+    height: 100%;
+}
+
+.link_url_scroll {
+    height: 100%;
+    overflow: auto;
+    padding: 0px 10px;
+}
+
+.link_url_input:last-child {
+    border-bottom: none;
+}
+
+span.link_description {
+    font-size: 10px;
+    color: grey;
+}
+
+.scrollOptionLink {
+    width: 90px;
+    /* float: left; */
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.scrollOptionLink img {
+    max-width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 10px;
+}
+
+.scrollOptionLink.active {
+    background: #eff6ff;
+    border-color: #116dff
 }

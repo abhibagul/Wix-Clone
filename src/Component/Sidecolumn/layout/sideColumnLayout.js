@@ -19,6 +19,7 @@ export default function SideColumnLayout() {
         elemType: "div",
         styles: {},
         elemEditable: false,
+        attributes: {},
         enableDropping: true,
         elements: [
             { classList: ["wd wd-6"], elemType: "div", styles: {}, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
@@ -30,8 +31,10 @@ export default function SideColumnLayout() {
         desc: "3 Column Layout",
         classList: "wd-row",
         elemType: "div",
+        attributes: {},
         styles: {},
         elemEditable: false,
+        enableDropping: true,
         elements: [
             { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: {}, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
             { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: {}, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
@@ -42,6 +45,7 @@ export default function SideColumnLayout() {
         elid: "layout_1_col",
         desc: "1 Column Layout",
         classList: "wd-row",
+        attributes: {},
         elemType: "div",
         styles: {},
         enableDropping: true,

@@ -1,3 +1,8 @@
+html,
+body {
+    overflow: hidden !important;
+}
+
 .temp_elem {
     text-align: center;
     /* background-color: #f7f7f7; */
@@ -63,6 +68,18 @@
     color: #ffda6a;
 }
 
+.temp_infocus_drag {
+    background-color: #cfe2ff;
+    outline: 2px dashed #9ec5fe !important;
+    color: #0d6efd !important;
+}
+
+.temp_infocus_drag * {
+    background-color: #cfe2ff;
+    outline: 2px dashed #9ec5fe !important;
+    color: #0d6efd !important;
+}
+
 .temp_add_here:after {
     content: "";
     position: absolute;
@@ -125,7 +142,7 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(0, 0, 0, .1);
     resize: both;
     overflow: auto;
-    min-width: 200px;
+    min-width: 400px;
     min-height: 300px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     left: 10px;
@@ -172,4 +189,28 @@
 
 .small_btn_actionListical:hover button {
     color: #fff
+}
+
+.html_elem_height_setter {
+    background: #fff;
+    display: inline-block;
+    position: absolute;
+    z-index: 700;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .1), -2px -2px 4px rgba(0, 0, 0, .1);
+    width: 30px;
+    text-align: center;
+    border-radius: 5px;
+    color: #ccc;
+    display: none;
+}
+
+.html_elem_height_setter.active {
+    background-color: #0d6efd;
+    color: #fff !important;
+}
+
+
+.html_elem_height_setter:hover {
+    color: #000;
+    cursor: n-resize;
 }

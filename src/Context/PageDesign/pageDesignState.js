@@ -5,7 +5,7 @@ import { pageDesignContext } from "../contexts";
 const PageDesignState = (props) => {
     const InitialDeisgnState = {
         pageMode: 1,
-        isDropEnabled: false,
+        isDropEnabled: true,
         dropIndex: 0,
         elements: []
     }
