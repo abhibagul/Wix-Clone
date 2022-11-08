@@ -17,13 +17,13 @@ export default function SideColumnLayout() {
         elementType: "outerLayout",
         classList: "wd-row",
         elemType: "div",
-        styles: {},
+        styles: { maxWidth: "1100px", margin: "0 auto" },
         elemEditable: false,
         attributes: {},
-        enableDropping: true,
+        enableDropping: false,
         elements: [
-            { classList: ["wd wd-6"], elemType: "div", styles: {}, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-6"], elemType: "div", styles: {}, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-6"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-6"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
         ]
     }, {
         previmg: "/assets/images/elements/layouts/2col.png",
@@ -32,13 +32,13 @@ export default function SideColumnLayout() {
         classList: "wd-row",
         elemType: "div",
         attributes: {},
-        styles: {},
+        styles: { maxWidth: "1100px", margin: "0 auto" },
         elemEditable: false,
-        enableDropping: true,
+        enableDropping: false,
         elements: [
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: {}, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: {}, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: {}, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 3", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 3", elementType: "tempElem", elements: [] }] },
         ]
     }, {
         previmg: "/assets/images/elements/layouts/2col.png",
@@ -47,12 +47,12 @@ export default function SideColumnLayout() {
         classList: "wd-row",
         attributes: {},
         elemType: "div",
-        styles: {},
-        enableDropping: true,
+        styles: { maxWidth: "1100px", margin: "0 auto" },
+        enableDropping: false,
         elemEditable: false,
         elements: [
             {
-                classList: ["wd wd-12"], elemType: "div", styles: {}, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemType: "div", elemEditable: false, styles: { color: "#dddddd", padding: "30px 0px" }, enableDropping: true, inHTML: "Column 1", elementType: "tempElem", elements: [] }]
+                classList: ["wd wd-12"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemType: "div", elemEditable: false, styles: { color: "#dddddd", padding: "30px 0px" }, enableDropping: true, inHTML: "Column 1", elementType: "tempElem", elements: [] }]
             },
         ]
     }]
@@ -69,11 +69,11 @@ export default function SideColumnLayout() {
 
         // let _parent_el = get(_depth, 'elements[' + parentNode.join('].elements[') + '].elements')
         let _earlier_options = get(_depth, 'elements[' + elNode.join('].elements[') + ']');
-        // //console.log(_earlier_options, _parent_el, 'eo');
+        // ////console.log(_earlier_options, _parent_el, 'eo');
 
         if (!_earlier_options.enableDropping) {
             //remove the last elem might help
-            //console.log(elNode);
+            ////console.log(elNode);
             elNode = elNode.slice(0, -1);
             if (elNode.length > 0) {
                 _earlier_options = get(_depth, 'elements[' + elNode.join('].elements[') + '].elements');
@@ -82,7 +82,7 @@ export default function SideColumnLayout() {
                 _earlier_options = get(_depth, 'elements');
                 _depth = set(_depth, 'elements', [..._earlier_options, JSON.parse(JSON.stringify(tempOpt[index]))]);
             }
-            //console.log(_earlier_options, elNode)
+            ////console.log(_earlier_options, elNode)
 
         } else {
 
@@ -91,8 +91,8 @@ export default function SideColumnLayout() {
         }
 
         pageDesignState.setDesign(_depth);
-        // //console.log(elNode);
-        // //console.log("Final Return", SetObjValues(_depth, elNode, "Hello i am set"))
+        // ////console.log(elNode);
+        // ////console.log("Final Return", SetObjValues(_depth, elNode, "Hello i am set"))
 
 
         /**
@@ -113,9 +113,10 @@ export default function SideColumnLayout() {
 
 
             //reset the insert position
-            // //console.log(pageDesignState.nodeLevel.current, 'currentType');
-            // //console.log(_elems);
+            // ////console.log(pageDesignState.nodeLevel.current, 'currentType');
+            // ////console.log(_elems);
             if (pageDesignState.nodeLevel.current === null) {
+                //console.log("nodeLv1", pageDesignState.nodeLevel.current)
 
                 let _elems = [];
                 let tempOptions = [];
@@ -123,11 +124,11 @@ export default function SideColumnLayout() {
                 _elems = [...pageDesignState.design.elements];
 
                 //insert at index
-                // //console.log(pageDesignState.dropPosition)
+                // ////console.log(pageDesignState.dropPosition)
                 //e.target.closest("").getAttribute("data-elementindex")
 
                 _elems.splice(pageDesignState.dropPosition.current, 0, JSON.parse(JSON.stringify(tempOptions[e.target.closest(".item_drag").getAttribute("data-elementindex")])));
-                //console.log(pageDesignState.design.elements);
+                ////console.log(pageDesignState.design.elements);
                 // if (!pageDesignState.design.elements[pageDesignState.dropPosition.current].enableDropping) {
                 //     alert("Can not add sub element to this element");
                 //     return;
@@ -137,6 +138,7 @@ export default function SideColumnLayout() {
                 pageDesignState.dropPosition.current = null;
 
             } else {
+                //console.log("nodeLv2", pageDesignState.nodeLevel.current)
                 if (pageDesignState.nodeLevel.current) {
                     AddSubElement(pageDesignState.nodeLevel.current, e.target.closest(".item_drag").getAttribute("data-elementindex"));
                     pageDesignState.nodeLevel.current = null;

@@ -5,6 +5,7 @@
 
 .wd-row {
     display: flex;
+    width: 100%;
 }
 
 .wd-1 {

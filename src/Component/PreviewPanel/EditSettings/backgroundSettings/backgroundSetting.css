@@ -1,0 +1,214 @@
+.backgroundSettings ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.backgroundSettings ul li {
+    padding: 5px 10px;
+    margin: 0px 5px;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+}
+
+.backgroundSettings ul li.active {
+    border-bottom: 3px solid #0d6efd;
+    color: #0d6efd
+}
+
+
+.backgroundSettings {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.backgroundContent {
+    flex-grow: 1
+}
+
+.backgroundSetInner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.bgSetPanelInner {
+    flex-grow: 1;
+    padding: 10px;
+    overflow: auto;
+}
+
+.bgSetPanelAction {
+    flex-shring: 0;
+}
+
+.bgSetPanelInner h5 {
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.coloroption {
+    display: flex;
+    padding: 10px 0px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+
+}
+
+.coloroption .colorPallet {
+    padding: 0px;
+    width: 32px;
+    height: 29px;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+}
+
+.coloroption .colorPalletOpacity {
+    width: 100%;
+    padding: 0px 10px;
+}
+
+.bgSetPanelAction {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px;
+    text-align: right;
+
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+}
+
+.bgSetPanelAction button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    margin-left: 5px;
+    outline: none;
+    border: none;
+    padding: 5px 10px
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border: 0px solid red !important;
+    outline: none;
+
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 0px solid red !important;
+    outline: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+.colorPalletOpacity {
+    display: flex;
+    align-items: center;
+}
+
+.colorPalletOpacity .colorPalletOpacityRange {
+    flex-grow: 1;
+}
+
+.colorPalletOpacity .colorPalletOpacityValue {
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+    font-size: 12px;
+    background-color: #cfe2ff;
+    padding: 5px 0px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+/* .gradientColors {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+} */
+
+.gradientColors .coloroption:first-child {
+    margin-top: 0px;
+    border-top: none
+}
+
+.colorOptionAdd {
+    text-align: center;
+    padding: 3px 0px;
+    cursor: pointer;
+    color: #fff;
+    background: #0d6efd;
+    border-radius: 5px;
+    position: sticky;
+    top: 0px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .1), -3px -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.coloroption select {
+    width: 100%;
+    padding: 5px 10px;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.colorPalletOpacityValue {
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+    font-size: 12px;
+    background-color: #cfe2ff;
+    padding: 5px 0px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.colorPalletStrength label {
+    width: 50px;
+    flex-shrink: 0;
+}
+
+.colorPalletStrength .colorPalletOpacityRange {
+    flex-grow: 1;
+}
+
+.colorPalletStrength {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0px 10px;
+}
+
+.colorRangeGroup {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.bgPanelOption,
+.colorGradPans {
+    background: #f7f7f7;
+    font-size: 12px;
+}
+
+.bgPanelOption ul li,
+.colorGradPans ul li {
+    padding: 4px 5px;
+}
+
+.removeColor {
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.bgPanelOption {
+    position: sticky;
+    top: 0px
+}

@@ -15,7 +15,7 @@
 }
 
 .panel_container_inner {
-    max-width: 1100px;
+    /* max-width: 1100px; */
     margin: 0 auto;
 }
 
@@ -28,7 +28,7 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1);
     z-index: 300;
     display: none;
-
+    border-radius: 15px;
 }
 
 .elemental_options {

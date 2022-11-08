@@ -1,0 +1,233 @@
+.border-panel-shape {
+    width: 100%;
+}
+
+.linedetails input[type="color"]:-webkit-color-swatch-wrapper {
+    padding: 0;
+    border: 0px solid red !important;
+    outline: none;
+
+    border-radius: 10px;
+}
+
+.linedetails input[type="color"]:-webkit-color-swatch {
+    border: 0px solid red !important;
+    outline: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+
+.border-panel-shape-top {
+    position: relative;
+}
+
+.linedetails {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.linedetails input[type="color"] {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+
+}
+
+.linedetails input[type="number"] {
+    width: 40px;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, .1);
+    -webkit-appearance: none;
+    text-align: center;
+    border-radius: 10px;
+}
+
+
+.linedetails select {
+    width: 60px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
+}
+
+.linedetails>* {
+    margin: 0px 2px;
+    padding: 2px 5px;
+    font-size: 10px;
+
+}
+
+.border-panel-shape-top {
+    border: 1px solid #ccc;
+    padding: 5px 0px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.line-pr {
+    width: 100%;
+    margin-top: 10px;
+    z-index: -1;
+    padding-bottom: 5px;
+}
+
+.border-panel-shape-top {
+    margin: 0px 15%;
+}
+
+.border-panel-shape-left .linedetails,
+.border-panel-shape-right .linedetails {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 0px !important;
+}
+
+.border-panel-shape-left .linedetails {
+    margin-right: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.border-panel-shape-right .linedetails {
+    margin-left: 10px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.border-panel-shape-left,
+.border-panel-shape-right {
+    display: flex;
+    height: 100px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.border-panel-shape-left {
+    margin-left: 20px;
+    padding-right: 10px;
+}
+
+.border-panel-shape-right {
+    flex-direction: row-reverse;
+    margin-right: 5%;
+
+    padding-left: 10px;
+}
+
+.border-mid-cols {
+    display: flex;
+    flex-grow: 1;
+}
+
+.lockregion {
+    flex-grow: 1;
+}
+
+.border-mid-cols .line-pr {
+    height: 100%;
+    margin-top: 0px !important;
+
+}
+
+.border-panel-shape-top {
+    margin: 0px 15%;
+}
+
+.border-panel-shape-left .linedetails,
+.border-panel-shape-right .linedetails {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 0px !important;
+}
+
+.border-panel-shape-left .linedetails {
+    margin-right: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.border-panel-shape-right .linedetails {
+    margin-left: 10px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.border-panel-shape-left,
+.border-panel-shape-right {
+    display: flex;
+    height: 100px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.border-panel-shape-left {
+    margin-left: 20px;
+    padding-right: 10px;
+}
+
+.border-panel-shape-right {
+    flex-direction: row-reverse;
+    margin-right: 5%;
+
+    padding-left: 10px;
+}
+
+.border-mid-cols {
+    display: flex;
+    flex-grow: 1;
+}
+
+.lockregion {
+    flex-grow: 1;
+}
+
+.border-mid-cols .line-pr {
+    height: 100%;
+    margin-top: 0px !important;
+
+}
+
+.border-panel-shape-bottom {
+    width: 70%;
+    margin: 20px 15%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.border-panel-shape-bottom .line-pr {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.lockregion {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.lockregion button {
+    border: none;
+    border-radius: 5px;
+    color: #116dff;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #116dff;
+}
+
+.lockregion button.locked {
+    background-color: #cfe2ff;
+}

@@ -7,7 +7,7 @@ import { pageDesignContext } from '../../../Context/contexts';
 export default function AddLink(props) {
     let pageDesignState = useContext(pageDesignContext);
     const [addLinkState, setAddLinkState] = useState({
-        currentMode: "none",
+        currentMode: "url",
         urlLink: {
             targetURL: "",
             targetType: "_blank",
@@ -360,7 +360,7 @@ export default function AddLink(props) {
         <div className='LinkBoxOptions'>
             <div className='linkBox-types'>
                 <ul>
-                    <li className={(addLinkState.currentMode === "none") ? "active" : ""} onClick={() => { setAddLinkState({ ...addLinkState, currentMode: "none" }); selectAllText() }} >None</li>
+                    {/* <li className={(addLinkState.currentMode === "none") ? "active" : ""} onClick={() => { setAddLinkState({ ...addLinkState, currentMode: "none" }); selectAllText() }} >None</li> */}
                     <li className={(addLinkState.currentMode === "url") ? "active" : ""} onClick={() => { setAddLinkState({ ...addLinkState, currentMode: "url" }); selectAllText() }} >Web Address</li>
                     <li className={(addLinkState.currentMode === "email") ? "active" : ""} onClick={() => { setAddLinkState({ ...addLinkState, currentMode: "email" }); selectAllText() }} >Email</li>
                     <li className={(addLinkState.currentMode === "phone") ? "active" : ""} onClick={() => { setAddLinkState({ ...addLinkState, currentMode: "phone" }); selectAllText() }} >Phone number</li>

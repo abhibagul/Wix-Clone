@@ -1,0 +1,39 @@
+.editSettings {
+    display: flex;
+    height: 100%;
+}
+
+.editSettingLeftSidebr {
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.editSettingPanels {
+    flex-grow: 1;
+}
+
+.editSettingLeftSidebr ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    height: 100%;
+}
+
+.editSettingLeftSidebr ul li {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    cursor: pointer;
+}
+
+.editSettingLeftSidebr ul li i {
+    font-size: 22px;
+}
+
+.editSettingLeftSidebr ul li:hover {
+    background: #f7f7f7;
+}
+
+.editSettingLeftSidebr ul li.active {
+    background: #fff3cd;
+}

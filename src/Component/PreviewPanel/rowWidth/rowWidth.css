@@ -1,0 +1,37 @@
+.rowWidth_option h5 {
+    margin: 5px 0px;
+}
+
+.rowWidth_inner {
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    height: 210px;
+    overflow: auto;
+    padding: 0px 10px;
+}
+
+.rowWidth_Outer {
+    padding: 10px;
+}
+
+.rowWidth_option {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin-bottom: 10px;
+}
+
+.rowWidth_option:last-child {
+    border-bottom: none;
+}
+
+.rowWidth_actions {
+    text-align: right;
+    padding: 0px 10px;
+}
+
+.rowWidth_actions button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}

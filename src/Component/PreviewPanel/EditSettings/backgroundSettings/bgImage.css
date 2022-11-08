@@ -1,0 +1,263 @@
+input.cusImg {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.bgImageCustom {
+    padding: 10px;
+}
+
+.imgCusAct {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    margin-top: 5px;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+}
+
+
+.bgImageSearchbar {
+    display: flex;
+    width: 100%;
+}
+
+.sbarImg {
+    flex-grow: 1;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .05), -3px -3px 5px rgba(0, 0, 0, .05)
+}
+
+.ImgSearchAct {
+    flex-shrink: 0;
+    border: none;
+    background-color: #0d6efd;
+    border-radius: 100%;
+    color: #fff;
+    width: 28px;
+    margin-left: 7px;
+}
+
+.bgImageSearchbar {
+    position: sticky;
+    top: 10px;
+}
+
+.bgImageSearchbar {
+    display: flex;
+    width: 100%;
+}
+
+.sbarImg {
+    flex-grow: 1;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .05), -3px -3px 5px rgba(0, 0, 0, .05)
+}
+
+.ImgSearchAct {
+    flex-shrink: 0;
+    border: none;
+    background-color: #0d6efd;
+    border-radius: 100%;
+    color: #fff;
+    width: 28px;
+    margin-left: 7px;
+}
+
+.bgImageSearchbar {
+    position: sticky;
+    top: 28px;
+    padding: 0px 10px;
+    padding-top: 10px;
+}
+
+.bgImageResults {
+    padding: 10px 9px;
+}
+
+.BgImageItem {
+    width: 150px;
+    height: 90px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+    margin: 5px;
+}
+
+.bgImageResults:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.applySearchBG {
+    position: sticky;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    bottom: 0px;
+    text-align: right;
+    background-color: #fff;
+}
+
+.applySearchBG button {
+    background-color: #0d6efd;
+    border-radius: 50px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px 0px;
+}
+
+.bgImgSettings {
+    padding: 10px;
+}
+
+.bgImgSettings h5 {
+    margin: 0px;
+}
+
+.bgImgSettings select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.imageSettingsOption {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.customImgSizes .colorPalletStrength {
+    padding-bottom: 10px;
+}
+
+.bgImgSettings {
+    padding: 10px;
+}
+
+.bgImgSettings h5 {
+    margin: 0px;
+}
+
+.bgImgSettings select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.imageSettingsOption {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.customImgSizes .colorPalletStrength {
+    padding-bottom: 10px;
+}
+
+.imagePosSort {
+    display: flex;
+    width: 100%;
+    gap: 0px 10px;
+}
+
+.imagePosSort>div {
+    flex-grow: 1;
+}
+
+.bgImgSettings {
+    padding: 10px;
+}
+
+.bgImgSettings h5 {
+    margin: 0px;
+}
+
+.bgImgSettings select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.imageSettingsOption {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.customImgSizes .colorPalletStrength {
+    padding-bottom: 10px;
+}
+
+.imagePosSort {
+    display: flex;
+    width: 100%;
+    gap: 0px 10px;
+}
+
+.imagePosSort>div {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.colorPalletStrength.dircol {
+    flex-direction: column;
+    padding: 0px;
+}
+
+.colorPalletStrength.dircol .colorPalletOpacityRange {
+    width: 100%;
+}
+
+.colorPalletStrength.dircol .colorPalletOpacityValue {
+    width: 100%;
+}
+
+.imageSettingsOption {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.imagePosSort h5 {
+    font-weight: 200;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.applySearchBG a {
+    float: left;
+    padding: 10px;
+    color: grey
+}
+
+.bgImageSearchTxt h5 {
+    text-align: center;
+}
+
+a.pexels_credit img {
+    max-width: 60px;
+}
+
+.applySearchBG a.pexels_credit {
+    padding: 5px 10px;
+}
+
+.show-more-images {
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.show-more-images button {
+    border: none;
+    padding: 5px 20px;
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    cursor: pointer
+}

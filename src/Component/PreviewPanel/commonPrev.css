@@ -52,33 +52,37 @@ body {
 }
 
 .temp_infocus {
-    background-color: #fffcf4;
+    background-color: rgba(255, 218, 106, 0.2);
     outline: 2px solid #ffda6a !important;
 }
 
 .temp_elem.temp_infocus {
-    background-color: #fffcf4;
+    background-color: rgba(255, 218, 106, 0.2);
     outline: 2px solid #ffda6a !important;
     color: #ffda6a;
 }
 
 .temp_infocus * {
-    background-color: #fffcf4;
+    background-color: rgba(255, 218, 106, 0.2);
     outline: 2px solid #ffda6a !important;
     color: #ffda6a;
 }
 
+.rowResizeHelper,
 .temp_infocus_drag {
-    background-color: #cfe2ff;
+    background-color: rgba(207, 226, 255, 0.5);
     outline: 2px dashed #9ec5fe !important;
     color: #0d6efd !important;
 }
 
+.rowResizeHelper *,
 .temp_infocus_drag * {
-    background-color: #cfe2ff;
+    background-color: rgba(207, 226, 255, 0.5);
     outline: 2px dashed #9ec5fe !important;
     color: #0d6efd !important;
 }
+
+
 
 .temp_add_here:after {
     content: "";
@@ -175,6 +179,7 @@ body {
 .settings_dragger_content {
     font-size: 12px;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .settings_dragger_action span {
