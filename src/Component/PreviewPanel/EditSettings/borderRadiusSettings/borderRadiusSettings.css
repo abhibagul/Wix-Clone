@@ -1,0 +1,90 @@
+.borderRadiusPanelInner {
+    padding: 10px;
+}
+
+.borderRadiusPanelInner h5 {
+    margin: 0px;
+}
+
+.borderRadiusPanelInner .border-radius-box {
+    border: 2px solid #0d6efd;
+    padding: 10px;
+    position: relative;
+    width: 80%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px
+}
+
+.borderRadiusPanelInner .border-radius-box button {
+    background: transparent;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.borderRadiusPanelInner .border-radius-box button.locked {
+    background: #0d6efd;
+    color: #fff;
+}
+
+.borderRadiusPanelInner .border-radius-box input {
+    position: absolute;
+}
+
+.borderRadiusPanelInner .border-radius-box input.top-left {
+    left: 20px;
+    top: 20px;
+}
+
+
+.borderRadiusPanelInner .border-radius-box input.top-right {
+    right: 20px;
+    top: 20px;
+}
+
+.borderRadiusPanelInner .border-radius-box input.bottom-left {
+    left: 20px;
+    bottom: 20px;
+}
+
+
+.borderRadiusPanelInner .border-radius-box input.bottom-right {
+    right: 20px;
+    bottom: 20px;
+}
+
+input.border-radius-input.top-left.lockedpos {
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+input.border-radius-input {
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.applyBorderRadius {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+    text-align: right;
+    position: sticky;
+    bottom: 0px;
+    background: #fff;
+}
+
+.applyBorderRadius button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}

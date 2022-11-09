@@ -73,6 +73,10 @@ export default function RowWidth(props) {
 
         setNodeData(currentNode, 0, __current_elem)
 
+        //close panel
+        props.closePanel();
+
+
     }
 
     const prevRowWidthFull = (e, cond) => {
@@ -121,10 +125,10 @@ export default function RowWidth(props) {
             //set current width based of bounding box
         }
 
-
-
         //console.log(rowWidthState, setPr);
         setRowWidthState({ ...rowWidthState, ...setPr });
+
+
     }
 
     const showPrevWidth = () => {

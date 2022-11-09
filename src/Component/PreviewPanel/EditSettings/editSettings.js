@@ -1,7 +1,13 @@
 
 import { useState } from 'react'
+
+/**
+ * Panels
+ */
 import BackgroundSetting from './backgroundSettings/backgroundSetting';
 import BorderSettings from './borderSettings/borderSettings';
+import BorderRadiusSettings from './borderRadiusSettings/borderRadiusSettings';
+
 import './editSettings.css'
 export default function EditSettings(props) {
     const [editSettingState, setEditSettingState] = useState({
@@ -46,6 +52,7 @@ export default function EditSettings(props) {
                     /**
                      * border radius
                      */
+                    (editSettingState.currentSet === 3) && <BorderRadiusSettings closePanel={props.closePanel} currentlyActive={props.currentlyActive} />
                 }
 
                 {

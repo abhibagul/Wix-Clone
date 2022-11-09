@@ -4,8 +4,7 @@ import AppStyles from './app.module.css';
 import Navbar from './Navbar/navbar';
 import Sidecolumn from './Sidecolumn/sidecolumn';
 import PreviewPanel from './PreviewPanel/previewPanel';
-import { useRef } from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 function App() {
 
   const resizer = useRef({ currentWidth: "300px", isDragStarted: false });
