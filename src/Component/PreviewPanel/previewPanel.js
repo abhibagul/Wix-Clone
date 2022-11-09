@@ -11,6 +11,7 @@ import AnimationOptionsPanel from './AddAnimations/animationOptionsPanel'
 import AddLink from './AddLink/addLink'
 import RowWidth from './rowWidth/rowwidth'
 import EditSettings from './EditSettings/editSettings'
+import AlignItems from './AlignItems/alignItems'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
@@ -27,7 +28,8 @@ export default function PreviewPanel() {
     let elementalOptions = useRef(null);
     let elementalOptionsSettings = useRef(null);
     let elementalHeightResizer = useRef(null);
-    let showRowOption = useRef(null)
+    let showRowOption = useRef(null);
+    let showColOption = useRef(null);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
 
     let colorsRange = ["#bbbbbb"];
@@ -176,6 +178,13 @@ export default function PreviewPanel() {
             // settingModes.current = { ...settingModes.current, rowMode: "" }
             //console.log(settingModes.current)
             // setPanelSettings({ ...panelSettings, rowMode: "" })
+        }
+
+        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "layout") {
+
+            showColOption.current.style.display = "block"
+        } else {
+            showColOption.current.style.display = "none"
         }
 
         let elmsEd = document.querySelectorAll('.editable_infocus');
@@ -1032,6 +1041,7 @@ export default function PreviewPanel() {
                 <ul>
                     <li className='actionListical' onClick={(e) => showSettingsPanel(e, "Style options", "editSettings", false)}><i className="las la-palette"></i> Edit Options</li>
                     <li className='actionListical' ref={showRowOption} onClick={(e) => showSettingsPanel(e, "Row Layout", "rowLayout", false)}><i className="lab la-microsoft"></i></li>
+                    <li className='actionListical' ref={showColOption} onClick={(e) => showSettingsPanel(e, "Align Items", "AlignItems", false)}><i className="las la-align-center"></i></li>
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
                         showSettingsPanel(e, "Animation", "animation", false)
@@ -1104,6 +1114,14 @@ export default function PreviewPanel() {
                          * Row size settings
                          */
                         (panelSettings.panelMode === "rowLayout") ? <RowWidth closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""
+                    }
+
+                    {
+                        /**
+                         * column alignment option
+                         * 
+                         */
+                        (panelSettings.panelMode === "AlignItems") ? <AlignItems closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""
                     }
 
                     {

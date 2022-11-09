@@ -209,6 +209,7 @@
 .border-panel-shape-bottom .line-pr {
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin-top: 0px;
 }
 
 .lockregion {
@@ -230,4 +231,27 @@
 
 .lockregion button.locked {
     background-color: #cfe2ff;
+}
+
+
+.border-apply {
+    text-align: right;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    position: sticky;
+    bottom: 0px;
+    padding: 5px 10px;
+    background: #fff;
+}
+
+.border-apply button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}
+
+.border-panel-inner h5 {
+    margin: 10px 0px;
+    padding: 0px 10px
 }

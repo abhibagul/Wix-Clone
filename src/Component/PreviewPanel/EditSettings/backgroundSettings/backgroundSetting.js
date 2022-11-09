@@ -38,6 +38,7 @@ export default function BackgroundSetting(props) {
             url: "",
             repeat: "repeat",
             size: "cover",
+            attchement: "initial",
             customX: 100,
             customY: 100,
             posX: 0,
@@ -131,6 +132,7 @@ export default function BackgroundSetting(props) {
         let solidColor = hexToRgb(backgroundSettings.solidColor.color)
         node.style.backgroundColor = `rgba(${solidColor.r},${solidColor.g}, ${solidColor.b}, ${(backgroundSettings.solidColor.opacity / 100)})`
         node.style.backgroundImage = "none"
+
     }
 
     const prevImgBg = () => {
@@ -149,6 +151,7 @@ export default function BackgroundSetting(props) {
         node.style.backgroundSize = __bgSize;
         node.style.backgroundPosition = __bgPosition.join(" ");
         node.style.backgroundRepeat = __bgRepeat;
+        node.style.backgroundAttachment = backgroundSettings.backgroundImage.attchement;
     }
 
     const setBgImg = () => {
@@ -172,7 +175,8 @@ export default function BackgroundSetting(props) {
             backgroundImage: `url("${backgroundSettings.backgroundImage.url}")`,
             backgroundSize: __bgSize,
             backgroundPosition: __bgPosition.join(" "),
-            backgroundRepeat: __bgRepeat
+            backgroundRepeat: __bgRepeat,
+            backgroundAttachment: backgroundSettings.backgroundImage.attchement
         }
 
         //remove background image from it aswell

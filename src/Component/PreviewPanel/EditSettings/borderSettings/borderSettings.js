@@ -1,27 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { set, get } from "lodash";
+import { pageDesignContext } from '../../../../Context/contexts';
 import './borderSettings.css'
 export default function BorderSettings(props) {
+
+    let pageDesignState = useContext(pageDesignContext);
+
     const [borderDetails, setBorderDetails] = useState({
         lockedAll: true,
         borderTop: {
             color: '#000000',
             thickness: 2,
-            type: "solid"
+            type: "none"
         },
         borderLeft: {
             color: '#000000',
             thickness: 2,
-            type: "solid"
+            type: "none"
         },
         borderRight: {
             color: '#000000',
             thickness: 2,
-            type: "solid"
+            type: "none"
         },
         borderBottom: {
             color: '#000000',
             thickness: 2,
-            type: "solid"
+            type: "none"
         }
     })
 
@@ -32,6 +37,66 @@ export default function BorderSettings(props) {
     useEffect(() => {
         showPrevBorder();
     }, [])
+
+    const setNodeData = (elString, level, data) => {
+        let currentNode = elString.split(',')
+        let currentNodeLast = currentNode[currentNode.length - 1];
+        currentNode = (level === 0) ? currentNode : currentNode.slice(0, level);
+        let __temp_structure = { ...pageDesignState.design }
+
+        let _node_path;
+        if (currentNode.length > 0) {
+            _node_path = "elements[" + currentNode.join('].elements[') + "]"
+        } else {
+            _node_path = "elements[" + currentNodeLast + "]"
+        }
+
+        set(__temp_structure, _node_path, data);
+        pageDesignState.setDesign(__temp_structure);
+
+        //close panel
+
+    }
+
+    const getNodeData = (elString, level) => {
+        let currentNode = elString.split(',')
+        let currentNodeLast = currentNode[currentNode.length - 1];
+        currentNode = (level === 0) ? currentNode : currentNode.slice(0, level);
+
+        let _node_path;
+        if (currentNode.length > 0) {
+            _node_path = "elements[" + currentNode.join('].elements[') + "]"
+        } else {
+            _node_path = "elements[" + currentNodeLast + "]"
+        }
+
+        return get(pageDesignState.design, _node_path);
+    }
+
+
+    const applyBorderStyle = () => {
+        let currentNode = props.currentlyActive.current;
+        let __current_elem = getNodeData(currentNode, 0)
+
+        let __style_prop = { ...__current_elem.styles };
+
+        let __apply_bg = {
+            borderTop: `${borderDetails.borderTop.thickness}px ${borderDetails.borderTop.type} ${borderDetails.borderTop.color}`,
+            borderLeft: `${borderDetails.borderLeft.thickness}px ${borderDetails.borderLeft.type} ${borderDetails.borderLeft.color}`,
+            borderRight: `${borderDetails.borderRight.thickness}px ${borderDetails.borderRight.type} ${borderDetails.borderRight.color}`,
+            borderBottom: `${borderDetails.borderBottom.thickness}px ${borderDetails.borderBottom.type} ${borderDetails.borderBottom.color}`
+        }
+
+        __style_prop = { ...__style_prop, ...__apply_bg };
+
+        __current_elem.styles = __style_prop;
+
+        setNodeData(currentNode, 0, __current_elem);
+
+        //close panel
+        props.closePanel();
+
+    }
 
     const changeLockMode = (e) => {
         if (borderDetails.lockedAll) {
@@ -119,6 +184,11 @@ export default function BorderSettings(props) {
                                 <option value="solid">Solid</option>
                                 <option value="dotted">dotted</option>
                                 <option value="dashed">dashed</option>
+                                <option value="double">Double</option>
+                                <option value="groove">Groove</option>
+                                <option value="ridge">Ridge</option>
+                                <option value="inset">Inset</option>
+                                <option value="outset">Outset</option>
                             </select>
                         </div>
                         <div className="line-pr" style={{ borderTop: `${borderDetails.borderTop.thickness}px ${borderDetails.borderTop.type} ${borderDetails.borderTop.color}` }}></div>
@@ -134,9 +204,14 @@ export default function BorderSettings(props) {
                                     onChange={(e) => (e.target.value > 0 && e.target.value < 11) ? setBorderDetails({ ...borderDetails, borderLeft: { ...borderDetails.borderLeft, thickness: e.target.value } }) : ""} />}
                                 {(!borderDetails.lockedAll) && <select onChange={(e) => setBorderDetails({ ...borderDetails, borderLeft: { ...borderDetails.borderLeft, type: e.target.value } })}>
                                     <option value="none">none</option>
-                                    <option value="solid" selected={true}>Solid</option>
+                                    <option value="solid">Solid</option>
                                     <option value="dotted">dotted</option>
                                     <option value="dashed">dashed</option>
+                                    <option value="double">Double</option>
+                                    <option value="groove">Groove</option>
+                                    <option value="ridge">Ridge</option>
+                                    <option value="inset">Inset</option>
+                                    <option value="outset">Outset</option>
                                 </select>}
                             </div>
                             <div className="line-pr" style={{ borderLeft: `${borderDetails.borderLeft.thickness}px ${borderDetails.borderLeft.type} ${borderDetails.borderLeft.color}` }}></div>
@@ -158,6 +233,11 @@ export default function BorderSettings(props) {
                                     <option value="solid">Solid</option>
                                     <option value="dotted">dotted</option>
                                     <option value="dashed">dashed</option>
+                                    <option value="double">Double</option>
+                                    <option value="groove">Groove</option>
+                                    <option value="ridge">Ridge</option>
+                                    <option value="inset">Inset</option>
+                                    <option value="outset">Outset</option>
                                 </select>}
                             </div>
                             <div className="line-pr" style={{ borderRight: `${borderDetails.borderRight.thickness}px ${borderDetails.borderRight.type} ${borderDetails.borderRight.color}` }}></div>
@@ -178,10 +258,19 @@ export default function BorderSettings(props) {
                                 <option value="solid">Solid</option>
                                 <option value="dotted">dotted</option>
                                 <option value="dashed">dashed</option>
+                                <option value="double">Double</option>
+                                <option value="groove">Groove</option>
+                                <option value="ridge">Ridge</option>
+                                <option value="inset">Inset</option>
+                                <option value="outset">Outset</option>
                             </select>}
                         </div>
 
                     </div>
+                </div>
+
+                <div className='border-apply'>
+                    <button onClick={applyBorderStyle}>Apply</button>
                 </div>
             </div>
         </div>

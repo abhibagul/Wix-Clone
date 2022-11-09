@@ -128,8 +128,8 @@ export default function BackgroundImageSettings(props) {
 
     const updateBGPath = (e) => {
         let __iPath = e.target.getAttribute("data-src");
-
         props.setBackgroundSettings({ ...props.backgroundSettings, backgroundImage: { ...props.backgroundSettings.backgroundImage, url: __iPath } });
+        setImageSearchSetting({ ...imageSearchSetting, panelMode: 2 });
     }
 
     return (
@@ -172,9 +172,17 @@ export default function BackgroundImageSettings(props) {
                 </div>}
                 {(imageSearchSetting.panelMode === 1) && <div className='userOwnImg'>
                     <div className='bgImageCustom'>
-                        <input className={"cusImg"} type={"text"} onChange={(e) => setImageSearchSetting({ ...imageSearchSetting, cURI: e.target.value })} placeholder="Your image url"></input>
+                        <input
+                            className={"cusImg"}
+                            type={"text"}
+                            onChange={(e) => setImageSearchSetting({ ...imageSearchSetting, cURI: e.target.value })}
+                            placeholder="Your image url"
+                        // value={(props.BackgroundImageSettings.backgroundImage.url) ? props.BackgroundImageSettings.backgroundImage.url : (imageSearchSetting.cURI) ? imageSearchSetting.cURI : ""}
+                        // value={props.BackgroundImageSettings.backgroundImage.url}
+                        ></input>
                         <button className='imgCusAct' onClick={() => {
                             props.setBackgroundSettings({ ...props.backgroundSettings, backgroundImage: { ...props.backgroundSettings.backgroundImage, url: imageSearchSetting.cURI } })
+                            setImageSearchSetting({ ...imageSearchSetting, panelMode: 2 });
                             props.setBgImg()
                         }}> Apply</button>
                     </div>
@@ -183,10 +191,10 @@ export default function BackgroundImageSettings(props) {
                     <h5>Background Size</h5>
                     <div className='imageSettingsOption'>
                         <select onChange={(e) => props.setBackgroundSettings({ ...props.backgroundSettings, backgroundImage: { ...props.backgroundSettings.backgroundImage, size: e.target.value } })}>
-                            <option value="auto">Auto</option>
-                            <option value="cover">Cover</option>
-                            <option value="contain">Contain</option>
-                            <option value="custom">Custom</option>
+                            <option value="auto" selected={(props.backgroundSettings.backgroundImage.size === "auto") ? true : false}>Auto</option>
+                            <option value="cover" selected={(props.backgroundSettings.backgroundImage.size === "cover") ? true : false}>Cover</option>
+                            <option value="contain" selected={(props.backgroundSettings.backgroundImage.size === "contain") ? true : false}>Contain</option>
+                            <option value="custom" selected={(props.backgroundSettings.backgroundImage.size === "custom") ? true : false}>Custom</option>
                         </select>
                         {(props.backgroundSettings.backgroundImage.size === "custom") && <div className='customImgSizes'>
                             <div className='colorPalletStrength'>
@@ -203,16 +211,23 @@ export default function BackgroundImageSettings(props) {
                             </div>
                         </div>}
                     </div>
+                    <h5>Background Parallax</h5>
+                    <div className='imageSettingsOption'>
+                        <select onChange={(e) => props.setBackgroundSettings({ ...props.backgroundSettings, backgroundImage: { ...props.backgroundSettings.backgroundImage, attchement: e.target.value } })}>
+                            <option value="fixed" selected={(props.backgroundSettings.backgroundImage.attchement === "fixed") ? true : false}>Parallax</option>
+                            <option value="initial" selected={(props.backgroundSettings.backgroundImage.attchement === "initial") ? true : false}>No Parallax</option>
+                        </select>
+                    </div>
                     <h5>Background Position</h5>
                     <div className='imageSettingsOption'>
                         <div className='imagePosSort'>
                             <div className='ImgHorzPs'>
                                 <h5>Horizontal</h5>
                                 <select onChange={(e) => props.setBackgroundSettings({ ...props.backgroundSettings, backgroundImage: { ...props.backgroundSettings.backgroundImage, positionLeft: e.target.value } })}>
-                                    <option value="left">Left</option>
-                                    <option value="center">Center</option>
-                                    <option value="right">Right</option>
-                                    <option value="custom">Custom</option>
+                                    <option value="left" selected={(props.backgroundSettings.backgroundImage.positionLeft === "left") ? true : false}>Left</option>
+                                    <option value="center" selected={(props.backgroundSettings.backgroundImage.positionLeft === "center") ? true : false}>Center</option>
+                                    <option value="right" selected={(props.backgroundSettings.backgroundImage.positionLeft === "right") ? true : false}>Right</option>
+                                    <option value="custom" selected={(props.backgroundSettings.backgroundImage.positionLeft === "custom") ? true : false}>Custom</option>
                                 </select>
                                 {(props.backgroundSettings.backgroundImage.positionLeft === "custom") && <div className='customImgSizes'>
                                     <div className='colorPalletStrength dircol'>
@@ -225,10 +240,10 @@ export default function BackgroundImageSettings(props) {
                             <div className='ImgVertPs'>
                                 <h5>Vertical</h5>
                                 <select onChange={(e) => props.setBackgroundSettings({ ...props.backgroundSettings, backgroundImage: { ...props.backgroundSettings.backgroundImage, positionTop: e.target.value } })}>
-                                    <option value="top">Top</option>
-                                    <option value="center">Center</option>
-                                    <option value="bottom">Bottom</option>
-                                    <option value="custom">Custom</option>
+                                    <option value="top" selected={(props.backgroundSettings.backgroundImage.positionTop === "top") ? true : false}>Top</option>
+                                    <option value="center" selected={(props.backgroundSettings.backgroundImage.positionTop === "center") ? true : false}>Center</option>
+                                    <option value="bottom" selected={(props.backgroundSettings.backgroundImage.positionTop === "bottom") ? true : false}>Bottom</option>
+                                    <option value="custom" selected={(props.backgroundSettings.backgroundImage.positionTop === "custom") ? true : false}>Custom</option>
 
                                 </select>
                                 {(props.backgroundSettings.backgroundImage.positionTop === "custom") && <div className='customImgSizes'>
@@ -244,12 +259,12 @@ export default function BackgroundImageSettings(props) {
                     <h5>Background Repeat</h5>
                     <div className='imageSettingsOption'>
                         <select onChange={(e) => props.setBackgroundSettings({ ...props.backgroundSettings, backgroundImage: { ...props.backgroundSettings.backgroundImage, repeat: e.target.value } })}>
-                            <option value="repeat">Repeat Both</option>
-                            <option value="repeat-x">Horizontal Repeat</option>
-                            <option value="repeat-y">Vertical Repeat</option>
-                            <option value="no-repeat">Do not repeat</option>
-                            <option value="space">Space</option>
-                            <option value="round">Round</option>
+                            <option value="repeat" selected={(props.backgroundSettings.backgroundImage.repeat === "repeat") ? true : false}>Repeat Both</option>
+                            <option value="repeat-x" selected={(props.backgroundSettings.backgroundImage.repeat === "repeat-x") ? true : false}>Horizontal Repeat</option>
+                            <option value="repeat-y" selected={(props.backgroundSettings.backgroundImage.repeat === "repeat-y") ? true : false}>Vertical Repeat</option>
+                            <option value="no-repeat" selected={(props.backgroundSettings.backgroundImage.repeat === "no-repeat") ? true : false}>Do not repeat</option>
+                            <option value="space" selected={(props.backgroundSettings.backgroundImage.repeat === "space") ? true : false}>Space</option>
+                            <option value="round" selected={(props.backgroundSettings.backgroundImage.repeat === "round") ? true : false}>Round</option>
                         </select>
                     </div>
                     <div className='applySearchBG'>
