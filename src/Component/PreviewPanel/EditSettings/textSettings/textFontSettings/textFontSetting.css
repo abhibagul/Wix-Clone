@@ -1,0 +1,15 @@
+.textFontSelector {
+    padding: 0px 10px;
+}
+
+.textFontSelector #font-picker {
+    width: 80%;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.textFontSelector #font-picker button {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}

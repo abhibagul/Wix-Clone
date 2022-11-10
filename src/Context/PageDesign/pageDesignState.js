@@ -7,6 +7,7 @@ const PageDesignState = (props) => {
         pageMode: 1,
         isDropEnabled: true,
         dropIndex: 0,
+        fonts: [],
         elements: []
     }
 

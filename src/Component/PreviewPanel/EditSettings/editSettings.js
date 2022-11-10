@@ -9,6 +9,7 @@ import BorderSettings from './borderSettings/borderSettings';
 import BorderRadiusSettings from './borderRadiusSettings/borderRadiusSettings';
 import BoxShadowSetting from './boxShadowSettings/boxShadowSetting';
 import PaddingSettings from './paddingSettings/paddingSettings';
+import TextSettings from './textSettings/textSettings';
 
 import './editSettings.css'
 export default function EditSettings(props) {
@@ -41,6 +42,7 @@ export default function EditSettings(props) {
                     /**
                      * Text
                      */
+                    (editSettingState.currentSet === 1) && <TextSettings closePanel={props.closePanel} key={props.currentlyActive.current} currentlyActive={props.currentlyActive} />
                 }
 
                 {

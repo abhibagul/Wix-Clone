@@ -129,9 +129,12 @@ export default function BackgroundSetting(props) {
     const prevSolidColor = () => {
         //let currentNode = props.currentlyActive.current;
         let node = document.querySelector("[data-path=\"" + props.currentlyActive.current + ",\"]");
-        let solidColor = hexToRgb(backgroundSettings.solidColor.color)
-        node.style.backgroundColor = `rgba(${solidColor.r},${solidColor.g}, ${solidColor.b}, ${(backgroundSettings.solidColor.opacity / 100)})`
-        node.style.backgroundImage = "none"
+        if (node) {
+
+            let solidColor = hexToRgb(backgroundSettings.solidColor.color)
+            node.style.backgroundColor = `rgba(${solidColor.r},${solidColor.g}, ${solidColor.b}, ${(backgroundSettings.solidColor.opacity / 100)})`
+            node.style.backgroundImage = "none"
+        }
 
     }
 

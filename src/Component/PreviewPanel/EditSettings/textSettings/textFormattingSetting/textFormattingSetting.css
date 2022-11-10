@@ -1,0 +1,15 @@
+.textFormatting button {
+    border: 1px solid #0d6efd;
+    padding: 5px 10px;
+    font-size: 15px;
+    background: #fff;
+    border-radius: 5px;
+    margin-right: 5px;
+    color: #0d6efd;
+    cursor: pointer;
+}
+
+.textFormatting button.active {
+    background: #0d6efd;
+    color: #fff;
+}

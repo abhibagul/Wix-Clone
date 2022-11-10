@@ -1,0 +1,16 @@
+.spacinginputwrap {
+    display: flex;
+    gap: 10px;
+}
+
+.spacinginputwrap input {
+    flex-grow: 1
+}
+
+.spacinginputwrap span {
+    min-width: 50px;
+    flex-shrink: 0;
+    text-align: center;
+    background: #9ec5fe;
+    border-radius: 5px;
+}

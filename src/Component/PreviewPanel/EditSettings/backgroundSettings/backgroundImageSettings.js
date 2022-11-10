@@ -4,6 +4,7 @@ import { set, get } from "lodash";
 import './bgImage.css'
 export default function BackgroundImageSettings(props) {
 
+
     const [imageList, setImageList] = useState([]);
     const [imageSearchSetting, setImageSearchSetting] = useState({
         q: "",
@@ -55,6 +56,10 @@ export default function BackgroundImageSettings(props) {
                         }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "curated", isLoading: false, rType: "Popular Images" });
+                }).catch(err => {
+                    console.error(err);
+                    setImageSearchSetting({ ...imageSearchSetting, isLoading: false, rType: "Something went wrong!" });
+                    loadMoreImages.current.style.display = "none";
                 });
             }
         } else {
@@ -75,6 +80,10 @@ export default function BackgroundImageSettings(props) {
                         }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "search", isLoading: false, rType: `Currently showing: ${imageSearchSetting.q}` });
+                }).catch(err => {
+                    console.error(err);
+                    setImageSearchSetting({ ...imageSearchSetting, isLoading: false, rType: "Something went wrong!" });
+                    loadMoreImages.current.style.display = "none";
                 });
 
             }
@@ -91,7 +100,6 @@ export default function BackgroundImageSettings(props) {
     // }, [imageSearchSetting])
 
     const loadMore = async () => {
-        console.log(imageSearchSetting);
 
         if (imageSearchSetting.loadType === "curated") {
             if (!imageSearchSetting.isLoading) {
@@ -109,6 +117,10 @@ export default function BackgroundImageSettings(props) {
                         }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "curated", isLoading: false, rType: "Popular Images" });
+                }).catch(err => {
+                    console.error(err);
+                    setImageSearchSetting({ ...imageSearchSetting, isLoading: false, rType: "Something went wrong!" });
+                    loadMoreImages.current.style.display = "none";
                 });
             }
         } else {
@@ -129,6 +141,10 @@ export default function BackgroundImageSettings(props) {
                         }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "search", isLoading: false, rType: `Currently showing: ${imageSearchSetting.q}` });
+                }).catch(err => {
+                    console.log(err);
+                    setImageSearchSetting({ ...imageSearchSetting, isLoading: false, rType: "Something went wrong!" });
+                    loadMoreImages.current.style.display = "none";
                 });
 
             }
