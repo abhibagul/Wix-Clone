@@ -12,7 +12,7 @@ export default function BackgroundSetting(props) {
         backgroundMode: 0,
         solidColor: {
             color: "#ffffff",
-            opacity: 100
+            opacity: 0
         },
         gradientColor: {
             type: "linear",

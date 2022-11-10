@@ -45,10 +45,14 @@ export default function BackgroundImageSettings(props) {
                 await client.photos.curated({ per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {
                     setImageList([...photos.photos])
 
-                    if (photos.next_page) {
-                        loadMoreImages.current.style.display = "block";
-                    } else {
-                        loadMoreImages.current.style.display = "none";
+
+                    if (props.backgroundSettings.backgroundMode === 2) {
+
+                        if (photos.next_page && loadMoreImages.current) {
+                            loadMoreImages.current.style.display = "block";
+                        } else {
+                            loadMoreImages.current.style.display = "none";
+                        }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "curated", isLoading: false, rType: "Popular Images" });
                 });
@@ -63,11 +67,12 @@ export default function BackgroundImageSettings(props) {
 
                 client.photos.search({ query, per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {
                     setImageList([...photos.photos])
-
-                    if (photos.next_page) {
-                        loadMoreImages.current.style.display = "block";
-                    } else {
-                        loadMoreImages.current.style.display = "none";
+                    if (props.backgroundSettings.backgroundMode === 2) {
+                        if (photos.next_page && loadMoreImages.current) {
+                            loadMoreImages.current.style.display = "block";
+                        } else {
+                            loadMoreImages.current.style.display = "none";
+                        }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "search", isLoading: false, rType: `Currently showing: ${imageSearchSetting.q}` });
                 });
@@ -96,10 +101,12 @@ export default function BackgroundImageSettings(props) {
                 const client = createClient('563492ad6f91700001000001dbde5e00fa9740478227629c8f83bacb');
                 await client.photos.curated({ page: imageSearchSetting.page, per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {
                     setImageList([...imageList, ...photos.photos])
-                    if (photos.next_page) {
-                        loadMoreImages.current.style.display = "block";
-                    } else {
-                        loadMoreImages.current.style.display = "none";
+                    if (props.backgroundSettings.backgroundMode === 2) {
+                        if (photos.next_page && loadMoreImages.current) {
+                            loadMoreImages.current.style.display = "block";
+                        } else {
+                            loadMoreImages.current.style.display = "none";
+                        }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "curated", isLoading: false, rType: "Popular Images" });
                 });
@@ -114,10 +121,12 @@ export default function BackgroundImageSettings(props) {
 
                 client.photos.search({ page: imageSearchSetting.page, query, per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {
                     setImageList([...imageList, ...photos.photos])
-                    if (photos.next_page) {
-                        loadMoreImages.current.style.display = "block";
-                    } else {
-                        loadMoreImages.current.style.display = "none";
+                    if (props.backgroundSettings.backgroundMode === 2) {
+                        if (photos.next_page && loadMoreImages.current) {
+                            loadMoreImages.current.style.display = "block";
+                        } else {
+                            loadMoreImages.current.style.display = "none";
+                        }
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "search", isLoading: false, rType: `Currently showing: ${imageSearchSetting.q}` });
                 });

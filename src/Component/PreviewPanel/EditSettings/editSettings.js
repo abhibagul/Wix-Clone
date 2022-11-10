@@ -8,6 +8,7 @@ import BackgroundSetting from './backgroundSettings/backgroundSetting';
 import BorderSettings from './borderSettings/borderSettings';
 import BorderRadiusSettings from './borderRadiusSettings/borderRadiusSettings';
 import BoxShadowSetting from './boxShadowSettings/boxShadowSetting';
+import PaddingSettings from './paddingSettings/paddingSettings';
 
 import './editSettings.css'
 export default function EditSettings(props) {
@@ -33,7 +34,7 @@ export default function EditSettings(props) {
                     /**
                      * Background
                      */
-                    (editSettingState.currentSet === 0) && <BackgroundSetting closePanel={props.closePanel} currentlyActive={props.currentlyActive} />
+                    (editSettingState.currentSet === 0) && <BackgroundSetting closePanel={props.closePanel} key={props.currentlyActive.current} currentlyActive={props.currentlyActive} />
                 }
 
                 {
@@ -46,27 +47,28 @@ export default function EditSettings(props) {
                     /**
                      * Border Settings
                      */
-                    (editSettingState.currentSet === 2) && <BorderSettings closePanel={props.closePanel} currentlyActive={props.currentlyActive} />
+                    (editSettingState.currentSet === 2) && <BorderSettings closePanel={props.closePanel} key={props.currentlyActive.current} currentlyActive={props.currentlyActive} />
                 }
 
                 {
                     /**
                      * border radius
                      */
-                    (editSettingState.currentSet === 3) && <BorderRadiusSettings closePanel={props.closePanel} currentlyActive={props.currentlyActive} />
+                    (editSettingState.currentSet === 3) && <BorderRadiusSettings closePanel={props.closePanel} key={props.currentlyActive.current} currentlyActive={props.currentlyActive} />
                 }
 
                 {
                     /**
                      *  Box shadow
                      */
-                    (editSettingState.currentSet === 4) && <BoxShadowSetting closePanel={props.closePanel} currentlyActive={props.currentlyActive} />
+                    (editSettingState.currentSet === 4) && <BoxShadowSetting closePanel={props.closePanel} key={props.currentlyActive.current} currentlyActive={props.currentlyActive} />
                 }
 
                 {
                     /**
                      * Box sizing (padding)
                      */
+                    (editSettingState.currentSet === 5) && <PaddingSettings closePanel={props.closePanel} key={props.currentlyActive.current} currentlyActive={props.currentlyActive} />
                 }
             </div>
         </div>

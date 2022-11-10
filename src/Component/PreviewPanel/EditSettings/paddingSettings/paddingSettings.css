@@ -1,0 +1,100 @@
+.paddingPanelInner {
+    padding: 10px;
+}
+
+.paddingPanelInner h5 {
+    margin: 0px;
+}
+
+.paddingBox {
+    display: flex;
+    width: 80%;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid #0d6efd;
+    border-radius: 10px;
+    margin: 10px 10%;
+}
+
+.paddingBox input {
+    position: absolute;
+    width: 70px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.paddingBox input.pad-top {
+    top: 10px;
+}
+
+.paddingBox input.pad-btm {
+    bottom: 10px;
+}
+
+.paddingBox input.pad-left {
+    left: 10px;
+}
+
+.paddingBox input.pad-right {
+    right: 10px;
+}
+
+.paddingBox button {
+    background: transparent;
+    border: 1px solid #0d6efd;
+    font-size: 18px;
+    color: #0d6efd;
+    ;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.paddingBox button.locked {
+    background: #0d6efd;
+    color: #fff
+}
+
+.paddingBox input.pad-top.lockedAll {
+    top: 50%;
+    transform: translateY(-50px)
+}
+
+.applyPadding {
+    text-align: right;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px;
+    position: sticky;
+    bottom: 0px;
+    background: #fff;
+}
+
+.applyPadding button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}
+
+/* experimental preview*/
+.paddingChPre {
+    background-color: #ffc10720 !important;
+    background-image: repeating-linear-gradient(45deg,
+            #ffc107 10px,
+            #ffc107 12px,
+            transparent 12px,
+            transparent 20px) !important;
+    outline: 2px solid #ffc107;
+}
+
+
+.paddingChPre * {
+    color: #116dff !important;
+    background: #0d6efd40 !important;
+    outline: 2px solid #0d6efd;
+}

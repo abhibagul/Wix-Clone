@@ -17,7 +17,7 @@ export default function SideColumnLayout() {
         elementType: "outerLayout",
         classList: "wd-row",
         elemType: "div",
-        styles: { maxWidth: "1100px", margin: "0 auto" },
+        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
         elemEditable: false,
         attributes: {},
         enableDropping: false,
@@ -32,7 +32,7 @@ export default function SideColumnLayout() {
         classList: "wd-row",
         elemType: "div",
         attributes: {},
-        styles: { maxWidth: "1100px", margin: "0 auto" },
+        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
         elemEditable: false,
         enableDropping: false,
         elements: [
@@ -47,7 +47,7 @@ export default function SideColumnLayout() {
         classList: "wd-row",
         attributes: {},
         elemType: "div",
-        styles: { maxWidth: "1100px", margin: "0 auto" },
+        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
         enableDropping: false,
         elemEditable: false,
         elements: [

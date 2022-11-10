@@ -1129,7 +1129,7 @@ export default function PreviewPanel() {
                          * Edit settings
                          */
                         (panelSettings.panelMode === "editSettings") && <>
-                            <EditSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                            <EditSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                         </>
                     }
                 </div>
