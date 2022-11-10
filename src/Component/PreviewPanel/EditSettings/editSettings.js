@@ -7,6 +7,7 @@ import { useState } from 'react'
 import BackgroundSetting from './backgroundSettings/backgroundSetting';
 import BorderSettings from './borderSettings/borderSettings';
 import BorderRadiusSettings from './borderRadiusSettings/borderRadiusSettings';
+import BoxShadowSetting from './boxShadowSettings/boxShadowSetting';
 
 import './editSettings.css'
 export default function EditSettings(props) {
@@ -59,6 +60,7 @@ export default function EditSettings(props) {
                     /**
                      *  Box shadow
                      */
+                    (editSettingState.currentSet === 4) && <BoxShadowSetting closePanel={props.closePanel} currentlyActive={props.currentlyActive} />
                 }
 
                 {

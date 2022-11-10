@@ -1,0 +1,146 @@
+.boxShadowPanelInner {
+    padding: 10px;
+}
+
+.boxShadowInput {
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 10px;
+}
+
+.boxShadowColor {
+    display: flex;
+}
+
+.shadowColor {
+    flex-shrink: 0
+}
+
+.shadowOpacityRange {
+    flex-grow: 1;
+}
+
+.toggleSwitch {
+    flex-shrink: 0;
+}
+
+.boxShadowRange {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    background: #f7f7f7;
+    border: 1px solid rgba(0, 0, 0, .1);
+    margin-top: 10px;
+}
+
+.boxShadowRange input,
+.boxShadowRange select {
+    margin: 5px 0px;
+}
+
+.boxShadowRange select {
+    padding: 3px 6px;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.boxShadowRange h5 {
+    margin: 2px 0px;
+
+}
+
+.boxShadowRange.hidden {
+    display: none;
+}
+
+.addMoreShadow {
+    text-align: center;
+    padding: 10px;
+}
+
+.addMoreShadow button {
+    background-color: #0d6efd;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+.boxShadowApply {
+    text-align: right;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px;
+    position: sticky;
+    bottom: 0px;
+    background: #fff;
+}
+
+.boxShadowApply button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}
+
+.boxShadowColor {
+    gap: 10px;
+}
+
+.boxShadowInput {
+    padding-top: 10px;
+}
+
+.boxShadowInput input[type="color"]:-webkit-color-swatch-wrapper {
+    padding: 0;
+    border: 0px solid red !important;
+    outline: none;
+
+    border-radius: 10px;
+}
+
+.boxShadowInput input[type="color"]:-webkit-color-swatch {
+    border: 0px solid red !important;
+    outline: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.boxShadowInput input[type="color"] {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+}
+
+.toggleSwitch,
+.removeShadow {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.toggleSwitch {
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 5px;
+}
+
+.toggleSwitch.active {
+    background: #0d6efd;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.removeShadow {
+    color: red;
+}
+
+.boxShadowPanelInner h5 {
+    margin: 0px 0px;
+}
