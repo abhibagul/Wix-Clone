@@ -1,0 +1,110 @@
+.emojiPickerOuter {
+    position: relative;
+}
+
+.emojiPicker {
+    display: none;
+    position: relative;
+}
+
+.emojiPicker.show {
+    display: block;
+    z-index: 99;
+    width: 280px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .2), -3px -3px 5px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+}
+
+.EmojiPickerReact .epr-header .epr-header-overlay {
+    display: none;
+}
+
+.EmojiPickerReact .epr-preview {
+    display: none;
+}
+
+.emojiPicker.show aside.EmojiPickerReact.epr-main {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .1), -3px -3px 5px rgba(0, 0, 0, .1);
+}
+
+.emojiPicker.show:before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    position: absolute;
+    display: block;
+    rotate: 45deg;
+    z-index: 555;
+    border-left: 1px solid rgba(0, 0, 0, .1);
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    left: 20px;
+}
+
+.EmojiPickerReact button.epr-emoji {
+    height: 22px;
+    width: 18px;
+    padding: 0px !important;
+}
+
+.EmojiPickerReact button.epr-emoji img {
+    width: 18px;
+    height: 18px;
+    padding: 0px !important;
+}
+
+.EmojiPickerReact li.epr-emoji-category>.epr-emoji-category-content {
+    grid-template-columns: repeat(auto-fill, 25px);
+}
+
+.epr-category-nav {
+    padding: 5px !important;
+}
+
+.ListSettingsPanelInner {
+    padding: 10px;
+}
+
+.ListSettingsPanelInner h5 {
+    margin: 3px 0px;
+}
+
+.ListSettingsPanelInner select,
+.textPreFix input {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.ListSettingsPanelInner .emojiPickerOuter>button {
+    padding: 5px 10px;
+    font-size: 25px;
+    background: transparent;
+    border: 1px solid #116dff;
+    background: #cfe2ff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.applyStyle {
+    text-align: right;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    position: sticky;
+    bottom: 0px;
+    padding: 5px 10px;
+    background: #fff;
+    margin-top: 10px;
+}
+
+.applyStyle button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}
