@@ -35,6 +35,8 @@ export default function CreateRowsLayout(props) {
             __col_wd.push(__new_col);
         }
 
+        console.log("layout_" + __colStr.join("_") + "_col");
+
         return {
             previmg: imageURI,
             elid: "layout_" + __colStr.join("_") + "_col",
