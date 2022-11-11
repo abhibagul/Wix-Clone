@@ -1,0 +1,188 @@
+.layoutCreatorHeader {
+    display: flex;
+    background: #cfe2ff;
+}
+
+.layoutCreatorTitle {
+    flex-grow: 1;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.layoutCreatorAction {
+    flex-shrink: 0;
+}
+
+.layoutCreatorAction button {
+    background: transparent;
+    border: none;
+    color: red;
+    font-size: 20px;
+    padding: 2px 0px;
+    cursor: pointer;
+    margin: 2.5px 10px;
+}
+
+
+.layourCrInner {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.layourCrInner>div {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px 0px;
+}
+
+.layoutColumnAdd {
+    text-align: center;
+}
+
+.layoutColumnAdd button {
+    padding: 10px;
+    background-color: #cfe2ff;
+    border-radius: 40px;
+    color: #116dff;
+    border: none;
+    cursor: pointer;
+}
+
+
+.layourCrInner .columnActions {
+    border-bottom: none;
+}
+
+.layourCrInner .columnActions button {
+    padding: 8px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.colGenLay {
+    color: #198754;
+    background: #d1e7dd;
+    border: 1px solid #d1e7dd;
+}
+
+.colDelInd {
+    border: 1px solid #f8d7da;
+    color: #dc3545;
+    background: #f8d7da;
+}
+
+.colDelInd:hover {
+    background: #f1aeb5;
+}
+
+.colGenLay:hover {
+    background: #a3cfbb;
+}
+
+/* create panel */
+.columnPrevInner {
+    padding: 10px 2px;
+}
+
+.columnPrevInner {
+    background-color: #e0cffc !important;
+    background-image: repeating-linear-gradient(45deg,
+            #a370f7 10px,
+            #a370f7 12px,
+            transparent 12px,
+            transparent 20px) !important;
+    outline: 2px solid #a370f7;
+    margin: 0px -8px;
+    display: flex;
+}
+
+
+.columnPrevInner>div {
+    color: #116dff !important;
+    background: #cfe2ff !important;
+    outline: 2px solid #0d6efd;
+    padding: 10px 0px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.columnPrevInner input {
+    width: 100%;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.columnPrevInner>div.prev-col.activeCol {
+    background: #fff3cd !important;
+    color: #ffc107 !important;
+    outline-color: #ffc107 !important;
+}
+
+.prev-col span {
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.settingPanel {
+    z-index: 999;
+}
+
+.prev-col input {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    max-width: 50px;
+    clear: left;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .1), -3px -3px 5px rgba(0, 0, 0, .1);
+    text-align: center;
+}
+
+.columnActions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+
+.columnPrev.captureImg {
+    margin: 0px !important;
+    background: white !important;
+}
+
+.columnPrev.captureImg .columnPrevInner {
+    gap: 30px 50px;
+    padding: 50px 0px
+}
+
+.columnPrev.captureImg>div {
+    min-height: 300px;
+}
+
+.columnPrev.captureImg input {
+    display: none;
+}
+
+.columnPrev.captureImg span {
+    font-size: 40px !important;
+}
+
+.columnPrev.captureImg .columnPrevInner {
+    background: white !important;
+    outline: none !important;
+}
+
+.columnPrev.captureImg .prev-col,
+.columnPrev.captureImg .prev-col.activeCol {
+    background: rgb(255, 144, 0) !important;
+    outline: none;
+}
+
+.columnPrev.captureImg .prev-col span {
+    display: none;
+}

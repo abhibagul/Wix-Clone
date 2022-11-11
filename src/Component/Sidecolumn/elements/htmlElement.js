@@ -173,7 +173,7 @@ export default function HtmlElement() {
         (htmlElem.length > 0) ?
 
             htmlElem.map((e, i) => {
-                return (<div data-elementindex={i} className="item_drag half" key={e.elid} onDragEnd={AddDroppedElement}>
+                return (<div data-elementindex={i} className="item_drag half" key={e.elid} onDoubleClick={AddDroppedElement} onDragEnd={AddDroppedElement}>
                     <img className="item_drag_img" src={e.previmg} />
                     <p className="item_drag_desc">{e.desc}</p>
                 </div>)

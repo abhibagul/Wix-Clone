@@ -10,3 +10,9 @@ export const pageDesignContext = createContext();
  */
 export const userDetailsContext = createContext();
 
+/**
+ * DragElems
+ */
+export const dragElemsContext = createContext();
+
+

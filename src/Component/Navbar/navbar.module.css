@@ -210,14 +210,17 @@
     box-shadow: 5px 5px 10px rgb(0 0 0 / 5%), -5px 0px 10px rgb(0 0 0 / 5%);
     z-index: 1000;
     padding-top: 0px;
+    display: none;
 }
+
+
 
 .navbar_user_details ul li:hover>ul {
     right: -10px;
     left: initial;
     scale: 1;
     opacity: 1;
-
+    display: block;
 }
 
 .navbar_menu_level_one>li>a.btn_responsive {

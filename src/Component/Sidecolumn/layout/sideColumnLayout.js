@@ -1,16 +1,22 @@
 import { useState, useContext } from 'react'
 import '../elementalStyles.css';
-import { pageDesignContext } from '../../../Context/contexts';
+import { pageDesignContext, dragElemsContext } from '../../../Context/contexts';
 // import DirtyData from './dirtyData';
 // import { Set, Get } from "react-lodash"
 // import set from "lodash.set";
 import { set, get } from "lodash";
 
+import './sideColumnLayout.css'
+import { useEffect } from 'react';
+
 export default function SideColumnLayout() {
 
     const pageDesignState = useContext(pageDesignContext)
+    const dragElOptions = useContext(dragElemsContext)
 
-    const layout = [{
+
+
+    let layout = [{
         previmg: "/assets/images/elements/layouts/2col.png",
         elid: "layout_2_col",
         desc: "2 Column Layout",
@@ -27,21 +33,6 @@ export default function SideColumnLayout() {
         ]
     }, {
         previmg: "/assets/images/elements/layouts/2col.png",
-        elid: "layout_3_col",
-        desc: "3 Column Layout",
-        classList: "wd-row",
-        elemType: "div",
-        attributes: {},
-        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
-        elemEditable: false,
-        enableDropping: false,
-        elements: [
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 3", elementType: "tempElem", elements: [] }] },
-        ]
-    }, {
-        previmg: "/assets/images/elements/layouts/2col.png",
         elid: "layout_1_col",
         desc: "1 Column Layout",
         classList: "wd-row",
@@ -55,11 +46,48 @@ export default function SideColumnLayout() {
                 classList: ["wd wd-12"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemType: "div", elemEditable: false, styles: { color: "#dddddd", padding: "30px 0px" }, enableDropping: true, inHTML: "Column 1", elementType: "tempElem", elements: [] }]
             },
         ]
+    }, {
+        previmg: "/assets/images/elements/layouts/2col.png",
+        elid: "layout_3_col",
+        desc: "3 Column Layout",
+        classList: "wd-row",
+        elemType: "div",
+        attributes: {},
+        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
+        elemEditable: false,
+        enableDropping: false,
+        elements: [
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 3", elementType: "tempElem", elements: [] }] },
+        ]
     }]
+
+    if (dragElOptions.__dragElems.customLayoutOptions.length > 0) {
+        layout = [...dragElOptions.__dragElems.customLayoutOptions, ...layout];
+    }
 
     const [layoutOptions, setLayoutOptions] = useState(layout);
 
+    const removeDuplicates = (myArr, prop) => {
+        return myArr.filter((obj, pos, arr) => {
+            return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos
+        })
+    }
 
+    useEffect(() => {
+
+        let __new_options = [...layout];
+
+
+        if (dragElOptions.__dragElems.customLayoutOptions.length > 0) {
+            __new_options = [...dragElOptions.__dragElems.customLayoutOptions, ...__new_options]
+        }
+
+        setLayoutOptions(removeDuplicates(__new_options, "elid"));
+
+
+    }, [dragElOptions]);
 
     const AddSubElement = (elNode, index) => {
         //lets deal with the sub elems!
@@ -148,17 +176,24 @@ export default function SideColumnLayout() {
     }
 
     return (
+        <>
+            <div className='custom-row'>
+                <button onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 0 }) }}>Create custom Layout</button>
+            </div>
+            {/* <h5>Frequently used,</h5> */}
+            {(layoutOptions.length > 0) ?
 
-        (layoutOptions.length > 0) ?
+                layoutOptions.map((e, i) => {
+                    return (<div data-elementindex={i} className="item_drag half"
+                        style={{ MoxUserSelect: "none", WebkitUserSelect: "none", MsUserSelect: "none", userSelect: "none", OUserSelect: "none" }}
 
-            layoutOptions.map((e, i) => {
-                return (<div data-elementindex={i} className="item_drag half" key={e.elid} onDragEnd={AddDroppedElement}>
-                    <img className="item_drag_img" src={e.previmg} />
-                    <p className="item_drag_desc">{e.desc}</p>
-                </div>)
-            })
+                        key={e.elid + "-" + i} onDoubleClick={AddDroppedElement} onDragEnd={AddDroppedElement}>
+                        <img className="item_drag_img" src={e.previmg} />
+                        <p className="item_drag_desc">{e.desc}</p>
+                    </div>)
+                })
 
-            : ""
-
+                : ""}
+        </>
     )
 }

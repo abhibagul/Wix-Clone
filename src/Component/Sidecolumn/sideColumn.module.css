@@ -75,6 +75,11 @@
     height: calc(100vh - 40px);
 }
 
+.sidebar_optionResults h5 {
+    margin: 5px 0px;
+    text-align: center;
+}
+
 .sidebar_optionResults:after {
     content: "";
     clear: both;

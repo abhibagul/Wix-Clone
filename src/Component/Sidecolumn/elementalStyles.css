@@ -6,14 +6,26 @@
     font-size: 12px;
     position: relative;
     width: 100%;
+    border: 1px solid #ccc;
 }
 
 .item_drag.half {
     max-width: 150px;
+    max-height: 300px;
+    overflow: hidden;
+    position: relative;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .item_drag:hover {
-    background-color: #f7f7f7;
+    color: #116dff;
+    background-color: var(--primary-link-hover-background);
+    outline: 1px solid #116dff;
+    cursor: pointer;
 }
 
 .item_drag_img {

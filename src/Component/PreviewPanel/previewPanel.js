@@ -516,7 +516,7 @@ export default function PreviewPanel() {
 
         elementalOptions.current.style.display = "none";
         ElementSwitcher.current.style.display = "none";
-
+        elementalHeightResizer.current.style.display = "none";
         elementalOptionsSettings.current.style.display = "none";
     }
 

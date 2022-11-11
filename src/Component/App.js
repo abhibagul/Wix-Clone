@@ -4,6 +4,7 @@ import AppStyles from './app.module.css';
 import Navbar from './Navbar/navbar';
 import Sidecolumn from './Sidecolumn/sidecolumn';
 import PreviewPanel from './PreviewPanel/previewPanel';
+import SettingPanel from './SettingPanel/settingPanel';
 import { useRef, useState } from 'react';
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
         <main className={AppStyles["preview_panel"]}>
           <PreviewPanel />
         </main>
+        <SettingPanel />
       </div>
     </div>
   );
