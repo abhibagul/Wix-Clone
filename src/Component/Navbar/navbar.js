@@ -124,7 +124,7 @@ export default function Navbar() {
             <div className={nvstyle["user_persistant_actions"]}>
                 <ul className={nvstyle["navbar_menu_level_one"]}>
                     <li><a className={nvstyle["highlight_btn_light"]} href='/'>Save</a></li>
-                    <li><a className={nvstyle["highlight_btn"]} href='/'>Download Code</a></li>
+                    <li><a className={nvstyle["highlight_btn"]} href='/'>Publish</a></li>
                 </ul>
             </div>
             <div className={nvstyle["navbar_user_details"]}>

@@ -44,7 +44,7 @@ function App() {
       </div>
       <div className={AppStyles["container"]}>
         <aside style={sideWid} className={AppStyles["options_menu"]} >
-          <div className={AppStyles["options_menu_main"]}><Sidecolumn /></div>
+          <div className={AppStyles["options_menu_main"]}><Sidecolumn key={"sideCol"} /></div>
           <div draggable ref={resizer} onDragStart={() => resizer.current.isDragStarted = true} onDrag={updateSettingsWidth} onDragEnd={() => resizer.current.isDragStarted = false} className={AppStyles["options_resizer"]}><i className="las la-grip-lines-vertical"></i></div>
         </aside>
         <main className={AppStyles["preview_panel"]}>

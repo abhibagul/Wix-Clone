@@ -60,6 +60,7 @@
 /* experimental preview*/
 .alignOptionsPrev {
     background-color: rgba(150, 147, 226, 0.5) !important;
+    outline: 2px solid #9693e2;
     background-image: repeating-linear-gradient(45deg,
             #9693e2 10px,
             #9693e2 12px,

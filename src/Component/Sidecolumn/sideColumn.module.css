@@ -33,6 +33,7 @@
     width: 40px;
     height: 30px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .sidebar_optionbar_options li.active a {
