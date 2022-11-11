@@ -7,6 +7,8 @@ import PreviewPanel from './PreviewPanel/previewPanel';
 import { useRef, useState } from 'react';
 function App() {
 
+
+
   const resizer = useRef({ currentWidth: "300px", isDragStarted: false });
 
   const [sideWid, setSideWid] = useState({ width: "300px" })

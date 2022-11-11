@@ -42,7 +42,7 @@ export default function BackgroundImageSettings(props) {
                 loadMoreImages.current.style.display = "none";
                 setImageSearchSetting({ ...imageSearchSetting, isLoading: true, rType: "Popular Images" });
                 //latest uri
-                const client = createClient('563492ad6f91700001000001dbde5e00fa9740478227629c8f83bacb');
+                const client = createClient(process.env.REACT_APP_PEXELS_API_KEY);
                 await client.photos.curated({ per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {
                     setImageList([...photos.photos])
 
@@ -67,7 +67,7 @@ export default function BackgroundImageSettings(props) {
             if (!imageSearchSetting.isLoading) {
                 loadMoreImages.current.style.display = "none";
                 setImageSearchSetting({ ...imageSearchSetting, isLoading: true, rType: `Currently showing: ${imageSearchSetting.q}` });
-                const client = createClient('563492ad6f91700001000001dbde5e00fa9740478227629c8f83bacb');
+                const client = createClient(process.env.REACT_APP_PEXELS_API_KEY);
                 const query = imageSearchSetting.q;
 
                 client.photos.search({ query, per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {
@@ -106,7 +106,7 @@ export default function BackgroundImageSettings(props) {
                 loadMoreImages.current.style.display = "none";
                 setImageSearchSetting({ ...imageSearchSetting, isLoading: true, rType: "Popular Images" });
                 //latest uri
-                const client = createClient('563492ad6f91700001000001dbde5e00fa9740478227629c8f83bacb');
+                const client = createClient(process.env.REACT_APP_PEXELS_API_KEY);
                 await client.photos.curated({ page: imageSearchSetting.page, per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {
                     setImageList([...imageList, ...photos.photos])
                     if (props.backgroundSettings.backgroundMode === 2) {
@@ -128,7 +128,7 @@ export default function BackgroundImageSettings(props) {
             if (!imageSearchSetting.isLoading) {
                 loadMoreImages.current.style.display = "none";
                 setImageSearchSetting({ ...imageSearchSetting, isLoading: true, rType: `Currently showing: ${imageSearchSetting.q}` });
-                const client = createClient('563492ad6f91700001000001dbde5e00fa9740478227629c8f83bacb');
+                const client = createClient(process.env.REACT_APP_PEXELS_API_KEY);
                 const query = imageSearchSetting.q;
 
                 client.photos.search({ page: imageSearchSetting.page, query, per_page: imageSearchSetting.perPage, orientation: "landscape" }).then(photos => {

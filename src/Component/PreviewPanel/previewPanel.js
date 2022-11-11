@@ -12,10 +12,13 @@ import AddLink from './AddLink/addLink'
 import RowWidth from './rowWidth/rowwidth'
 import EditSettings from './EditSettings/editSettings'
 import AlignItems from './AlignItems/alignItems'
+import HeadingSettings from './headingSettings/headingSettings'
+import ListSettings from './ListSettings/listSettings'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 
 export default function PreviewPanel() {
@@ -30,7 +33,16 @@ export default function PreviewPanel() {
     let elementalHeightResizer = useRef(null);
     let showRowOption = useRef(null);
     let showColOption = useRef(null);
+    let showHeaderOption = useRef(null);
+    let showListOption = useRef(null);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
+
+    let [rCount, setRCount] = useState({ refreshCount: 0 })
+
+    useEffect(() => {
+        //refresh helper
+        // console.log(rCount.refreshCount);
+    }, [rCount]);
 
     let colorsRange = ["#bbbbbb"];
     let colorPallets = ["#072ac8", "#1e96fc", "#f95738", "#2ec4b6", "#80ed99", "#36ca00", "#b744b8"];
@@ -185,6 +197,19 @@ export default function PreviewPanel() {
             showColOption.current.style.display = "block"
         } else {
             showColOption.current.style.display = "none"
+        }
+
+        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Headings") {
+            showHeaderOption.current.style.display = "block"
+        } else {
+            showHeaderOption.current.style.display = "none"
+        }
+
+
+        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "List") {
+            showListOption.current.style.display = "block"
+        } else {
+            showListOption.current.style.display = "none"
         }
 
         let elmsEd = document.querySelectorAll('.editable_infocus');
@@ -1042,6 +1067,9 @@ export default function PreviewPanel() {
                     <li className='actionListical' onClick={(e) => showSettingsPanel(e, "Style options", "editSettings", false)}><i className="las la-palette"></i> Edit Options</li>
                     <li className='actionListical' ref={showRowOption} onClick={(e) => showSettingsPanel(e, "Row Layout", "rowLayout", false)}><i className="lab la-microsoft"></i></li>
                     <li className='actionListical' ref={showColOption} onClick={(e) => showSettingsPanel(e, "Align Items", "AlignItems", false)}><i className="las la-align-center"></i></li>
+                    <li className='actionListical' ref={showHeaderOption} onClick={(e) => showSettingsPanel(e, "Heading Type", "headingType", false)}><i className="las la-heading"></i></li>
+                    <li className='actionListical' ref={showListOption} onClick={(e) => showSettingsPanel(e, "List Settings", "ListType", false)}><i className="las la-list-ul"></i></li>
+
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
                         showSettingsPanel(e, "Animation", "animation", false)
@@ -1093,7 +1121,7 @@ export default function PreviewPanel() {
                         {panelSettings.panelTitle}
                     </div>
                     <div className='settings_dragger_action'>
-                        <span onClick={() => { elementalOptionsSettings.current.style.display = "none" }}><i className='las la-times'></i></span>
+                        <span onClick={() => { elementalOptionsSettings.current.style.display = "none"; setRCount({ refreshCount: rCount.refreshCount + 1 }) }}><i className='las la-times'></i></span>
                     </div>
                 </div>
                 <div className='settings_dragger_content'>
@@ -1131,6 +1159,20 @@ export default function PreviewPanel() {
                         (panelSettings.panelMode === "editSettings") && <>
                             <EditSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                         </>
+                    }
+
+                    {
+                        /**
+                         * Heading settings
+                         */
+                        (panelSettings.panelMode === "headingType") && <HeadingSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                    }
+
+                    {
+                        /**
+                         * List Settings
+                         */
+                        (panelSettings.panelMode === "ListType") && <ListSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
                 </div>
             </div>
