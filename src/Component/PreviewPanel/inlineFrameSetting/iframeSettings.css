@@ -1,0 +1,15 @@
+.isetGroup {
+    padding: 0px 10px;
+}
+
+.isetGroup h5 {
+    margin: 4px 0px;
+}
+
+.isetGroup input,
+.isetGroup select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}

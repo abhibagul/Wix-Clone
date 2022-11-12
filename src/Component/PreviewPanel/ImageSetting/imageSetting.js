@@ -13,8 +13,6 @@ export default function ImageSetting(props) {
         imageAlt: "",
         imageWidth: 300,
         imageHeight: 500,
-        imageWidthAuto: true,
-        imageHeightAuto: true,
         isLoading: false,
         imageWidthUnit: "px",
         imageHeightUnit: "px",

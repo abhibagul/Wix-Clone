@@ -78,6 +78,20 @@ export default function HtmlElement() {
                     ]
                 }
             ]
+        },
+        {
+            previmg: "/assets/images/elements/layouts/2col.png",
+            elid: "iframe",
+            inHTML: "",
+            desc: "Inline Frame",
+            attributes: { src: "https://example.com", width: "100%", height: "300px", allowtransparency: "true" },
+            elementType: "Iframe",
+            classList: "",
+            styles: { padding: "5px" },
+            elemType: "iframe",
+            elemEditable: false,
+            enableDropping: false,
+            elements: []
         }
     ]
 

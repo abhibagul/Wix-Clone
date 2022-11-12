@@ -15,6 +15,7 @@ import AlignItems from './AlignItems/alignItems'
 import HeadingSettings from './headingSettings/headingSettings'
 import ListSettings from './ListSettings/listSettings'
 import ImageSetting from './ImageSetting/imageSetting'
+import InlineFrameSetting from './inlineFrameSetting/inlineFrameSetting'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
@@ -37,6 +38,7 @@ export default function PreviewPanel() {
     let showHeaderOption = useRef(null);
     let showListOption = useRef(null);
     let showImageSetting = useRef(null);
+    let iframeSettings = useRef(null);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
 
     let [rCount, setRCount] = useState({ refreshCount: 0 })
@@ -220,6 +222,12 @@ export default function PreviewPanel() {
             showImageSetting.current.style.display = "none"
         }
 
+        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Iframe") {
+            iframeSettings.current.style.display = "block"
+        } else {
+            iframeSettings.current.style.display = "none"
+        }
+
         let elmsEd = document.querySelectorAll('.editable_infocus');
         if (elmsEd.length) {
             for (let el of elmsEd) {
@@ -237,6 +245,7 @@ export default function PreviewPanel() {
         }
         if (_dpcompare !== ElementNodeSelector.current + ",") {
             elementalOptionsSettings.current.style.display = "none"
+            // setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" })
         }
 
 
@@ -1077,6 +1086,7 @@ export default function PreviewPanel() {
                     <li className='actionListical' ref={showHeaderOption} onClick={(e) => showSettingsPanel(e, "Heading Type", "headingType", false)}><i className="las la-heading"></i></li>
                     <li className='actionListical' ref={showListOption} onClick={(e) => showSettingsPanel(e, "List Settings", "ListType", false)}><i className="las la-list-ul"></i></li>
                     <li className='actionListical' ref={showImageSetting} onClick={(e) => showSettingsPanel(e, "Image Settings", "ImageType", false)}><i className="las la-image"></i></li>
+                    <li className='actionListical' ref={iframeSettings} onClick={(e) => showSettingsPanel(e, "Inline Frame Settings", "iframeType", false)}><i className="las la-window-maximize"></i></li>
 
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
@@ -1137,19 +1147,19 @@ export default function PreviewPanel() {
                     {/**
                      * Animation Options component
                      */
-                        (panelSettings.panelMode === "animation") ? <AnimationOptionsPanel closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} currentlyActive={ElementNodeSelector} /> : ""}
+                        (panelSettings.panelMode === "animation") ? <AnimationOptionsPanel closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} currentlyActive={ElementNodeSelector} /> : ""}
 
                     {
                         /**
                          * adds a url node inbetween
                          */
-                        (panelSettings.panelMode === "hyperlink") ? <AddLink closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""}
+                        (panelSettings.panelMode === "hyperlink") ? <AddLink closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""}
 
                     {
                         /**
                          * Row size settings
                          */
-                        (panelSettings.panelMode === "rowLayout") ? <RowWidth closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""
+                        (panelSettings.panelMode === "rowLayout") ? <RowWidth closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""
                     }
 
                     {
@@ -1157,7 +1167,7 @@ export default function PreviewPanel() {
                          * column alignment option
                          * 
                          */
-                        (panelSettings.panelMode === "AlignItems") ? <AlignItems closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""
+                        (panelSettings.panelMode === "AlignItems") ? <AlignItems closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector + "selection"} currentlyActive={ElementNodeSelector} /> : ""
                     }
 
                     {
@@ -1165,7 +1175,7 @@ export default function PreviewPanel() {
                          * Edit settings
                          */
                         (panelSettings.panelMode === "editSettings") && <>
-                            <EditSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                            <EditSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                         </>
                     }
 
@@ -1173,21 +1183,27 @@ export default function PreviewPanel() {
                         /**
                          * Heading settings
                          */
-                        (panelSettings.panelMode === "headingType") && <HeadingSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                        (panelSettings.panelMode === "headingType") && <HeadingSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
 
                     {
                         /**
                          * List Settings
                          */
-                        (panelSettings.panelMode === "ListType") && <ListSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                        (panelSettings.panelMode === "ListType") && <ListSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
 
                     {
                         /**
                          * Image Settings
                          */
-                        (panelSettings.panelMode === "ImageType") && <ImageSetting closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                        (panelSettings.panelMode === "ImageType") && <ImageSetting closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                    }
+                    {
+                        /**
+                         * inline frame Settings
+                         */
+                        (panelSettings.panelMode === "iframeType") && <InlineFrameSetting closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
                 </div>
             </div>
