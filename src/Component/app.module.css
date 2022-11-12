@@ -13,6 +13,7 @@
 
 .options_menu_main {
     flex-grow: 1;
+    width: calc(100% - 20px);
 }
 
 .preview_panel {

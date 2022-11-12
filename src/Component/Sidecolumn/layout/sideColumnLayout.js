@@ -21,6 +21,7 @@ export default function SideColumnLayout() {
         elid: "layout_12_col",
         desc: "1 Column Layout [12]",
         classList: "wd-row",
+        elementType: "Row Layout",
         attributes: {},
         elemType: "div",
         styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
@@ -28,14 +29,14 @@ export default function SideColumnLayout() {
         elemEditable: false,
         elements: [
             {
-                classList: ["wd wd-12"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemType: "div", elemEditable: false, styles: { color: "#dddddd", padding: "30px 0px" }, enableDropping: true, inHTML: "Column 1", elementType: "tempElem", elements: [] }]
+                classList: ["wd wd-12"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemType: "div", elemEditable: false, styles: { color: "#dddddd", padding: "30px 0px" }, enableDropping: true, inHTML: "Column 1", elementType: "tempElem", elements: [] }]
             },
         ]
     }, {
         previmg: "/assets/images/elements/layouts/2col.jpg",
         elid: "layout_6_6_col",
         desc: "2 Column Layout [6,6]",
-        elementType: "outerLayout",
+        elementType: "Row Layout",
         classList: "wd-row",
         elemType: "div",
         styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
@@ -43,13 +44,14 @@ export default function SideColumnLayout() {
         attributes: {},
         enableDropping: false,
         elements: [
-            { classList: ["wd wd-6"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-6"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-6"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-6"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
         ]
     }, {
         previmg: "/assets/images/elements/layouts/3col.jpg",
         elid: "layout_4_4_4_col",
         desc: "3 Column Layout [4,4,4]",
+        elementType: "Row Layout",
         classList: "wd-row",
         elemType: "div",
         attributes: {},
@@ -57,9 +59,9 @@ export default function SideColumnLayout() {
         elemEditable: false,
         enableDropping: false,
         elements: [
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
-            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 3", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 1", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 2", elementType: "tempElem", elements: [] }] },
+            { classList: ["wd wd-4"], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column 3", elementType: "tempElem", elements: [] }] },
         ]
     }]
 

@@ -48,6 +48,11 @@ export default function PreviewPanel() {
         // console.log(rCount.refreshCount);
     }, [rCount]);
 
+
+    useEffect(() => {
+        updateSelectNodeFromLayers();
+    }, [pageDesignState.actElLayer])
+
     let colorsRange = ["#bbbbbb"];
     let colorPallets = ["#072ac8", "#1e96fc", "#f95738", "#2ec4b6", "#80ed99", "#36ca00", "#b744b8"];
 
@@ -169,7 +174,177 @@ export default function PreviewPanel() {
         )
     }
 
+    const updateSelectNodeFromLayers = () => {
 
+
+
+        let _elm = document.querySelector("[data-path=\"" + pageDesignState.actElLayer + ",\"]");;
+        //console.log("selectElementActive : 157", _elm);
+        //check if content is editable
+
+        if (!_elm) return;
+
+
+        let elms = document.querySelectorAll('.temp_infocus');
+
+        if (elms.length) {
+            for (let el of elms) {
+                el.classList.remove("temp_infocus");
+            }
+        }
+
+        if (_elm.classList.contains("wd-row")) {
+            showRowOption.current.style.display = "block"
+            // settingModes.current = { ...settingModes.current, rowMode: "rowLayout" }
+            //console.log(settingModes.current)
+            // setPanelSettings({ ...panelSettings, rowMode: "rowLayout" })
+        } else {
+            showRowOption.current.style.display = "none"
+            // settingModes.current = { ...settingModes.current, rowMode: "" }
+            //console.log(settingModes.current)
+            // setPanelSettings({ ...panelSettings, rowMode: "" })
+        }
+
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "Column") {
+
+            showColOption.current.style.display = "block"
+        } else {
+            showColOption.current.style.display = "none"
+        }
+
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "Headings") {
+            showHeaderOption.current.style.display = "block"
+        } else {
+            showHeaderOption.current.style.display = "none"
+        }
+
+
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "List") {
+            showListOption.current.style.display = "block"
+        } else {
+            showListOption.current.style.display = "none"
+        }
+
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "Image") {
+            showImageSetting.current.style.display = "block"
+        } else {
+            showImageSetting.current.style.display = "none"
+        }
+
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "Iframe") {
+            iframeSettings.current.style.display = "block"
+        } else {
+            iframeSettings.current.style.display = "none"
+        }
+
+        let elmsEd = document.querySelectorAll('.editable_infocus');
+        if (elmsEd.length) {
+            for (let el of elmsEd) {
+                el.style.outline = "none"
+                el.classList.remove("editable_infocus");
+            }
+        }
+
+        //closes settings panel only when clicked on different element
+        let _dpcompare;
+        if (_elm.hasAttribute("data-path")) {
+            _dpcompare = _elm.getAttribute("data-path")
+        } else {
+            _dpcompare = _elm.closest("[data-path]").getAttribute("data-path")
+        }
+        if (_dpcompare !== ElementNodeSelector.current + ",") {
+            elementalOptionsSettings.current.style.display = "none"
+            // setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" })
+        }
+
+
+        if ((_elm.getAttribute("contenteditable") === "true" && _elm.hasAttribute("data-path")) || (_elm.closest("[data-path]").getAttribute("contenteditable") === "true" && !_elm.hasAttribute("data-path"))) {
+            if (_elm.hasAttribute("data-path")) {
+                _elm.classList.add("editable_infocus");
+                //lets make consistancy for the color
+                let _dp = _elm.getAttribute("data-path");
+                // ////console.log(_dp);
+                _dp = _dp.substring(0, _dp.length - 1);
+                _dp = _dp.split(',');
+                _dp = _dp.reduce((a, b) => a += b);
+                _dp = _dp % colorPallets.length;
+                // _elm.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
+                _elm.style.outline = "2px solid " + colorPallets[_dp];
+                // ////console.log("color pallet at", _dp, colorPallets[_dp])
+            } else {
+                // ////console.log("Get the nearest data path")
+                _elm.closest("[data-path]").classList.add("editable_infocus");
+                //lets make consistancy for the color
+                let _dp = _elm.closest("[data-path]").getAttribute("data-path");
+                // ////console.log(_dp);
+                _dp = _dp.substring(0, _dp.length - 1);
+                _dp = _dp.split(',');
+                _dp = _dp.reduce((a, b) => a += b);
+                _dp = _dp % colorPallets.length;
+                // _elm.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
+                _elm.closest("[data-path]").style.outline = "2px solid " + colorPallets[_dp];
+                // ////console.log("color pallet at", _dp, colorPallets[_dp])
+            }
+        }
+        if (_elm.getAttribute("contenteditable") === "false") {
+
+            _elm.classList.add("temp_infocus");
+        }
+
+        ElementSwitcher.current.style.display = "block";
+        let parentPosition = document.querySelector("[data-panelmain]").getBoundingClientRect();
+        //scroll top fix
+        let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
+        //fixed when you click on sub element it is still going to be a top level position
+        let boxPosition = (_elm.hasAttribute("data-path")) ? _elm.getBoundingClientRect() : _elm.closest("[data-path]").getBoundingClientRect();
+        let posLeft = (boxPosition.x - parentPosition.x - 30);
+        let posBottom = (boxPosition.y - parentPosition.y);
+        // ////console.log(boxPosition);
+        // ////console.log(posBottom, (parentPosition.bottom - 127 - parentPosition.y), " /cond:  ", (posBottom + parentPosition.y + 127), (parentPosition.bottom));
+        ////console.log(posLeft, parentPosition.left);
+        let PosX = ((posLeft + parentPosition.left) < parentPosition.left) ? posLeft + 30 : posLeft;
+        ElementSwitcher.current.style.left = (PosX) + "px";
+        // ElementSwitcher.current.style.left = (boxPosition.x > parentPosition.x) ? PosX + "px" : (PosX) + "px";
+        ElementSwitcher.current.style.top = scrlTop + posBottom + "px";
+
+
+        //;
+
+
+        /**
+         * 
+         * This shows respective options for the element!
+         */
+        //make the optios visible on elemental click
+
+        elementalOptions.current.style.display = "block";
+        //now get element width
+        let optionsPanelWidth = elementalOptions.current.getBoundingClientRect();
+        let optionLeft = (optionsPanelWidth.right > window.innerWidth) ? (window.innerWidth - optionsPanelWidth) + "px" : (posLeft + 40);
+        elementalOptions.current.style.left = ((scrlTop + posBottom - optionsPanelWidth.height) < (parentPosition.top)) ? optionLeft + 40 + "px" : optionLeft + "px"
+        elementalOptions.current.style.top = ((scrlTop + posBottom - optionsPanelWidth.height) < (parentPosition.top)) ? (scrlTop + posBottom + boxPosition.height) + "px" : (scrlTop + posBottom - optionsPanelWidth.height) + "px";
+
+
+        elementalHeightResizer.current.style.display = "inline-block";
+        elementalHeightResizer.current.style.left = (optionsPanelWidth.right > window.innerWidth) ? (window.innerWidth - optionsPanelWidth) + "px" : (posLeft + 40) + "px";
+        elementalHeightResizer.current.style.top = (scrlTop + posBottom + boxPosition.height - 10) + "px";
+
+
+        let nodeP;
+        if (_elm.hasAttribute("[data-path]")) {
+            nodeP = _elm.getAttribute("data-path");
+        } else {
+
+            nodeP = _elm.closest("[data-path]").getAttribute("data-path");
+        }
+
+        //181
+        // ////console.log("Current elem set to", nodeP);
+        ElementNodeSelector.current = nodeP.substring(0, nodeP.length - 1);
+        pageDesignState.activeElemLayer.current = nodeP.substring(0, nodeP.length - 1);
+        pageDesignState.setELLayer(nodeP.substring(0, nodeP.length - 1));
+        // /layout_panel_options
+    }
 
     const selectElementActive = (e) => {
 
@@ -196,7 +371,7 @@ export default function PreviewPanel() {
             // setPanelSettings({ ...panelSettings, rowMode: "" })
         }
 
-        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "layout") {
+        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Column") {
 
             showColOption.current.style.display = "block"
         } else {
@@ -332,6 +507,8 @@ export default function PreviewPanel() {
         //181
         // ////console.log("Current elem set to", nodeP);
         ElementNodeSelector.current = nodeP.substring(0, nodeP.length - 1);
+        pageDesignState.activeElemLayer.current = nodeP.substring(0, nodeP.length - 1);
+        pageDesignState.setELLayer(nodeP.substring(0, nodeP.length - 1));
         // /layout_panel_options
 
     }
@@ -389,8 +566,12 @@ export default function PreviewPanel() {
         //update position for the elemenNode
         if (_elNode.length > 0) {
             ElementNodeSelector.current = _elNode.join(",") + "," + (_elNodeLast - 1) + "";
+            pageDesignState.activeElemLayer.current = _elNode.join(",") + "," + (_elNodeLast - 1) + "";
+            pageDesignState.setELLayer(_elNode.join(",") + "," + (_elNodeLast - 1) + "")
         } else {
             ElementNodeSelector.current = (_elNodeLast - 1) + "";
+            pageDesignState.activeElemLayer.current = (_elNodeLast - 1) + "";
+            pageDesignState.setELLayer((_elNodeLast - 1) + "")
         }
 
         //select the element again after render
@@ -475,8 +656,12 @@ export default function PreviewPanel() {
         //update position for the elemenNode
         if (_elNode.length > 0) {
             ElementNodeSelector.current = _elNode.join(",") + "," + (+(_elNodeLast) + 1) + "";
+            pageDesignState.activeElemLayer.current = _elNode.join(",") + "," + (+(_elNodeLast) + 1) + "";
+            pageDesignState.setELLayer(_elNode.join(",") + "," + (+(_elNodeLast) + 1) + "")
         } else {
             ElementNodeSelector.current = (+(_elNodeLast) + 1) + "";
+            pageDesignState.activeElemLayer.current = (+(_elNodeLast) + 1) + "";
+            pageDesignState.setELLayer((+(_elNodeLast) + 1) + "")
         }
 
         let selectorStr = `[data-path="${ElementNodeSelector.current}`;
@@ -840,8 +1025,13 @@ export default function PreviewPanel() {
         //update position for the elemenNode
         if (_dSel.length > 0) {
             ElementNodeSelector.current = _dSel.join(",") + "," + (+(_dSelLast) + 1) + "";
+
+            pageDesignState.activeElemLayer.current = _dSel.join(",") + "," + (+(_dSelLast) + 1) + "";
+            pageDesignState.setELLayer(_dSel.join(",") + "," + (+(_dSelLast) + 1) + "")
         } else {
             ElementNodeSelector.current = (+(_dSelLast) + 1) + "";
+            pageDesignState.activeElemLayer.current = (+(_dSelLast) + 1) + "";
+            pageDesignState.setELLayer((+(_dSelLast) + 1) + "")
         }
 
         // ////console.log(`div[data-path="${dragEnterSelector.current}"]`);

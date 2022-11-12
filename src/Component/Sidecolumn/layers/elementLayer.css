@@ -1,0 +1,193 @@
+.layergroup ul.subNode.closeNode {
+    display: none;
+}
+
+.layergroup ul li:before {
+    margin-right: 5px;
+}
+
+.layergroup ul li.hasSubNode:before {
+    content: "\f078";
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+}
+
+.layergroup ul li.hasSubNode:has(> .closeNode):before {
+    content: "\f054";
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+}
+
+.layergroup ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+.layergroup>ul>li:has(> .closeNode) {
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+
+
+.layergroup .layerNode:before {
+    content: "\f61f";
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+}
+
+.layergroup li {
+    cursor: pointer;
+    font-size: 14px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+.layergroup li.mouseOn {
+    background-color: #cfe2ff;
+    color: #116dff;
+}
+
+.layergroup li:last-child {
+    border-bottom: 0px;
+}
+
+.layergroup ul li ul {
+    padding-left: 0px;
+    ;
+}
+
+.WebpageLayersOuter {
+    height: calc(100vh - 40px);
+    overflow: auto;
+}
+
+.layergroup>ul>li>ul>li>ul>li>ul>li ul {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, .1)
+}
+
+.layergroup>ul>li>ul>li>ul>li>ul>li>ul li {
+    padding: 0px;
+
+}
+
+.layergroup>ul>li>ul>li>ul>li>ul>li>ul li:before {
+    padding-left: 10px;
+    paddding-top: 10px;
+}
+
+.currentlyActiveNode {
+    background-color: #fff3cd;
+    /* outline: 1px solid #ffc107; */
+    font-weight: 900;
+}
+
+
+.currentlyActiveNode * {
+    background-color: #fff3cd;
+    color: #ffc107;
+    border: none !important;
+    font-weight: 900;
+}
+
+.layerBasedHighlight {
+    background-color: #ffc10720 !important;
+    background-image: repeating-linear-gradient(45deg,
+            #ffc107 10px,
+            #ffc107 12px,
+            transparent 12px,
+            transparent 20px) !important;
+    outline: 2px solid #ffc107;
+}
+
+.layerBasedHighlight * {
+    color: #116dff !important;
+    background: #0d6efd40 !important;
+    outline: 2px solid #0d6efd;
+}
+
+.layergroup li span {
+    width: 100%;
+    display: inline-flex;
+    padding-left: 15px;
+    justify-content: space-between;
+}
+
+.layergroup li:before {
+    position: absolute;
+    top: 9px;
+}
+
+.layergroup>ul>li>ul>li>ul>li>ul>li>ul li:before {
+    left: -10px;
+    top: 4px;
+}
+
+
+li.hasSubNode {
+    padding: 0px;
+    padding-left: 5px;
+}
+
+li.hasSubNode span {
+    padding: 5px 0px;
+    padding-left: 20px;
+}
+
+li.hasSubNode ul {
+    border: none;
+}
+
+.layergroup ul {
+    padding: 0px;
+}
+
+.layergroup li {
+    padding: 0px;
+    padding-left: 5px;
+    /* border-bottom: 1px solid rgba(0, 0, 0, .1) !important; */
+}
+
+.layergroup li:last-child {
+    border-bottom: 0px !important;
+}
+
+.layergroup span {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.layergroup li span:hover {
+    background-color: #cfe2ff;
+    color: #116dff;
+    /* outline: 1px solid #116dff; */
+}
+
+
+button.elementNodeSelector {
+    border: 1px solid #116dff;
+    background: transparent;
+    border-radius: 5px;
+    color: #116dff;
+    margin-right: 5px;
+}
+
+button.elementNodeSelector:hover {
+    background: #116dff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.currentlyActiveNode button,
+.currentlyActiveNode i {
+    background: #116dff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.layergroup>ul>li>ul {
+    background: rgba(0, 0, 0, .06);
+    margin-left: -5px;
+}

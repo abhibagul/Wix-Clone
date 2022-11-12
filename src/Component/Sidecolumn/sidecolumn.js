@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 import sideStyle from './sideColumn.module.css'
 
 /**
@@ -6,10 +6,15 @@ import sideStyle from './sideColumn.module.css'
  */
 import SideColumnLayout from './layout/sideColumnLayout'
 import HtmlElement from './elements/htmlElement';
+import ElementLayer from './layers/elementLayer';
+
+import { pageDesignContext } from '../../Context/contexts';
 
 export default function SideColumn() {
 
     const markerpos = useRef(null);
+
+    let pageDesignState = useContext(pageDesignContext);
 
     const [panelMode, setPanelMode] = useState({
         panel: 0
@@ -47,8 +52,9 @@ export default function SideColumn() {
                 }
                 {
                     /**
-                     * Presets HTML
+                     * Layers
                      */
+                    (panelMode.panel === 2) && <ElementLayer key={pageDesignState.activeElemLayer.current} />
                 }
             </div>
         </div>

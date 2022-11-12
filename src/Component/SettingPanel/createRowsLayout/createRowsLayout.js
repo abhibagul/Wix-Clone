@@ -28,7 +28,7 @@ export default function CreateRowsLayout(props) {
         let __colStr = [];
         let __colNums = 0;
         for (let i = 0; i < columnData.column.length; i++) {
-            let __new_col = { classList: ["wd wd-" + columnData.column[i].width], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "layout", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column " + (i + 1), elementType: "tempElem", elements: [] }] }
+            let __new_col = { classList: ["wd wd-" + columnData.column[i].width], elemType: "div", elemEditable: false, styles: { padding: "5px" }, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column " + (i + 1), elementType: "tempElem", elements: [] }] }
             __colStr.push(columnData.column[i].width);
             __colNums++;
             __col_wd.push(__new_col);
@@ -42,6 +42,7 @@ export default function CreateRowsLayout(props) {
             desc: __colNums + " Column Layout [" + __colStr.join(",") + "]",
             classList: "wd-row",
             attributes: {},
+            elementType: "Row Layout",
             elemType: "div",
             styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
             enableDropping: false,

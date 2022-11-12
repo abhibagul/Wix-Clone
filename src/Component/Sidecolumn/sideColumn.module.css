@@ -11,7 +11,7 @@
 
 .sidebar_optionResults {
     flex-grow: 1;
-    padding: 0px 10px;
+    padding: 0px 0px;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.1);
     height: 100%;

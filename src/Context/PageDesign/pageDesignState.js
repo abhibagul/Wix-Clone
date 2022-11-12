@@ -17,14 +17,17 @@ const PageDesignState = (props) => {
     const dropPosition = useRef(0)
     const nodeLevel = useRef(null)
 
+    const activeElemLayer = useRef(null);
+
     const [design, setDesign] = useState(InitialDeisgnState);
+    const [actElLayer, setELLayer] = useState("0,");
 
     // useEffect(() => {
     //     console.log(design, 'from state update');
     // }, [design])
 
     return (
-        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, nodeLevel }}>
+        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, nodeLevel, activeElemLayer, actElLayer, setELLayer }}>
             {props.children}
         </pageDesignContext.Provider>
     )

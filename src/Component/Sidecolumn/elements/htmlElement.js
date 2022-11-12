@@ -29,7 +29,7 @@ export default function HtmlElement() {
             classList: "",
             attributes: {},
             elemType: "a",
-            styles: { backgroundColor: "#0d6efd", color: "#ffffff", padding: "5px 10px", borderRadius: "10px", boxShadow: "3px 3px 5px rgba(0,0,0,.1), -3px -3px 5px rgba(0,0,0,.1)" },
+            styles: { backgroundColor: "#0d6efd", display: "inline-block", color: "#ffffff", padding: "5px 10px", borderRadius: "10px", boxShadow: "3px 3px 5px rgba(0,0,0,.1), -3px -3px 5px rgba(0,0,0,.1)" },
             elemEditable: true,
             enableDropping: false,
             elements: []
