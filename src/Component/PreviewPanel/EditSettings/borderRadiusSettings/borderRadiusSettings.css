@@ -87,4 +87,6 @@ input.border-radius-input {
     color: #fff;
     border: none;
     padding: 5px 10px;
+
+    cursor: pointer;
 }

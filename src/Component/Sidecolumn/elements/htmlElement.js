@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { set, get } from "lodash";
 import { pageDesignContext } from '../../../Context/contexts';
+import './htmlElement.css'
+
 export default function HtmlElement() {
     const pageDesignState = useContext(pageDesignContext)
     const htmlElems = [
@@ -29,6 +31,20 @@ export default function HtmlElement() {
             styles: { color: "#000000" },
             elemType: "h1",
             elemEditable: true,
+            enableDropping: false,
+            elements: []
+        },
+        {
+            previmg: "/assets/images/elements/layouts/2col.png",
+            elid: "image",
+            inHTML: "",
+            desc: "Image",
+            attributes: { src: "/assets/images/elements/html/dummyImage.jpg", width: "500px", height: "auto", alt: "Demo Preview Image" },
+            elementType: "Image",
+            classList: "",
+            styles: {},
+            elemType: "img",
+            elemEditable: false,
             enableDropping: false,
             elements: []
         },
@@ -171,14 +187,14 @@ export default function HtmlElement() {
 
     return (
         (htmlElem.length > 0) ?
-
-            htmlElem.map((e, i) => {
-                return (<div data-elementindex={i} className="item_drag half" key={e.elid} onDoubleClick={AddDroppedElement} onDragEnd={AddDroppedElement}>
-                    <img className="item_drag_img" src={e.previmg} />
-                    <p className="item_drag_desc">{e.desc}</p>
-                </div>)
-            })
-
+            <div className='htmlElemGrid'>
+                {htmlElem.map((e, i) => {
+                    return (<div data-elementindex={i} className="item_drag half" key={e.elid} onDoubleClick={AddDroppedElement} onDragEnd={AddDroppedElement}>
+                        <img className="item_drag_img" src={e.previmg} />
+                        <p className="item_drag_desc">{e.desc}</p>
+                    </div>)
+                })}
+            </div>
             : ""
     )
 }

@@ -1,0 +1,138 @@
+.imageListOption ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background: #f7f7f7;
+    border-bottom: 1px solid #ccc;
+}
+
+.imageListOption ul li {
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+
+.imageListOption ul li.active {
+    border-color: #0d6efd
+}
+
+.image_results {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.imageOnlineSuggest {
+    padding: 0px 0px;
+}
+
+.imageOnlineSuggest .image_results {
+    padding: 10px 10px;
+}
+
+
+.show-more-images {
+    position: sticky;
+    bottom: -1px;
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.imageInputGroup h5 {
+    margin: 5px 0px;
+}
+
+.customImageApply {
+    padding: 10px;
+}
+
+.imageInputGroup input {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.imageSizing {
+    display: flex;
+    text-align: center;
+}
+
+.imgSizeCol {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+}
+
+.innerSizeCol {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.imgSizeCol input {
+    flex-grow: 1;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: 0px;
+}
+
+.imgSizeCol select {
+    flex-shrink: 0;
+    width: 50px;
+    background: #f7f7f7;
+    padding: 5px 5px;
+    border: 1px solid #ccc;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+.imgSizeCol span {
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.applyImageSettings {
+    text-align: right;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px;
+    position: sticky;
+    bottom: 0px;
+    background: #fff;
+}
+
+.applyImageSettings button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+select.fullSizeUnit {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.image_results {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, 160px);
+}
+
+h3.emptyImageList {
+    text-align: center;
+    color: #0d6efd;
+    max-width: 200px;
+    margin: 50px auto;
+    margin-bottom: 20px;
+
+}

@@ -180,20 +180,22 @@ export default function SideColumnLayout() {
             <div className='custom-row'>
                 <button onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 0 }) }}>Create custom Layout</button>
             </div>
-            {/* <h5>Frequently used,</h5> */}
-            {(layoutOptions.length > 0) ?
+            <div className='custom-layouts'>
+                {/* <h5>Frequently used,</h5> */}
+                {(layoutOptions.length > 0) ?
 
-                layoutOptions.map((e, i) => {
-                    return (<div data-elementindex={i} className="item_drag half"
-                        style={{ MoxUserSelect: "none", WebkitUserSelect: "none", MsUserSelect: "none", userSelect: "none", OUserSelect: "none" }}
+                    layoutOptions.map((e, i) => {
+                        return (<div data-elementindex={i} className="item_drag half"
+                            style={{ MoxUserSelect: "none", WebkitUserSelect: "none", MsUserSelect: "none", userSelect: "none", OUserSelect: "none" }}
 
-                        key={e.elid + "-" + i} onDoubleClick={AddDroppedElement} onDragEnd={AddDroppedElement}>
-                        <img className="item_drag_img" src={e.previmg} />
-                        <p className="item_drag_desc">{e.desc}</p>
-                    </div>)
-                })
+                            key={e.elid + "-" + i} onDoubleClick={AddDroppedElement} onDragEnd={AddDroppedElement}>
+                            <img className="item_drag_img" src={e.previmg} />
+                            <p className="item_drag_desc">{e.desc}</p>
+                        </div>)
+                    })
 
-                : ""}
+                    : ""}
+            </div>
         </>
     )
 }

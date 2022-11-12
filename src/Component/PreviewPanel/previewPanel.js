@@ -14,6 +14,7 @@ import EditSettings from './EditSettings/editSettings'
 import AlignItems from './AlignItems/alignItems'
 import HeadingSettings from './headingSettings/headingSettings'
 import ListSettings from './ListSettings/listSettings'
+import ImageSetting from './ImageSetting/imageSetting'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
@@ -35,6 +36,7 @@ export default function PreviewPanel() {
     let showColOption = useRef(null);
     let showHeaderOption = useRef(null);
     let showListOption = useRef(null);
+    let showImageSetting = useRef(null);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
 
     let [rCount, setRCount] = useState({ refreshCount: 0 })
@@ -81,7 +83,7 @@ export default function PreviewPanel() {
 
         if (e.clientY <= (_sizes.y + (25))) {
             // TODO : Element Adding helper
-            e.target.closest("div[data-prevpanel]").insertBefore(_msg, e.target.closest("section"));
+            // e.target.closest("div[data-prevpanel]").insertBefore(_msg, e.target.closest("section"));
 
             let dropIndex = +e.target.closest("section").getAttribute("data-elposition");
             pageDesignState.dropPosition.current = dropIndex;
@@ -89,7 +91,7 @@ export default function PreviewPanel() {
 
         } else if (e.clientY >= _sizes.y + (_sizes.height - 25)) {
             // TODO : Element Adding helper
-            e.target.closest("section").insertAdjacentElement("afterend", _msg);
+            // e.target.closest("section").insertAdjacentElement("afterend", _msg);
 
             let dropIndex = +e.target.closest("section").getAttribute("data-elposition");
             pageDesignState.dropPosition.current = dropIndex + 1;
@@ -210,6 +212,12 @@ export default function PreviewPanel() {
             showListOption.current.style.display = "block"
         } else {
             showListOption.current.style.display = "none"
+        }
+
+        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Image") {
+            showImageSetting.current.style.display = "block"
+        } else {
+            showImageSetting.current.style.display = "none"
         }
 
         let elmsEd = document.querySelectorAll('.editable_infocus');
@@ -639,6 +647,7 @@ export default function PreviewPanel() {
                 //single element
                 let htmlCon = "";
                 if (e.hasOwnProperty("inHTML")) htmlCon = e.inHTML;
+
                 return React.createElement(e.elemType, elProp, <GenerateHTMLComp datapath={props.datapath + '0,'} element={e.elements[0]} >{htmlCon}</GenerateHTMLComp>);
             } else {
                 //more then one element
@@ -650,14 +659,12 @@ export default function PreviewPanel() {
             let htmlCon = "";
             if (e.hasOwnProperty("inHTML")) htmlCon = decodeURIComponent(e.inHTML);
 
+            if (e.elemType === "img") {
 
-            // if (e.elementType === "Headings") {
-            //     ////console.log(parse(htmlCon));
-            //     return React.createElement(e.elemType, elProp, [parse(htmlCon)]);
-            // }
-            // else 
+                return React.createElement(e.elemType, elProp);
+            }
             return React.createElement(e.elemType, elProp, [parse(htmlCon)]);
-            // return React.createElement(e.elemType, elProp, " " + parse(htmlCon));
+
         }
     }
 
@@ -1069,6 +1076,7 @@ export default function PreviewPanel() {
                     <li className='actionListical' ref={showColOption} onClick={(e) => showSettingsPanel(e, "Align Items", "AlignItems", false)}><i className="las la-align-center"></i></li>
                     <li className='actionListical' ref={showHeaderOption} onClick={(e) => showSettingsPanel(e, "Heading Type", "headingType", false)}><i className="las la-heading"></i></li>
                     <li className='actionListical' ref={showListOption} onClick={(e) => showSettingsPanel(e, "List Settings", "ListType", false)}><i className="las la-list-ul"></i></li>
+                    <li className='actionListical' ref={showImageSetting} onClick={(e) => showSettingsPanel(e, "Image Settings", "ImageType", false)}><i className="las la-image"></i></li>
 
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
@@ -1173,6 +1181,13 @@ export default function PreviewPanel() {
                          * List Settings
                          */
                         (panelSettings.panelMode === "ListType") && <ListSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                    }
+
+                    {
+                        /**
+                         * Image Settings
+                         */
+                        (panelSettings.panelMode === "ImageType") && <ImageSetting closePanel={() => { elementalOptionsSettings.current.style.display = "none" }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
                 </div>
             </div>

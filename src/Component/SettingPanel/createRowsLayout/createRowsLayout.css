@@ -153,6 +153,7 @@
 .columnPrev.captureImg {
     margin: 0px !important;
     background: white !important;
+    width: 70%;
 }
 
 .columnPrev.captureImg .columnPrevInner {

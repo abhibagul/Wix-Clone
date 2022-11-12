@@ -113,6 +113,8 @@ input.cusImg {
     border: none;
     padding: 5px 10px;
     margin: 5px 0px;
+
+    cursor: pointer;
 }
 
 .bgImgSettings {
@@ -259,5 +261,12 @@ a.pexels_credit img {
     background-color: #0d6efd;
     border-radius: 40px;
     color: #fff;
-    cursor: pointer
+    cursor: pointer;
+
+}
+
+.bgImageResults {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, 160px);
 }

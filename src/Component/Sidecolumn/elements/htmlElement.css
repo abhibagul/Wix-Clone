@@ -1,0 +1,5 @@
+.htmlElemGrid {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, 160px);
+}

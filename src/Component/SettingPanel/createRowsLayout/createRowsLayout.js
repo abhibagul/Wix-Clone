@@ -2,7 +2,6 @@ import React, { useContext, useState, useRef } from 'react'
 import { useEffect } from 'react';
 import { dragElemsContext } from '../../../Context/contexts';
 import * as htmlToImage from 'html-to-image';
-import { toJpeg } from 'html-to-image';
 
 import './createRowsLayout.css'
 
@@ -56,13 +55,13 @@ export default function CreateRowsLayout(props) {
         imageCaptureMode.current.classList.add("captureImg");
 
         setTimeout(() => {
-            htmlToImage.toJpeg(document.getElementById('prevImg'), { quality: 0.5 })
+            htmlToImage.toJpeg(document.getElementById('prevImg'), { quality: 0.2, canvasWidth: 128, canvasHeight: 50, backgroundColor: '#ffffff' })
                 .then(function (dataUrl) {
                     //console.log(dataUrl);
                     addRowLayout(dataUrl);
                     imageCaptureMode.current.classList.remove("captureImg");
                 }).catch(err => {
-                    alert("something went wrong!")
+                    alert("something went wrong!" + err)
                     imageCaptureMode.current.classList.remove("captureImg");
                 })
         }, 100)
@@ -197,7 +196,7 @@ export default function CreateRowsLayout(props) {
                             {
                                 columnData.column.map((e, i) => {
                                     return (
-                                        <div key={i} onClick={updateSelectionCol} data-col-index={i} className={(columnData.activeCol === i) ? "prev-col activeCol" : "prev-col"} style={{ width: (8.333333333333333333333 * e.width) + "%", flexGrow: 0, flexShrink: 0 }}>
+                                        <div key={i} onClick={updateSelectionCol} data-col-index={i} className={(columnData.activeCol === i) ? "prev-col activeCol" : "prev-col"} style={{ width: (8.333333333333333333333 * e.width) + "%", flexGrow: 0, flexShrink: 1 }}>
                                             <span data-col-index={i}>{"Column " + (i + 1)}</span>
                                             <input max={12} min={1} onChange={adjustColumnWidth} data-col-index={i} type={"number"} value={e.width} />
                                         </div>

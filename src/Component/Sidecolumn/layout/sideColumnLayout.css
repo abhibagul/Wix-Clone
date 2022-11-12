@@ -18,3 +18,9 @@
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .2), -3px -3px 5px rgba(0, 0, 0, .2);
     cursor: pointer;
 }
+
+.custom-layouts {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, 160px);
+}

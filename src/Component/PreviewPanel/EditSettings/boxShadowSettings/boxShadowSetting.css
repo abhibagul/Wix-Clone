@@ -55,6 +55,7 @@
 .addMoreShadow {
     text-align: center;
     padding: 10px;
+
 }
 
 .addMoreShadow button {
@@ -64,6 +65,7 @@
     border: none;
     padding: 5px 10px;
     width: 100%;
+    cursor: pointer;
 }
 
 .boxShadowApply {
@@ -81,6 +83,8 @@
     color: #fff;
     border: none;
     padding: 5px 10px;
+
+    cursor: pointer;
 }
 
 .boxShadowColor {

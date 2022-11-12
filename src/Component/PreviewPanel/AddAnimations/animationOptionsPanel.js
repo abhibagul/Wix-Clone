@@ -314,7 +314,7 @@ export default function AnimationOptionsPanel(props) {
             </div>
             <div className='advOptions' draggable="false" style={(!panelMode) ? {} : { display: "none" }}>
                 <h5>Advance Options</h5>
-                <div className='animItems' draggable="false">
+                <div className='animItems advanceWidth' draggable="false">
 
                     <div className='anim_option_elem'>
                         {

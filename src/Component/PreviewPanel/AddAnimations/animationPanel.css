@@ -34,10 +34,10 @@
 
 .animItems {
     min-height: 190px;
-    height: 190px;
+    /* height: 190px; */
     overflow: auto;
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, .1);
+    /* padding: 10px; */
+    /* border: 1px solid rgba(0, 0, 0, .1); */
     border-radius: 10px;
     ;
 }
@@ -58,8 +58,6 @@
 .animFooter {
     display: flex;
     justify-content: space-between;
-    height: 30px;
-    overflow: hidden;
 }
 
 .animFooter span {
@@ -111,4 +109,22 @@ select.subAnimSelector {
     padding: 5px 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 3px;
+}
+
+.animItems {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, 110px);
+}
+
+.animFooter {
+    position: sticky;
+    bottom: 0px;
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.animItems.advanceWidth {
+    display: block;
 }
