@@ -22,6 +22,20 @@ export default function HtmlElement() {
         },
         {
             previmg: "/assets/images/elements/layouts/2col.png",
+            elid: "linkbutton",
+            inHTML: "Type your content here...",
+            desc: "Link Button",
+            elementType: "linkbutton",
+            classList: "",
+            attributes: {},
+            elemType: "a",
+            styles: { backgroundColor: "#0d6efd", color: "#ffffff", padding: "5px 10px", borderRadius: "10px", boxShadow: "3px 3px 5px rgba(0,0,0,.1), -3px -3px 5px rgba(0,0,0,.1)" },
+            elemEditable: true,
+            enableDropping: false,
+            elements: []
+        },
+        {
+            previmg: "/assets/images/elements/layouts/2col.png",
             elid: "headers",
             inHTML: "Header element",
             desc: "headers",
