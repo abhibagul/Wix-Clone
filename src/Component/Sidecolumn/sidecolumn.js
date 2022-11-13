@@ -10,7 +10,7 @@ import ElementLayer from './layers/elementLayer';
 
 import { pageDesignContext } from '../../Context/contexts';
 
-export default function SideColumn() {
+export default function SideColumn(props) {
 
     const markerpos = useRef(null);
 
@@ -37,7 +37,7 @@ export default function SideColumn() {
                 </ul>
                 <span ref={markerpos} className={sideStyle["sidebar_option_highlighter"]}></span>
             </div>
-            <div className={sideStyle["sidebar_optionResults"]}>
+            <div style={props.prevWid} className={sideStyle["sidebar_optionResults"]}>
                 {
                     /**
                      * Layout panel

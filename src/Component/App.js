@@ -14,11 +14,13 @@ function App() {
   const resizer = useRef({ currentWidth: "300px", isDragStarted: false });
 
   const [sideWid, setSideWid] = useState({ width: "300px" })
+  const [prevWid, prevContWid] = useState({ width: "240px" });
 
   const updateSettingsWidth = (e) => {
     // resizePanel.current.style.width = e.pageX + "px";
     if (e.pageX > 239 && e.pageX < (window.innerWidth * 0.6)) {
       setSideWid({ width: e.pageX + "px" });
+      prevContWid({ width: (e.pageX - 60) + "px" });
     }
 
     //update the position of element if visib;e
@@ -46,7 +48,7 @@ function App() {
       </div>
       <div className={AppStyles["container"]}>
         <aside style={sideWid} className={AppStyles["options_menu"]} >
-          <div className={AppStyles["options_menu_main"]}><Sidecolumn key={"sideCol"} /></div>
+          <div className={AppStyles["options_menu_main"]}><Sidecolumn prevWid={prevWid} key={"sideCol"} /></div>
           <div draggable ref={resizer} onDragStart={() => resizer.current.isDragStarted = true} onDrag={updateSettingsWidth} onDragEnd={() => resizer.current.isDragStarted = false} className={AppStyles["options_resizer"]}><i className="las la-grip-lines-vertical"></i></div>
         </aside>
         <main className={AppStyles["preview_panel"]}>

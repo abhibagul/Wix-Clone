@@ -16,6 +16,7 @@ import HeadingSettings from './headingSettings/headingSettings'
 import ListSettings from './ListSettings/listSettings'
 import ImageSetting from './ImageSetting/imageSetting'
 import InlineFrameSetting from './inlineFrameSetting/inlineFrameSetting'
+import ColumnWidthSetting from './columnWidthSetting/columnWidthSetting'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
@@ -39,13 +40,14 @@ export default function PreviewPanel() {
     let showListOption = useRef(null);
     let showImageSetting = useRef(null);
     let iframeSettings = useRef(null);
+    let columnWidthSetting = useRef(null);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
 
     let [rCount, setRCount] = useState({ refreshCount: 0 })
 
     useEffect(() => {
         //refresh helper
-        // console.log(rCount.refreshCount);
+        // //console.log(rCount.refreshCount);
     }, [rCount]);
 
 
@@ -65,10 +67,10 @@ export default function PreviewPanel() {
         }
     }
     const enableNewAdding = (e) => {
-        //console.log("enableNewAdding : 44");
-        // ////console.log(e.target.classList.value.indexOf("temp_elem"), e.target.classList.value.indexOf("temp_infocus"));
+        ////console.log("enableNewAdding : 44");
+        // //////console.log(e.target.classList.value.indexOf("temp_elem"), e.target.classList.value.indexOf("temp_infocus"));
         // if (e.target.classList.value.indexOf("temp_elem") > -1 && e.target.classList.value.indexOf("temp_infocus") < 0) {
-        // ////console.log("seems to be true");
+        // //////console.log("seems to be true");
         pageDesignState.nodeLevel.current = e.target.getAttribute("data-path");
         dragEnterSelector.current = e.target.getAttribute("data-path");
         //e.target.classList.add("temp_infocus");
@@ -76,7 +78,7 @@ export default function PreviewPanel() {
     }
 
     const updateInsertPosition = (e) => {
-        //console.log("updateInsertPosition : 55");
+        ////console.log("updateInsertPosition : 55");
 
         let _msg = document.createElement("div");
         _msg.classList = "temp_add_here";
@@ -86,7 +88,7 @@ export default function PreviewPanel() {
         removeGuides();
 
         let _sizes = e.target.closest("section").getBoundingClientRect();
-        //////console.log(e.target.getBoundingClientRect(), e.clientY, _sizes.y + (_sizes.height * 0.2), _sizes.y + (_sizes.height * 0.8))
+        ////////console.log(e.target.getBoundingClientRect(), e.clientY, _sizes.y + (_sizes.height * 0.2), _sizes.y + (_sizes.height * 0.8))
 
         if (e.clientY <= (_sizes.y + (25))) {
             // TODO : Element Adding helper
@@ -105,14 +107,14 @@ export default function PreviewPanel() {
             pageDesignState.nodeLevel.current = null;
         } else {
             //insert it inside the element
-            //////console.log("In the range")
+            ////////console.log("In the range")
             let dpa;
             if (e.target.hasAttribute("data-path")) {
                 dpa = (e.target.getAttribute("data-path"))
             }
             else {
-                ////console.log(e.target, e.target.closest("[data-path]"));
-                //console.log(e.target);
+                //////console.log(e.target, e.target.closest("[data-path]"));
+                ////console.log(e.target);
                 if (e.target.hasAttribute("data-path"))
                     dpa = (e.target.getAttribute("data-path"))
                 else
@@ -128,8 +130,8 @@ export default function PreviewPanel() {
     }
 
     const removeGuides = (e) => {
-        //console.log("removeGuides : 105");
-        //////console.log('removed all');
+        ////console.log("removeGuides : 105");
+        ////////console.log('removed all');
         let _rem_elems = document.querySelectorAll(".temp_add_here");
         for (let j = 0; j < _rem_elems.length; j++) {
             _rem_elems[j].remove()
@@ -160,7 +162,7 @@ export default function PreviewPanel() {
 
     const MultiHTMLComp = (props) => {
 
-        // ////console.log(props);
+        // //////console.log(props);
         return (
             <>
                 {
@@ -173,17 +175,46 @@ export default function PreviewPanel() {
             </>
         )
     }
+    const GenerateHTMLComp = (props) => {
+        ////////console.log(props, ' props');
+        let e = props.element;
+        let formatStyle = { ...e.styles };
+        //////console.log(formatStyle);
+        if (formatStyle.hasOwnProperty('animationIterationCount')) formatStyle.animationIterationCount = 1;
+        //////console.log(formatStyle);
 
-    const updateSelectNodeFromLayers = () => {
 
 
+        let elProp = { ...e.attributes, className: e.classList, "data-path": props.datapath, onClick: (e) => selectElementActive(e), onDragEnter: (e) => enableNewAdding(e), onKeyUp: (e) => handleContentEdit(e), contentEditable: e.elemEditable, "data-optionstype": e.elementType, suppressContentEditableWarning: e.elemEditable, style: formatStyle };
+        // let elProp = { className: e.classList, "data-path": props.datapath };
+        if (e.elements.length > 0) {
+            //has sub elem
 
-        let _elm = document.querySelector("[data-path=\"" + pageDesignState.actElLayer + ",\"]");;
-        //console.log("selectElementActive : 157", _elm);
-        //check if content is editable
+            if (e.elements.length < 2) {
+                //single element
+                let htmlCon = "";
+                if (e.hasOwnProperty("inHTML")) htmlCon = e.inHTML;
 
-        if (!_elm) return;
+                return React.createElement(e.elemType, elProp, <GenerateHTMLComp datapath={props.datapath + '0,'} element={e.elements[0]} >{htmlCon}</GenerateHTMLComp>);
+            } else {
+                //more then one element
+                let allElems = [];
+                return React.createElement(e.elemType, elProp, <MultiHTMLComp datapath={props.datapath} e={e.elements} />);
+            }
 
+        } else {
+            let htmlCon = "";
+            if (e.hasOwnProperty("inHTML")) htmlCon = decodeURIComponent(e.inHTML);
+
+            if (e.elemType === "img") {
+
+                return React.createElement(e.elemType, elProp);
+            }
+            return React.createElement(e.elemType, elProp, [parse(htmlCon)]);
+
+        }
+    }
+    const commonSelectionnProcedure = (_elm) => {
 
         let elms = document.querySelectorAll('.temp_infocus');
 
@@ -195,14 +226,8 @@ export default function PreviewPanel() {
 
         if (_elm.classList.contains("wd-row")) {
             showRowOption.current.style.display = "block"
-            // settingModes.current = { ...settingModes.current, rowMode: "rowLayout" }
-            //console.log(settingModes.current)
-            // setPanelSettings({ ...panelSettings, rowMode: "rowLayout" })
         } else {
             showRowOption.current.style.display = "none"
-            // settingModes.current = { ...settingModes.current, rowMode: "" }
-            //console.log(settingModes.current)
-            // setPanelSettings({ ...panelSettings, rowMode: "" })
         }
 
         if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "Column") {
@@ -236,6 +261,11 @@ export default function PreviewPanel() {
         } else {
             iframeSettings.current.style.display = "none"
         }
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "Column") {
+            columnWidthSetting.current.style.display = "block"
+        } else {
+            columnWidthSetting.current.style.display = "none"
+        }
 
         let elmsEd = document.querySelectorAll('.editable_infocus');
         if (elmsEd.length) {
@@ -253,9 +283,17 @@ export default function PreviewPanel() {
             _dpcompare = _elm.closest("[data-path]").getAttribute("data-path")
         }
         if (_dpcompare !== ElementNodeSelector.current + ",") {
+            /**
+             * 
+             *  JUST A TRYING to fix the column width option error!
+             * 
+             */
+            if (_elm.getAttribute("contenteditable") === "false" && elementalOptionsSettings.current.style.display === "block") {
+                setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" })
+            }
             elementalOptionsSettings.current.style.display = "none"
-            // setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" })
         }
+
 
 
         if ((_elm.getAttribute("contenteditable") === "true" && _elm.hasAttribute("data-path")) || (_elm.closest("[data-path]").getAttribute("contenteditable") === "true" && !_elm.hasAttribute("data-path"))) {
@@ -263,27 +301,27 @@ export default function PreviewPanel() {
                 _elm.classList.add("editable_infocus");
                 //lets make consistancy for the color
                 let _dp = _elm.getAttribute("data-path");
-                // ////console.log(_dp);
+                // //////console.log(_dp);
                 _dp = _dp.substring(0, _dp.length - 1);
                 _dp = _dp.split(',');
                 _dp = _dp.reduce((a, b) => a += b);
                 _dp = _dp % colorPallets.length;
                 // _elm.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
                 _elm.style.outline = "2px solid " + colorPallets[_dp];
-                // ////console.log("color pallet at", _dp, colorPallets[_dp])
+                // //////console.log("color pallet at", _dp, colorPallets[_dp])
             } else {
-                // ////console.log("Get the nearest data path")
+                // //////console.log("Get the nearest data path")
                 _elm.closest("[data-path]").classList.add("editable_infocus");
                 //lets make consistancy for the color
                 let _dp = _elm.closest("[data-path]").getAttribute("data-path");
-                // ////console.log(_dp);
+                // //////console.log(_dp);
                 _dp = _dp.substring(0, _dp.length - 1);
                 _dp = _dp.split(',');
                 _dp = _dp.reduce((a, b) => a += b);
                 _dp = _dp % colorPallets.length;
                 // _elm.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
                 _elm.closest("[data-path]").style.outline = "2px solid " + colorPallets[_dp];
-                // ////console.log("color pallet at", _dp, colorPallets[_dp])
+                // //////console.log("color pallet at", _dp, colorPallets[_dp])
             }
         }
         if (_elm.getAttribute("contenteditable") === "false") {
@@ -299,9 +337,9 @@ export default function PreviewPanel() {
         let boxPosition = (_elm.hasAttribute("data-path")) ? _elm.getBoundingClientRect() : _elm.closest("[data-path]").getBoundingClientRect();
         let posLeft = (boxPosition.x - parentPosition.x - 30);
         let posBottom = (boxPosition.y - parentPosition.y);
-        // ////console.log(boxPosition);
-        // ////console.log(posBottom, (parentPosition.bottom - 127 - parentPosition.y), " /cond:  ", (posBottom + parentPosition.y + 127), (parentPosition.bottom));
-        ////console.log(posLeft, parentPosition.left);
+        // //////console.log(boxPosition);
+        // //////console.log(posBottom, (parentPosition.bottom - 127 - parentPosition.y), " /cond:  ", (posBottom + parentPosition.y + 127), (parentPosition.bottom));
+        //////console.log(posLeft, parentPosition.left);
         let PosX = ((posLeft + parentPosition.left) < parentPosition.left) ? posLeft + 30 : posLeft;
         ElementSwitcher.current.style.left = (PosX) + "px";
         // ElementSwitcher.current.style.left = (boxPosition.x > parentPosition.x) ? PosX + "px" : (PosX) + "px";
@@ -339,177 +377,26 @@ export default function PreviewPanel() {
         }
 
         //181
-        // ////console.log("Current elem set to", nodeP);
+        // //////console.log("Current elem set to", nodeP);
         ElementNodeSelector.current = nodeP.substring(0, nodeP.length - 1);
         pageDesignState.activeElemLayer.current = nodeP.substring(0, nodeP.length - 1);
         pageDesignState.setELLayer(nodeP.substring(0, nodeP.length - 1));
         // /layout_panel_options
     }
 
+    const updateSelectNodeFromLayers = () => {
+
+        let _elm = document.querySelector("[data-path=\"" + pageDesignState.actElLayer + ",\"]");;
+
+        if (!_elm) return;
+
+        commonSelectionnProcedure(_elm)
+
+    }
+
     const selectElementActive = (e) => {
 
-
-
-        //console.log("selectElementActive : 157", e.target);
-        //check if content is editable
-        let elms = document.querySelectorAll('.temp_infocus');
-        if (elms.length) {
-            for (let el of elms) {
-                el.classList.remove("temp_infocus");
-            }
-        }
-
-        if (e.target.classList.contains("wd-row")) {
-            showRowOption.current.style.display = "block"
-            // settingModes.current = { ...settingModes.current, rowMode: "rowLayout" }
-            //console.log(settingModes.current)
-            // setPanelSettings({ ...panelSettings, rowMode: "rowLayout" })
-        } else {
-            showRowOption.current.style.display = "none"
-            // settingModes.current = { ...settingModes.current, rowMode: "" }
-            //console.log(settingModes.current)
-            // setPanelSettings({ ...panelSettings, rowMode: "" })
-        }
-
-        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Column") {
-
-            showColOption.current.style.display = "block"
-        } else {
-            showColOption.current.style.display = "none"
-        }
-
-        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Headings") {
-            showHeaderOption.current.style.display = "block"
-        } else {
-            showHeaderOption.current.style.display = "none"
-        }
-
-
-        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "List") {
-            showListOption.current.style.display = "block"
-        } else {
-            showListOption.current.style.display = "none"
-        }
-
-        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Image") {
-            showImageSetting.current.style.display = "block"
-        } else {
-            showImageSetting.current.style.display = "none"
-        }
-
-        if (e.target.hasAttribute("data-optionstype") && e.target.getAttribute("data-optionstype") === "Iframe") {
-            iframeSettings.current.style.display = "block"
-        } else {
-            iframeSettings.current.style.display = "none"
-        }
-
-        let elmsEd = document.querySelectorAll('.editable_infocus');
-        if (elmsEd.length) {
-            for (let el of elmsEd) {
-                el.style.outline = "none"
-                el.classList.remove("editable_infocus");
-            }
-        }
-
-        //closes settings panel only when clicked on different element
-        let _dpcompare;
-        if (e.target.hasAttribute("data-path")) {
-            _dpcompare = e.target.getAttribute("data-path")
-        } else {
-            _dpcompare = e.target.closest("[data-path]").getAttribute("data-path")
-        }
-        if (_dpcompare !== ElementNodeSelector.current + ",") {
-            elementalOptionsSettings.current.style.display = "none"
-            // setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" })
-        }
-
-
-        if ((e.target.getAttribute("contenteditable") === "true" && e.target.hasAttribute("data-path")) || (e.target.closest("[data-path]").getAttribute("contenteditable") === "true" && !e.target.hasAttribute("data-path"))) {
-            if (e.target.hasAttribute("data-path")) {
-                e.target.classList.add("editable_infocus");
-                //lets make consistancy for the color
-                let _dp = e.target.getAttribute("data-path");
-                // ////console.log(_dp);
-                _dp = _dp.substring(0, _dp.length - 1);
-                _dp = _dp.split(',');
-                _dp = _dp.reduce((a, b) => a += b);
-                _dp = _dp % colorPallets.length;
-                // e.target.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
-                e.target.style.outline = "2px solid " + colorPallets[_dp];
-                // ////console.log("color pallet at", _dp, colorPallets[_dp])
-            } else {
-                // ////console.log("Get the nearest data path")
-                e.target.closest("[data-path]").classList.add("editable_infocus");
-                //lets make consistancy for the color
-                let _dp = e.target.closest("[data-path]").getAttribute("data-path");
-                // ////console.log(_dp);
-                _dp = _dp.substring(0, _dp.length - 1);
-                _dp = _dp.split(',');
-                _dp = _dp.reduce((a, b) => a += b);
-                _dp = _dp % colorPallets.length;
-                // e.target.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
-                e.target.closest("[data-path]").style.outline = "2px solid " + colorPallets[_dp];
-                // ////console.log("color pallet at", _dp, colorPallets[_dp])
-            }
-        }
-        if (e.target.getAttribute("contenteditable") === "false") {
-
-            e.target.classList.add("temp_infocus");
-        }
-
-        ElementSwitcher.current.style.display = "block";
-        let parentPosition = document.querySelector("[data-panelmain]").getBoundingClientRect();
-        //scroll top fix
-        let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
-        //fixed when you click on sub element it is still going to be a top level position
-        let boxPosition = (e.target.hasAttribute("data-path")) ? e.target.getBoundingClientRect() : e.target.closest("[data-path]").getBoundingClientRect();
-        let posLeft = (boxPosition.x - parentPosition.x - 30);
-        let posBottom = (boxPosition.y - parentPosition.y);
-        // ////console.log(boxPosition);
-        // ////console.log(posBottom, (parentPosition.bottom - 127 - parentPosition.y), " /cond:  ", (posBottom + parentPosition.y + 127), (parentPosition.bottom));
-        ////console.log(posLeft, parentPosition.left);
-        let PosX = ((posLeft + parentPosition.left) < parentPosition.left) ? posLeft + 30 : posLeft;
-        ElementSwitcher.current.style.left = (PosX) + "px";
-        // ElementSwitcher.current.style.left = (boxPosition.x > parentPosition.x) ? PosX + "px" : (PosX) + "px";
-        ElementSwitcher.current.style.top = scrlTop + posBottom + "px";
-
-
-        //;
-
-
-        /**
-         * 
-         * This shows respective options for the element!
-         */
-        //make the optios visible on elemental click
-
-        elementalOptions.current.style.display = "block";
-        //now get element width
-        let optionsPanelWidth = elementalOptions.current.getBoundingClientRect();
-        let optionLeft = (optionsPanelWidth.right > window.innerWidth) ? (window.innerWidth - optionsPanelWidth) + "px" : (posLeft + 40);
-        elementalOptions.current.style.left = ((scrlTop + posBottom - optionsPanelWidth.height) < (parentPosition.top)) ? optionLeft + 40 + "px" : optionLeft + "px"
-        elementalOptions.current.style.top = ((scrlTop + posBottom - optionsPanelWidth.height) < (parentPosition.top)) ? (scrlTop + posBottom + boxPosition.height) + "px" : (scrlTop + posBottom - optionsPanelWidth.height) + "px";
-
-
-        elementalHeightResizer.current.style.display = "inline-block";
-        elementalHeightResizer.current.style.left = (optionsPanelWidth.right > window.innerWidth) ? (window.innerWidth - optionsPanelWidth) + "px" : (posLeft + 40) + "px";
-        elementalHeightResizer.current.style.top = (scrlTop + posBottom + boxPosition.height - 10) + "px";
-
-
-        let nodeP;
-        if (e.target.hasAttribute("[data-path]")) {
-            nodeP = e.target.getAttribute("data-path");
-        } else {
-
-            nodeP = e.target.closest("[data-path]").getAttribute("data-path");
-        }
-
-        //181
-        // ////console.log("Current elem set to", nodeP);
-        ElementNodeSelector.current = nodeP.substring(0, nodeP.length - 1);
-        pageDesignState.activeElemLayer.current = nodeP.substring(0, nodeP.length - 1);
-        pageDesignState.setELLayer(nodeP.substring(0, nodeP.length - 1));
-        // /layout_panel_options
+        commonSelectionnProcedure(e.target);
 
     }
 
@@ -581,7 +468,7 @@ export default function PreviewPanel() {
         } else {
             selectorStr += '"]'
         }
-        ////console.log(selectorStr);
+        //////console.log(selectorStr);
         document.querySelector(selectorStr).classList.add("temp_infocus");
 
         let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
@@ -693,12 +580,15 @@ export default function PreviewPanel() {
         _elNode = _elNode.slice(0, -1);
         let _depth = { ...pageDesignState.design }
 
+        //clear panel before removing the elements
+        setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" })
+
         if (_elNode.length > 0) {
             //get parent node
             let _parent_node = get(_depth, 'elements[' + _elNode.join('].elements[') + '].elements');
 
             //remove last element
-            //////console.log(ElementNodeSelector.current, _elNode, _elNodeLast, 'last pos');
+            ////////console.log(ElementNodeSelector.current, _elNode, _elNodeLast, 'last pos');
             _parent_node.splice(_elNodeLast, 1);
 
             //remove the node
@@ -723,10 +613,10 @@ export default function PreviewPanel() {
     }
 
     const handleContentEdit = (e) => {
-        //console.log("handleContentEdit : 481");
-        ////console.log(e);
-        ////console.log(e.target);
-        // ////console.log("Edit requested");
+        ////console.log("handleContentEdit : 481");
+        //////console.log(e);
+        //////console.log(e.target);
+        // //////console.log("Edit requested");
         if (e.target.getAttribute("contentEditable") === "true") {
             //update the state of app
 
@@ -734,14 +624,14 @@ export default function PreviewPanel() {
             let $e;
 
             let _depth = { ...pageDesignState.design };
-            // ////console.log("Getting trig", e.target.getAttribute("data-optionstype"));
+            // //////console.log("Getting trig", e.target.getAttribute("data-optionstype"));
             if (e.target.getAttribute("data-optionstype") === "ListItem" && e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
-                ////console.log("hit enterGot!");
+                //////console.log("hit enterGot!");
 
                 // let parentPos = e.target.closest('[data-optionstype="List"]').getAttribute("data-path");
                 let $elms = e.target.closest('[data-optionstype="List"]').querySelectorAll("li");
-                ////console.log($elms);
+                //////console.log($elms);
 
                 //node
                 let setNodePath = e.target.closest('[data-optionstype="List"]').getAttribute("data-path");
@@ -804,11 +694,11 @@ export default function PreviewPanel() {
 
             if (_elPath.length > 1) {
                 // _elPath = _elPath.slice(0, -1);
-                // ////console.log("El path string", get(_depth, 'elements[' + _elPath.join('].elements[') + "].inHTML"))
-                ////console.log("will setup as ", $e.innerHTML)
+                // //////console.log("El path string", get(_depth, 'elements[' + _elPath.join('].elements[') + "].inHTML"))
+                //////console.log("will setup as ", $e.innerHTML)
                 set(_depth, 'elements[' + _elPath.join('].elements[') + "].inHTML", encodeURIComponent($e.innerHTML))
             } else {
-                ////console.log("will setup as ", $e.innerHTML)
+                //////console.log("will setup as ", $e.innerHTML)
                 set(_depth, 'elements[' + _elPath[0] + '].inHTML', encodeURIComponent($e.innerHTML));
             }
             //elChangeTimer
@@ -816,7 +706,7 @@ export default function PreviewPanel() {
             if (elChangeTimer.current) clearTimeout(elChangeTimer.current);
 
             elChangeTimer.current = setTimeout(() => {
-                // ////console.log(_depth, 'd');
+                // //////console.log(_depth, 'd');
                 pageDesignState.setDesign(_depth);
             }, 2000);
 
@@ -824,46 +714,10 @@ export default function PreviewPanel() {
         }
     }
 
-    const GenerateHTMLComp = (props) => {
-        //////console.log(props, ' props');
-        let e = props.element;
-        let formatStyle = { ...e.styles };
-        ////console.log(formatStyle);
-        if (formatStyle.hasOwnProperty('animationIterationCount')) formatStyle.animationIterationCount = 1;
-        ////console.log(formatStyle);
 
-        let elProp = { ...e.attributes, className: e.classList, "data-path": props.datapath, onClick: (e) => selectElementActive(e), onDragEnter: (e) => enableNewAdding(e), onKeyUp: (e) => handleContentEdit(e), contentEditable: e.elemEditable, "data-optionstype": e.elementType, suppressContentEditableWarning: e.elemEditable, style: formatStyle };
-        // let elProp = { className: e.classList, "data-path": props.datapath };
-        if (e.elements.length > 0) {
-            //has sub elem
-
-            if (e.elements.length < 2) {
-                //single element
-                let htmlCon = "";
-                if (e.hasOwnProperty("inHTML")) htmlCon = e.inHTML;
-
-                return React.createElement(e.elemType, elProp, <GenerateHTMLComp datapath={props.datapath + '0,'} element={e.elements[0]} >{htmlCon}</GenerateHTMLComp>);
-            } else {
-                //more then one element
-                let allElems = [];
-                return React.createElement(e.elemType, elProp, <MultiHTMLComp datapath={props.datapath} e={e.elements} />);
-            }
-
-        } else {
-            let htmlCon = "";
-            if (e.hasOwnProperty("inHTML")) htmlCon = decodeURIComponent(e.inHTML);
-
-            if (e.elemType === "img") {
-
-                return React.createElement(e.elemType, elProp);
-            }
-            return React.createElement(e.elemType, elProp, [parse(htmlCon)]);
-
-        }
-    }
 
     const updateDragPosition = (e) => {
-        //console.log("updateDragPos : 622");
+        ////console.log("updateDragPos : 622");
         let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
         //position
         let parentPosition = document.querySelector("div[data-panelmain]").getBoundingClientRect();
@@ -873,7 +727,7 @@ export default function PreviewPanel() {
     }
 
     const moveDraggedElem = (e) => {
-        //console.log("Move Drag : 632");
+        ////console.log("Move Drag : 632");
         let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
 
         //position of box
@@ -892,12 +746,12 @@ export default function PreviewPanel() {
 
         let _elNode = ElementNodeSelector.current;
 
-        // ////console.log(_elNode);
+        // //////console.log(_elNode);
         // _elNode = _elNode.substring(0, _elNode.length - 1);
         _elNode = _elNode.split(',');
         let _elNodeLast = _elNode[_elNode.length - 1]
         _elNode = _elNode.slice(0, -1);
-        // ////console.log(_elNode);
+        // //////console.log(_elNode);
 
         //To Place Node
         let _dSel = dragEnterSelector.current;
@@ -905,7 +759,7 @@ export default function PreviewPanel() {
         _dSel = _dSel.split(',');
         let _dSelLast = _dSel[_dSel.length - 1];
         _dSel = _dSel.slice(0, -1);
-        // ////console.log(_dSel);
+        // //////console.log(_dSel);
 
 
 
@@ -926,7 +780,7 @@ export default function PreviewPanel() {
             }
 
             toPlaceNodeContent = toPlaceNodeContent.elements;
-            // ////console.log(_elNodeLast, currentNodeContent);
+            // //////console.log(_elNodeLast, currentNodeContent);
             let currentAppendElem = currentNodeContent[_elNodeLast];
             currentNodeContent.splice(_elNodeLast, 1);
 
@@ -990,33 +844,33 @@ export default function PreviewPanel() {
                 let currentAppendElem = currentNodeContent[_elNodeLast];
                 currentNodeContent.splice(_elNodeLast, 1);
 
-                // ////console.log([toPlaceNodeContent, currentAppendElem], currentNodeContent, 'el');
+                // //////console.log([toPlaceNodeContent, currentAppendElem], currentNodeContent, 'el');
 
                 //set the appending node
                 if (_dSel.length > 0) {
-                    // ////console.log("dsel1", 'elements[' + _dSel.join('].elements[') + '].elements')
+                    // //////console.log("dsel1", 'elements[' + _dSel.join('].elements[') + '].elements')
                     // set(_depth, 'elements[' + _dSel.join('].elements[') + '].elements', [...toPlaceNodeContent, JSON.parse(JSON.stringify(currentAppendElem))]);
                     set(_depth, 'elements[' + _dSel.join('].elements[') + '].elements', [currentAppendElem]);
                 } else {
-                    // ////console.log("dsel2")
+                    // //////console.log("dsel2")
                     set(_depth, 'elements', [currentAppendElem]);
                 }
 
                 //set the getter node
                 if (_elNode.length > 0) {
-                    // ////console.log("elnd1")
+                    // //////console.log("elnd1")
                     set(_depth, 'elements[' + _elNode.join('].elements[') + '].elements', [...currentNodeContent]);
                 } else {
 
-                    // ////console.log("elnd2")
+                    // //////console.log("elnd2")
                     set(_depth, 'elements', [...currentNodeContent]);
                 }
 
-                // ////console.log(_depth, 'finished as');
+                // //////console.log(_depth, 'finished as');
                 pageDesignState.setDesign(_depth);
             }
 
-            //////console.log(_dSel, _elNode);
+            ////////console.log(_dSel, _elNode);
 
 
         }
@@ -1034,7 +888,7 @@ export default function PreviewPanel() {
             pageDesignState.setELLayer((+(_dSelLast) + 1) + "")
         }
 
-        // ////console.log(`div[data-path="${dragEnterSelector.current}"]`);
+        // //////console.log(`div[data-path="${dragEnterSelector.current}"]`);
         //select the element again after render
         document.querySelector(`div[data-path="${dragEnterSelector.current}"]`).classList.add("temp_infocus");
 
@@ -1051,7 +905,7 @@ export default function PreviewPanel() {
     }
 
     const removeActiveElemStyle = () => {
-        //console.log("removeActiveElemStyle : 805");
+        ////console.log("removeActiveElemStyle : 805");
         let elms = document.querySelectorAll('.temp_infocus');
         if (elms.length) {
             for (let el of elms) {
@@ -1072,7 +926,7 @@ export default function PreviewPanel() {
     }
 
     const showSettingsPanel = (e, name, type, selectText) => {
-        //console.log("showSettingsPanel : 826");
+        ////console.log("showSettingsPanel : 826");
         setPanelSettings({ ...panelSettings, panelTitle: name, panelMode: type })
 
         let scrlTopp = document.querySelector("[data-panelmain]").scrollTop;
@@ -1101,7 +955,7 @@ export default function PreviewPanel() {
 
         let selectTextCls = get(pageDesignState.design, _node_path);
 
-        ////console.log("should focus", __focus_enable)
+        //////console.log("should focus", __focus_enable)
 
         //check the node about which type of link has to be added
 
@@ -1160,9 +1014,9 @@ export default function PreviewPanel() {
         pageDesignState.setDesign(__temp_structure);
     }
     const setElementHeight = (e) => {
-        //console.log("setElementHeight", 914)
-        // //console.log(e.clientX, e.clientY)
-        // //console.log(e.clientX, e.clientY)
+        ////console.log("setElementHeight", 914)
+        // ////console.log(e.clientX, e.clientY)
+        // ////console.log(e.clientX, e.clientY)
         let scrlTopp = document.querySelector("[data-panelmain]").scrollTop;
         let panelSize = document.querySelector("[data-panelmain]").getBoundingClientRect();
 
@@ -1191,11 +1045,11 @@ export default function PreviewPanel() {
 
 
     const setElemHtMin = (e) => {
-        //console.log("setElemHtMin", 945)
-        // //console.log("drag left");
+        ////console.log("setElemHtMin", 945)
+        // ////console.log("drag left");
         e.target.classList.remove("active");
 
-        // //console.log(e.clientX, e.clientY)
+        // ////console.log(e.clientX, e.clientY)
         let scrlTopp = document.querySelector("[data-panelmain]").scrollTop;
         let panelSize = document.querySelector("[data-panelmain]").getBoundingClientRect();
 
@@ -1226,14 +1080,14 @@ export default function PreviewPanel() {
         let __currentStyles = getNodeData(ElementNodeSelector.current, 0);
         let __minHtStyle = { ...__currentStyles.styles, minHeight: height + "px" }
         let __newElement = { ...__currentStyles, styles: __minHtStyle }
-        // //console.log(__currentStyles, __minHtStyle);
+        // ////console.log(__currentStyles, __minHtStyle);
         setNodeData(ElementNodeSelector.current, 0, __newElement);
 
         elementalOptions.current.style.display = "none"
     }
 
     const elemHeightResizeY = (e) => {
-        //console.log("elemHeightResizeY", 987)
+        ////console.log("elemHeightResizeY", 987)
         e.target.classList.add("active");
         let parentP = document.querySelector("[data-path=\"" + ElementNodeSelector.current + ",\"]");
         parentP.classList.add("temp_infocus_drag")
@@ -1277,6 +1131,7 @@ export default function PreviewPanel() {
                     <li className='actionListical' ref={showListOption} onClick={(e) => showSettingsPanel(e, "List Settings", "ListType", false)}><i className="las la-list-ul"></i></li>
                     <li className='actionListical' ref={showImageSetting} onClick={(e) => showSettingsPanel(e, "Image Settings", "ImageType", false)}><i className="las la-image"></i></li>
                     <li className='actionListical' ref={iframeSettings} onClick={(e) => showSettingsPanel(e, "Inline Frame Settings", "iframeType", false)}><i className="las la-window-maximize"></i></li>
+                    <li className='actionListical' ref={columnWidthSetting} onClick={(e) => showSettingsPanel(e, "Column Width Settings", "columnType", false)}><i className="las la-arrows-alt-h"></i></li>
 
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
@@ -1293,7 +1148,7 @@ export default function PreviewPanel() {
                     <div className='settings_dragger_title' draggable onDrag={(e) => {
                         // e.clientX;
                         // e.clientY;
-                        // //console.log(e.clientX, e.clientY);
+                        // ////console.log(e.clientX, e.clientY);
 
                         let selfSize = elementalOptionsSettings.current.getBoundingClientRect();
                         let panelSize = document.querySelector("[data-panelmain]").getBoundingClientRect();
@@ -1307,7 +1162,7 @@ export default function PreviewPanel() {
 
                         topPos = (topPos < panelSize.top) ? 0 : topPos;
 
-                        // //console.log(topPos, selfSize.top, panelSize.top, (e.clientY - panelSize.top + scrlTopp - 20))
+                        // ////console.log(topPos, selfSize.top, panelSize.top, (e.clientY - panelSize.top + scrlTopp - 20))
                         elementalOptionsSettings.current.style.top = topPos + "px";
 
                     }} onDragEnd={(e) => {
@@ -1395,6 +1250,12 @@ export default function PreviewPanel() {
                          */
                         (panelSettings.panelMode === "iframeType") && <InlineFrameSetting closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
+                    {
+                        /**
+                         * Column Width Settings
+                         */
+                        (panelSettings.panelMode === "columnType") && <ColumnWidthSetting closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                    }
                 </div>
             </div>
             <div
@@ -1406,7 +1267,7 @@ export default function PreviewPanel() {
                 // onDragLeave={() => {
                 //     pageDesignState.setDesign({ ...pageDesignState.design, isDropEnabled: false })
                 //     pageDesignState.isDropModeActive.current = false;
-                //     ////console.log('dragging end', pageDesignState)
+                //     //////console.log('dragging end', pageDesignState)
                 // }}
                 onDragEnter={() => {
 
@@ -1425,7 +1286,7 @@ export default function PreviewPanel() {
                             pageDesignState.design.elements.map((e, i) => {
                                 return (
                                     <section data-elid={(e.elid + "_" + i)} onDragEnter={(e) => updateInsertPosition(e)} onDragLeave={removeGuides} data-elposition={i} key={(e.elid + "_" + i)}>
-                                        {/* {////console.log(e, 'ele_for_rnd')} */}
+                                        {/* {//////console.log(e, 'ele_for_rnd')} */}
                                         <GenerateHTMLComp element={e} datapath={i + ','} />
                                         {/* {generateHTMLComp(e, i + ',')} */}
                                     </section>

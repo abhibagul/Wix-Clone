@@ -87,7 +87,6 @@
 
 
 .currentlyActiveNode * {
-    background-color: #fff3cd;
     color: #ffc107;
     border: none !important;
     font-weight: 900;
@@ -190,4 +189,28 @@ button.elementNodeSelector:hover {
 .layergroup>ul>li>ul {
     background: rgba(0, 0, 0, .06);
     margin-left: -5px;
+}
+
+.duplicateLayer {
+    border: 1px solid #116dff;
+    background: transparent;
+    border-radius: 5px;
+    color: #116dff;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.duplicateLayer:hover {
+    background: #116dff;
+    color: #fff;
+}
+
+.currentlyActiveNode .duplicateLayer {
+    border: 1px solid #116dff !important;
+}
+
+.currentlyActiveNode .duplicateLayer,
+.currentlyActiveNode .duplicateLayer i {
+    color: #116dff;
+    background: transparent;
 }

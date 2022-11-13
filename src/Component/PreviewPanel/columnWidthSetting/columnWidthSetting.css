@@ -1,0 +1,84 @@
+.columnWidthSettingInner .resize_row {
+    display: flex;
+    background-color: #e0cffc !important;
+    background-image: repeating-linear-gradient(45deg,
+            #a370f7 10px,
+            #a370f7 12px,
+            transparent 12px,
+            transparent 20px) !important;
+    outline: 2px solid #a370f7;
+    margin: 0px 0px;
+    display: flex;
+    padding: 10px;
+    gap: 0px 10px;
+    min-width: 700px;
+}
+
+.columnWidthSettingInner .resize_row>div {
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: # !important;
+    background: #f7f7f7 !important;
+    outline: 2px solid #ccc;
+}
+
+.columnWidthSettingInner .resize_row>div.slectedEl {
+
+    color: #116dff !important;
+    background: #cfe2ff !important;
+    outline: 2px solid #0d6efd;
+}
+
+.columnWidthSettingInner .resizerColName {
+    font-size: 15px;
+}
+
+.columnWidthSettingPanel {
+    padding: 10px;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.columnWidthSettingInner select {
+    padding: 5px 10px;
+    max-width: 100px;
+    background: rgba(255, 255, 255, .7);
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.columnWidthSettingInner .resize_row>div.colEmptySpace {
+    color: #116dff !important;
+    background: #cfe2ff90 !important;
+    outline: 2px dashed #0d6efd;
+}
+
+button.createNewCol {
+    border: 1px solid #116dff;
+    background: #116dff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+button.createNewCol i {
+    font-size: 19px;
+    margin-right: 5px;
+}
