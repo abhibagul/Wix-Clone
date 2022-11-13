@@ -180,7 +180,7 @@ export default function ColumnWidthSetting(props) {
 
         let _empty_colJson = { classList: ["wd wd-" + colSize.emptySpace], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column " + (colSize.colSizes.length + 1), elementType: "tempElem", elements: [] }] };
 
-        __parent_node_elems.push(_empty_colJson);
+        __parent_node_elems.push(JSON.parse(JSON.stringify(_empty_colJson)));
 
         __parent_node.elements = __parent_node_elems;
 

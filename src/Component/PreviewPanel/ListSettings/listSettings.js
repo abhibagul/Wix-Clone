@@ -37,7 +37,7 @@ export default function ListSettings(props) {
         if (listSetting.listStyleType === "custom") {
             node.style.listStyleType = '"' + listSetting.preFix + '"';
         } else if (listSetting.listStyleType === "customTxt") {
-            node.style.listStyleType = listSetting.textPreFix;
+            node.style.listStyleType = '"' + listSetting.textPreFix + '"';
         }
         else {
             node.style.listStyleType = listSetting.listStyleType;

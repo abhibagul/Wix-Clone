@@ -1,0 +1,126 @@
+.linkModify {
+    border: 1px solid rgba(0, 0, 0, .1);
+    margin: 10px 0px;
+    border-radius: 5px;
+}
+
+.linkModify:hover {
+    border-color: #0d6efd;
+
+}
+
+.linkModifyPanel {
+    display: none;
+}
+
+.linkModifyPanel.open {
+    display: block;
+    background: #f7f7f7;
+    padding: 10px;
+}
+
+.linkModifyPanel.open h5 {
+    margin: 5px 0px;
+}
+
+.linkModifyPanel.open input,
+.linkModifyPanel.open select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.linktext {
+    display: flex;
+    ;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.linktext .flex-link-left {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.linkModify:hover .linktext button {
+    color: #0d6efd;
+    cursor: pointer
+}
+
+.linkModify:hover .linktext button.btnDelLink {
+    color: red
+}
+
+.linktext button {
+    flex-shrink: 0;
+    border: none;
+    background: none;
+    font-size: 20px;
+    color: #ccc;
+    padding: 0px 5px;
+}
+
+.linktext button:last-child {
+    margin-right: 10px;
+}
+
+.linktext .linktitle {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0d6efd;
+}
+
+.linktext .linkURL {
+    font-size: 10px;
+    color: #ccc;
+}
+
+.LinksOptions {
+    padding: 10px;
+}
+
+.addMoreLink {
+    width: 100%;
+    text-align: center;
+    position: sticky;
+    padding: 10px;
+    bottom: 0px;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.addMoreLink button {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.flex-link-arrange {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: stretch;
+    justify-content: center;
+    text-align: center;
+}
+
+.LinksOptions span.filler {
+    display: inline-block;
+    height: 22px;
+}
+
+.flex-link-action-right {
+    display: flex;
+    flex-shrink: 0;
+}

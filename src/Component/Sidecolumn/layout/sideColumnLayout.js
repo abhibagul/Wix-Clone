@@ -18,6 +18,22 @@ export default function SideColumnLayout() {
 
     let layout = [{
         previmg: "/assets/images/elements/layouts/1col.jpg",
+        elid: "layout_12_col_header",
+        desc: "Header Layout",
+        classList: "wd-row",
+        elementType: "Row Layout",
+        attributes: {},
+        elemType: "header",
+        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
+        enableDropping: false,
+        elemEditable: false,
+        elements: [
+            {
+                classList: ["wd wd-12"], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemType: "div", elemEditable: false, styles: { color: "#dddddd", padding: "30px 0px" }, enableDropping: true, inHTML: "Column 1", elementType: "tempElem", elements: [] }]
+            },
+        ]
+    }, {
+        previmg: "/assets/images/elements/layouts/1col.jpg",
         elid: "layout_12_col",
         desc: "1 Column Layout [12]",
         classList: "wd-row",

@@ -17,6 +17,7 @@ import ListSettings from './ListSettings/listSettings'
 import ImageSetting from './ImageSetting/imageSetting'
 import InlineFrameSetting from './inlineFrameSetting/inlineFrameSetting'
 import ColumnWidthSetting from './columnWidthSetting/columnWidthSetting'
+import NavigationSettings from './navigationSettings/navigationSettings'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
@@ -41,6 +42,7 @@ export default function PreviewPanel() {
     let showImageSetting = useRef(null);
     let iframeSettings = useRef(null);
     let columnWidthSetting = useRef(null);
+    let naviagtionMenuSettings = useRef(null);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
 
     let [rCount, setRCount] = useState({ refreshCount: 0 })
@@ -90,7 +92,7 @@ export default function PreviewPanel() {
         let _sizes = e.target.closest("section").getBoundingClientRect();
         ////////console.log(e.target.getBoundingClientRect(), e.clientY, _sizes.y + (_sizes.height * 0.2), _sizes.y + (_sizes.height * 0.8))
 
-        if (e.clientY <= (_sizes.y + (25))) {
+        if (e.clientY <= (_sizes.y + (15))) {
             // TODO : Element Adding helper
             // e.target.closest("div[data-prevpanel]").insertBefore(_msg, e.target.closest("section"));
 
@@ -98,7 +100,7 @@ export default function PreviewPanel() {
             pageDesignState.dropPosition.current = dropIndex;
             pageDesignState.nodeLevel.current = null;
 
-        } else if (e.clientY >= _sizes.y + (_sizes.height - 25)) {
+        } else if (e.clientY >= _sizes.y + (_sizes.height - 15)) {
             // TODO : Element Adding helper
             // e.target.closest("section").insertAdjacentElement("afterend", _msg);
 
@@ -266,6 +268,11 @@ export default function PreviewPanel() {
         } else {
             columnWidthSetting.current.style.display = "none"
         }
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "navListedItem") {
+            naviagtionMenuSettings.current.style.display = "block"
+        } else {
+            naviagtionMenuSettings.current.style.display = "none"
+        }
 
         let elmsEd = document.querySelectorAll('.editable_infocus');
         if (elmsEd.length) {
@@ -395,7 +402,8 @@ export default function PreviewPanel() {
     }
 
     const selectElementActive = (e) => {
-
+        e.preventDefault();
+        e.stopPropagation()
         commonSelectionnProcedure(e.target);
 
     }
@@ -1132,6 +1140,7 @@ export default function PreviewPanel() {
                     <li className='actionListical' ref={showImageSetting} onClick={(e) => showSettingsPanel(e, "Image Settings", "ImageType", false)}><i className="las la-image"></i></li>
                     <li className='actionListical' ref={iframeSettings} onClick={(e) => showSettingsPanel(e, "Inline Frame Settings", "iframeType", false)}><i className="las la-window-maximize"></i></li>
                     <li className='actionListical' ref={columnWidthSetting} onClick={(e) => showSettingsPanel(e, "Column Width Settings", "columnType", false)}><i className="las la-arrows-alt-h"></i></li>
+                    <li className='actionListical' ref={naviagtionMenuSettings} onClick={(e) => showSettingsPanel(e, "Navigation Links Settings", "navigationType", false)}><i className="las la-bars"></i></li>
 
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
@@ -1256,6 +1265,12 @@ export default function PreviewPanel() {
                          */
                         (panelSettings.panelMode === "columnType") && <ColumnWidthSetting closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
+                    {
+                        /**
+                         * Navigation Settings
+                         */
+                        (panelSettings.panelMode === "navigationType") && <NavigationSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                    }
                 </div>
             </div>
             <div
@@ -1278,7 +1293,7 @@ export default function PreviewPanel() {
             >
 
                 <div className={prvp["panel_container_inner"]} data-prevpanel="true">
-
+                    {/* <HeaderNav /> */}
                     {
 
                         (pageDesignState.design.elements.length) ?

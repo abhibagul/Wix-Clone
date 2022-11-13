@@ -1,3 +1,4 @@
+/* layout */
 .wd {
     flex-shrink: 0;
     flex-grow: 0;
@@ -56,4 +57,14 @@
 
 .wd-12 {
     width: calc(12 * 8.333333333333333333333%);
+}
+
+/* Navigation */
+nav ul {
+    list-style-type: none;
+    margin: 0px;
+}
+
+nav ul {
+    display: flex;
 }
