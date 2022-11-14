@@ -21,10 +21,10 @@ export default function SideColumnLayout() {
         elid: "layout_12_col_header",
         desc: "Header Layout",
         classList: "wd-row",
-        elementType: "Row Layout",
+        elementType: "Header Layout",
         attributes: {},
         elemType: "header",
-        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px" },
+        styles: { maxWidth: "1100px", margin: "0 auto", padding: "5px", position: "static" },
         enableDropping: false,
         elemEditable: false,
         elements: [

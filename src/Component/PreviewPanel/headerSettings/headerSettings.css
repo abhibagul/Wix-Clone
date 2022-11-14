@@ -1,0 +1,85 @@
+.headerPositionSetting {
+    position: relative;
+    padding: 10px;
+}
+
+.headerPositionSetting h5 {
+    margin: 5px 0px;
+}
+
+.hederPositionSettingInner .headerPosOps {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, 120px);
+    gap: 10px;
+}
+
+.hederPositionSettingInner .headerPosOps .headerPositionOption {
+    display: flex;
+    width: 120px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 0px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hederPositionSettingInner .headerPosOps .headerPositionOption img {
+    width: 100%;
+}
+
+.hederPositionSettingInner .headerPosOps .headerPositionOption span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 5px;
+}
+
+.headerPositionSetting select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    margin-bottom: 10px;
+}
+
+.headerPositionValue {
+    display: flex;
+    gap: 10px;
+}
+
+.headerPositionValue input {
+    flex-grow: 1;
+}
+
+.headerPositionValue span {
+    padding: 5px 10px;
+    flex-shrink: 0px;
+    background-color: #cfe2ff;
+    border-radius: 5px;
+    color: #116dff;
+    min-width: 60px;
+    text-align: center;
+}
+
+.applyHeaderSettings {
+    text-align: right;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    position: sticky;
+    bottom: 0px;
+    padding: 8px 10px;
+    background: #fff;
+    margin-top: 10px;
+}
+
+.applyHeaderSettings button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}

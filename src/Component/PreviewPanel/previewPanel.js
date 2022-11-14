@@ -18,6 +18,7 @@ import ImageSetting from './ImageSetting/imageSetting'
 import InlineFrameSetting from './inlineFrameSetting/inlineFrameSetting'
 import ColumnWidthSetting from './columnWidthSetting/columnWidthSetting'
 import NavigationSettings from './navigationSettings/navigationSettings'
+import HeaderSettings from './headerSettings/headerSettings'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
@@ -43,6 +44,7 @@ export default function PreviewPanel() {
     let iframeSettings = useRef(null);
     let columnWidthSetting = useRef(null);
     let naviagtionMenuSettings = useRef(null);
+    let headerPositionSettings = useRef(null);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
 
     let [rCount, setRCount] = useState({ refreshCount: 0 })
@@ -60,11 +62,10 @@ export default function PreviewPanel() {
     let colorsRange = ["#bbbbbb"];
     let colorPallets = ["#072ac8", "#1e96fc", "#f95738", "#2ec4b6", "#80ed99", "#36ca00", "#b744b8"];
 
-    let prevW = { width: "500px", overflowY: "auto" };
+    let prevW = { width: "500px" };
     if (pageDesignState.design.pageMode) {
         prevW = {
             minWidth: "1200px",
-            overflow: "auto",
             width: "100%"
         }
     }
@@ -184,7 +185,7 @@ export default function PreviewPanel() {
         //////console.log(formatStyle);
         if (formatStyle.hasOwnProperty('animationIterationCount')) formatStyle.animationIterationCount = 1;
         //////console.log(formatStyle);
-
+        if (formatStyle.hasOwnProperty('position')) formatStyle.position = "relative";
 
 
         let elProp = { ...e.attributes, className: e.classList, "data-path": props.datapath, onClick: (e) => selectElementActive(e), onDragEnter: (e) => enableNewAdding(e), onKeyUp: (e) => handleContentEdit(e), contentEditable: e.elemEditable, "data-optionstype": e.elementType, suppressContentEditableWarning: e.elemEditable, style: formatStyle };
@@ -268,10 +269,17 @@ export default function PreviewPanel() {
         } else {
             columnWidthSetting.current.style.display = "none"
         }
+
         if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "navListedItem") {
             naviagtionMenuSettings.current.style.display = "block"
         } else {
             naviagtionMenuSettings.current.style.display = "none"
+        }
+
+        if (_elm.hasAttribute("data-optionstype") && _elm.getAttribute("data-optionstype") === "Header Layout") {
+            headerPositionSettings.current.style.display = "block"
+        } else {
+            headerPositionSettings.current.style.display = "none"
         }
 
         let elmsEd = document.querySelectorAll('.editable_infocus');
@@ -1141,6 +1149,7 @@ export default function PreviewPanel() {
                     <li className='actionListical' ref={iframeSettings} onClick={(e) => showSettingsPanel(e, "Inline Frame Settings", "iframeType", false)}><i className="las la-window-maximize"></i></li>
                     <li className='actionListical' ref={columnWidthSetting} onClick={(e) => showSettingsPanel(e, "Column Width Settings", "columnType", false)}><i className="las la-arrows-alt-h"></i></li>
                     <li className='actionListical' ref={naviagtionMenuSettings} onClick={(e) => showSettingsPanel(e, "Navigation Links Settings", "navigationType", false)}><i className="las la-bars"></i></li>
+                    <li className='actionListical' ref={headerPositionSettings} onClick={(e) => showSettingsPanel(e, "Header Settings", "headerSetType", false)}><i className="las la-cog"></i></li>
 
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
@@ -1271,26 +1280,15 @@ export default function PreviewPanel() {
                          */
                         (panelSettings.panelMode === "navigationType") && <NavigationSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
+                    {
+                        /**
+                         * Header position Settings
+                         */
+                        (panelSettings.panelMode === "headerSetType") && <HeaderSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                    }
                 </div>
             </div>
-            <div
-                style={prevW}
-                className={prvp["panel_preview"]}
-                /**
-                 * It changes to false and removes the ability to add element :(
-                 */
-                // onDragLeave={() => {
-                //     pageDesignState.setDesign({ ...pageDesignState.design, isDropEnabled: false })
-                //     pageDesignState.isDropModeActive.current = false;
-                //     //////console.log('dragging end', pageDesignState)
-                // }}
-                onDragEnter={() => {
-
-                    //pageDesignState.setDesign({ ...pageDesignState.design, isDropEnabled: true })
-                }
-                }
-
-            >
+            <div style={prevW} className={prvp["panel_preview"]}>
 
                 <div className={prvp["panel_container_inner"]} data-prevpanel="true">
                     {/* <HeaderNav /> */}
@@ -1299,8 +1297,16 @@ export default function PreviewPanel() {
                         (pageDesignState.design.elements.length) ?
 
                             pageDesignState.design.elements.map((e, i) => {
+                                let styles = {}
+
+                                if (e.elementType === "Header Layout") {
+                                    styles = { ...e.styles }
+                                    styles.top = parseInt(styles.top, 10) + 40 + "px";
+                                    styles.width = "100%";
+                                }
+
                                 return (
-                                    <section data-elid={(e.elid + "_" + i)} onDragEnter={(e) => updateInsertPosition(e)} onDragLeave={removeGuides} data-elposition={i} key={(e.elid + "_" + i)}>
+                                    <section style={styles} data-elid={(e.elid + "_" + i)} onDragEnter={(e) => updateInsertPosition(e)} onDragLeave={removeGuides} data-elposition={i} key={(e.elid + "_" + i)}>
                                         {/* {//////console.log(e, 'ele_for_rnd')} */}
                                         <GenerateHTMLComp element={e} datapath={i + ','} />
                                         {/* {generateHTMLComp(e, i + ',')} */}
