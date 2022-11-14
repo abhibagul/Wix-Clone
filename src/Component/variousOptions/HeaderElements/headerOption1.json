@@ -1,0 +1,134 @@
+{
+    "previmg": "/assets/images/elements/layouts/1col.jpg",
+    "elid": "layout_12_col",
+    "desc": "1 Column Layout [12]",
+    "classList": "wd-row",
+    "elementType": "Row Layout",
+    "attributes": {},
+    "elemType": "div",
+    "styles": {
+      "maxWidth": "calc(100% - 0px)",
+      "margin": "0px 0px",
+      "padding": "5px",
+      "backgroundImage": "url(\"https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940\")",
+      "backgroundSize": "cover",
+      "backgroundPosition": "left 8%",
+      "backgroundRepeat": "repeat",
+      "backgroundAttachment": "fixed"
+    },
+    "enableDropping": false,
+    "elemEditable": false,
+    "elements": [
+      {
+        "classList": [
+          "wd wd-12"
+        ],
+        "elemType": "div",
+        "styles": {
+          "padding": "5px",
+          "minHeight": "426.4091491699219px"
+        },
+        "elemEditable": false,
+        "enableDropping": true,
+        "elementType": "Column",
+        "elements": [
+          {
+            "previmg": "/assets/images/elements/layouts/2col.jpg",
+            "elid": "layout_6_6_col",
+            "desc": "2 Column Layout [6,6]",
+            "elementType": "Row Layout",
+            "classList": "wd-row",
+            "elemType": "div",
+            "styles": {
+              "maxWidth": "1100px",
+              "margin": "0 auto",
+              "padding": "5px"
+            },
+            "elemEditable": false,
+            "attributes": {},
+            "enableDropping": false,
+            "elements": [
+              {
+                "classList": [
+                  "wd wd-6"
+                ],
+                "elemType": "div",
+                "styles": {
+                  "padding": "5px"
+                },
+                "elemEditable": false,
+                "enableDropping": true,
+                "elementType": "Column",
+                "elements": []
+              },
+              {
+                "classList": [
+                  "wd wd-6"
+                ],
+                "elemType": "div",
+                "styles": {
+                  "padding": "5px",
+                  "minHeight": "482.426513671875px"
+                },
+                "elemEditable": false,
+                "enableDropping": true,
+                "elementType": "Column",
+                "elements": [
+                  {
+                    "previmg": "/assets/images/elements/layouts/2col.png",
+                    "elid": "headers",
+                    "inHTML": "Header element",
+                    "desc": "headers",
+                    "attributes": {},
+                    "elementType": "Headings",
+                    "classList": "",
+                    "styles": {
+                      "color": "#ffffff",
+                      "fontFamily": "Bakbak One",
+                      "fontSize": "4.1em",
+                      "fontWeight": 500,
+                      "textAlign": "center",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "6.8px",
+                      "lineHeight": "1.6em",
+                      "borderTop": "2px none #000000",
+                      "borderLeft": "2px none #000000",
+                      "borderRight": "2px none #000000",
+                      "borderBottom": "2px solid #ffffff"
+                    },
+                    "elemType": "h1",
+                    "elemEditable": true,
+                    "enableDropping": false,
+                    "elements": []
+                  },
+                  {
+                    "previmg": "/assets/images/elements/layouts/2col.png",
+                    "elid": "paragraph",
+                    "inHTML": "Explore%20the%20unseen",
+                    "desc": "Paragraph",
+                    "elementType": "paragraph",
+                    "classList": "",
+                    "attributes": {},
+                    "elemType": "p",
+                    "styles": {
+                      "color": "#ffffff",
+                      "fontFamily": "Poppins",
+                      "fontSize": "0.9em",
+                      "fontWeight": 500,
+                      "textAlign": "center",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "6.9px",
+                      "lineHeight": "1.4em"
+                    },
+                    "elemEditable": true,
+                    "enableDropping": false,
+                    "elements": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

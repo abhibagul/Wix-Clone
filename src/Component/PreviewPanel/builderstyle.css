@@ -68,3 +68,31 @@ nav ul {
 nav ul {
     display: flex;
 }
+
+
+
+/* Responsive for preview */
+div[data-prevpanel] {
+    container: previewLayout / inline-size;
+}
+
+@container previewLayout (max-width: 576px) {
+    .wd-row {
+        flex-direction: column;
+    }
+
+    .wd {
+        width: 100%;
+    }
+}
+
+/* real life responsive */
+@media only screen and (max-width: 576px) {
+    .wd-row {
+        flex-direction: column;
+    }
+
+    .wd {
+        width: 100%;
+    }
+}

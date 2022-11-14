@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
-import { set, get, indexOf } from "lodash";
+import { set, get } from "lodash";
 import { pageDesignContext } from '../../../Context/contexts'
 import './navigationSettings.css'
 export default function NavigationSettings(props) {
@@ -60,8 +60,19 @@ export default function NavigationSettings(props) {
         if (__nav.elemType === "ul") {
             __nav = getNodeData(props.currentlyActive.current, 1, "");
         }
+
+        if (__nav.elemType === "li" || __nav.elemType === "a") {
+            let node = document.querySelector("[data-path=\"" + props.currentlyActive.current + ",\"]");
+            let curr = node.closest("nav").getAttribute("data-path");
+            __nav = getNodeData(curr.slice(0, -1), 0, "");
+
+        }
+
         // console.log(__nav.elements[0].elements)
-        setLinksState({ ...linksState, navEl: __nav.elements[0].elements });
+        if (__nav) {
+
+            setLinksState({ ...linksState, navEl: __nav.elements[0].elements });
+        }
     }
 
 
@@ -92,7 +103,7 @@ export default function NavigationSettings(props) {
                     elementType: "NavInnerLinkItem",
                     classList: "",
                     linktype: "url",
-                    styles: { color: "#000000", padding: "5px" },
+                    styles: { color: "#000000", padding: "5px", textDecoration: "none" },
                     elemType: "a",
                     elemEditable: false,
                     enableDropping: false,

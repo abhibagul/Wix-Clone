@@ -110,7 +110,7 @@ export default function HtmlElement() {
                                     elementType: "NavInnerLinkItem",
                                     classList: "",
                                     linktype: "url",
-                                    styles: { color: "#000000", padding: "5px" },
+                                    styles: { color: "#000000", padding: "5px", textDecoration: "none" },
                                     elemType: "a",
                                     elemEditable: false,
                                     enableDropping: false,

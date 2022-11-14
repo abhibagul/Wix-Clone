@@ -1,0 +1,295 @@
+{
+    "previmg": "/assets/images/elements/layouts/1col.jpg",
+    "elid": "layout_12_col_header",
+    "desc": "Header Layout",
+    "classList": "wd-row",
+    "elementType": "Header Layout",
+    "attributes": {},
+    "elemType": "header",
+    "styles": {
+      "maxWidth": "calc(100% - 0px)",
+      "margin": "0px 0px",
+      "padding": "5px",
+      "position": "static"
+    },
+    "enableDropping": false,
+    "elemEditable": false,
+    "elements": [
+      {
+        "classList": [
+          "wd wd-12"
+        ],
+        "elemType": "div",
+        "styles": {
+          "padding": "5px",
+          "minHeight": "58.2569465637207px"
+        },
+        "elemEditable": false,
+        "enableDropping": true,
+        "elementType": "Column",
+        "elements": [
+          {
+            "previmg": "/assets/images/elements/layouts/2col.jpg",
+            "elid": "layout_6_6_col",
+            "desc": "2 Column Layout [6,6]",
+            "elementType": "Row Layout",
+            "classList": "wd-row",
+            "elemType": "div",
+            "styles": {
+              "maxWidth": "1100px",
+              "margin": "0 auto",
+              "padding": "5px",
+              "minHeight": "62.265625px"
+            },
+            "elemEditable": false,
+            "attributes": {},
+            "enableDropping": false,
+            "elements": [
+              {
+                "classList": [
+                  "wd wd-3"
+                ],
+                "elemType": "div",
+                "styles": {
+                  "padding": "5px",
+                  "minHeight": "24.274307250976562px",
+                  "alignItems": "center",
+                  "justifyContent": "center"
+                },
+                "elemEditable": false,
+                "enableDropping": true,
+                "elementType": "Column",
+                "elements": [
+                  {
+                    "previmg": "/assets/images/elements/layouts/2col.png",
+                    "elid": "headers",
+                    "inHTML": "My%20Company",
+                    "desc": "headers",
+                    "attributes": {},
+                    "elementType": "Headings",
+                    "classList": "",
+                    "styles": {
+                      "color": "#000000"
+                    },
+                    "elemType": "h1",
+                    "elemEditable": true,
+                    "enableDropping": false,
+                    "elements": []
+                  }
+                ]
+              },
+              {
+                "classList": [
+                  "wd wd-9"
+                ],
+                "elemType": "div",
+                "styles": {
+                  "padding": "5px",
+                  "minHeight": "12.274307250976562px",
+                  "alignItems": "flex-end",
+                  "justifyContent": "center"
+                },
+                "elemEditable": false,
+                "enableDropping": true,
+                "elementType": "Column",
+                "elements": [
+                  {
+                    "previmg": "/assets/images/elements/layouts/2col.png",
+                    "elid": "navMenu",
+                    "inHTML": "",
+                    "desc": "Navigation Menu",
+                    "attributes": {
+                      "data-navigation-menu": "true"
+                    },
+                    "elementType": "Navigation",
+                    "classList": "",
+                    "styles": {
+                      "position": "relative"
+                    },
+                    "elemType": "nav",
+                    "elemEditable": false,
+                    "enableDropping": false,
+                    "elements": [
+                      {
+                        "previmg": "/assets/images/elements/layouts/2col.png",
+                        "elid": "navListedItem",
+                        "inHTML": "",
+                        "desc": "navListedItem",
+                        "attributes": {},
+                        "elementType": "navListedItem",
+                        "classList": "",
+                        "styles": {
+                          "padding": "5px"
+                        },
+                        "elemType": "ul",
+                        "elemEditable": false,
+                        "enableDropping": true,
+                        "elements": [
+                          {
+                            "previmg": "/assets/images/elements/layouts/2col.png",
+                            "elid": "NavLinkItem",
+                            "inHTML": "",
+                            "desc": "NavLinkItem",
+                            "attributes": {},
+                            "elementType": "NavLinkItem",
+                            "classList": "",
+                            "styles": {
+                              "padding": "5px"
+                            },
+                            "elemType": "li",
+                            "elemEditable": false,
+                            "enableDropping": false,
+                            "elements": [
+                              {
+                                "previmg": "/assets/images/elements/layouts/2col.png",
+                                "elid": "NavInerLinkItem",
+                                "inHTML": "Home",
+                                "desc": "NavInnerLinkItem",
+                                "attributes": {
+                                  "href": "#",
+                                  "target": "_blank"
+                                },
+                                "elementType": "NavInnerLinkItem",
+                                "classList": "",
+                                "linktype": "url",
+                                "styles": {
+                                  "color": "#000000",
+                                  "padding": "5px",
+                                  "textDecoration": "none"
+                                },
+                                "elemType": "a",
+                                "elemEditable": false,
+                                "enableDropping": false,
+                                "elements": []
+                              }
+                            ]
+                          },
+                          {
+                            "previmg": "/assets/images/elements/layouts/2col.png",
+                            "elid": "NavLinkItem",
+                            "inHTML": "",
+                            "desc": "NavLinkItem",
+                            "attributes": {},
+                            "elementType": "NavLinkItem",
+                            "classList": "",
+                            "styles": {
+                              "padding": "5px"
+                            },
+                            "elemType": "li",
+                            "elemEditable": false,
+                            "enableDropping": false,
+                            "elements": [
+                              {
+                                "previmg": "/assets/images/elements/layouts/2col.png",
+                                "elid": "NavInerLinkItem",
+                                "inHTML": "Products",
+                                "desc": "NavInnerLinkItem",
+                                "attributes": {
+                                  "href": "#",
+                                  "target": "_blank"
+                                },
+                                "elementType": "NavInnerLinkItem",
+                                "classList": "",
+                                "linktype": "url",
+                                "styles": {
+                                  "color": "#000000",
+                                  "padding": "5px",
+                                  "textDecoration": "none"
+                                },
+                                "elemType": "a",
+                                "elemEditable": false,
+                                "enableDropping": false,
+                                "elements": []
+                              }
+                            ]
+                          },
+                          {
+                            "previmg": "/assets/images/elements/layouts/2col.png",
+                            "elid": "NavLinkItem",
+                            "inHTML": "",
+                            "desc": "NavLinkItem",
+                            "attributes": {},
+                            "elementType": "NavLinkItem",
+                            "classList": "",
+                            "styles": {
+                              "padding": "5px"
+                            },
+                            "elemType": "li",
+                            "elemEditable": false,
+                            "enableDropping": false,
+                            "elements": [
+                              {
+                                "previmg": "/assets/images/elements/layouts/2col.png",
+                                "elid": "NavInerLinkItem",
+                                "inHTML": "About",
+                                "desc": "NavInnerLinkItem",
+                                "attributes": {
+                                  "href": "#",
+                                  "target": "_blank"
+                                },
+                                "elementType": "NavInnerLinkItem",
+                                "classList": "",
+                                "linktype": "url",
+                                "styles": {
+                                  "color": "#000000",
+                                  "padding": "5px",
+                                  "textDecoration": "none"
+                                },
+                                "elemType": "a",
+                                "elemEditable": false,
+                                "enableDropping": false,
+                                "elements": []
+                              }
+                            ]
+                          },
+                          {
+                            "previmg": "/assets/images/elements/layouts/2col.png",
+                            "elid": "NavLinkItem",
+                            "inHTML": "",
+                            "desc": "NavLinkItem",
+                            "attributes": {},
+                            "elementType": "NavLinkItem",
+                            "classList": "",
+                            "styles": {
+                              "padding": "5px"
+                            },
+                            "elemType": "li",
+                            "elemEditable": false,
+                            "enableDropping": false,
+                            "elements": [
+                              {
+                                "previmg": "/assets/images/elements/layouts/2col.png",
+                                "elid": "NavInerLinkItem",
+                                "inHTML": "Contact",
+                                "desc": "NavInnerLinkItem",
+                                "attributes": {
+                                  "href": "#",
+                                  "target": "_blank"
+                                },
+                                "elementType": "NavInnerLinkItem",
+                                "classList": "",
+                                "linktype": "url",
+                                "styles": {
+                                  "color": "#000000",
+                                  "padding": "5px",
+                                  "textDecoration": "none"
+                                },
+                                "elemType": "a",
+                                "elemEditable": false,
+                                "enableDropping": false,
+                                "elements": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

@@ -19,6 +19,7 @@ import InlineFrameSetting from './inlineFrameSetting/inlineFrameSetting'
 import ColumnWidthSetting from './columnWidthSetting/columnWidthSetting'
 import NavigationSettings from './navigationSettings/navigationSettings'
 import HeaderSettings from './headerSettings/headerSettings'
+import GetNodeData from './getNodeData/getNodeData'
 
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
@@ -45,6 +46,7 @@ export default function PreviewPanel() {
     let columnWidthSetting = useRef(null);
     let naviagtionMenuSettings = useRef(null);
     let headerPositionSettings = useRef(null);
+    let creatorDevMode = useRef(true);
     let [panelSettings, setPanelSettings] = useState({ panelTitle: "Animation", panelMode: "animation", rowMode: "" })
 
     let [rCount, setRCount] = useState({ refreshCount: 0 })
@@ -1151,6 +1153,7 @@ export default function PreviewPanel() {
                     <li className='actionListical' ref={naviagtionMenuSettings} onClick={(e) => showSettingsPanel(e, "Navigation Links Settings", "navigationType", false)}><i className="las la-bars"></i></li>
                     <li className='actionListical' ref={headerPositionSettings} onClick={(e) => showSettingsPanel(e, "Header Settings", "headerSetType", false)}><i className="las la-cog"></i></li>
 
+                    {(creatorDevMode.current) && <li className='actionListical' onClick={(e) => showSettingsPanel(e, "Node JSON", "previewNode", false)}><i className="las la-laptop-code"></i></li>}
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
                         showSettingsPanel(e, "Animation", "animation", false)
@@ -1285,6 +1288,12 @@ export default function PreviewPanel() {
                          * Header position Settings
                          */
                         (panelSettings.panelMode === "headerSetType") && <HeaderSettings closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
+                    }
+                    {
+                        /**
+                         * View node json
+                         */
+                        (panelSettings.panelMode === "previewNode") && <GetNodeData closePanel={() => { elementalOptionsSettings.current.style.display = "none"; setPanelSettings({ ...panelSettings, panelTitle: "", panelMode: "none" }) }} key={ElementNodeSelector.current + "editorSetting"} currentlyActive={ElementNodeSelector} />
                     }
                 </div>
             </div>
