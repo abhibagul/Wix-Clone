@@ -21,10 +21,14 @@ import NavigationSettings from './navigationSettings/navigationSettings'
 import HeaderSettings from './headerSettings/headerSettings'
 import GetNodeData from './getNodeData/getNodeData'
 
+/** Google font loader */
+import FontLoader from './fontLoader/fontLoader'
+
 // import * as ReactDOM from 'react-dom/client';
 import parse from 'html-react-parser';
 import { useState } from 'react'
 import { useEffect } from 'react'
+
 
 
 export default function PreviewPanel() {
@@ -1127,6 +1131,12 @@ export default function PreviewPanel() {
                 elementalHeightResizer.current.style.opacity = "0";
                 removeActiveElemStyle()
             }} data-panelmain="">
+            {
+                /**
+                Font Loader
+                 */
+                <FontLoader fontList={pageDesignState.design.fonts} />
+            }
             <div data-operation="" className={prvp["layout_panel_options"]} ref={ElementSwitcher}>
                 <ul className={prvp["elemental_options"]}>
                     <li className='actionBtnHover' onClick={moveElUp}><i className="las la-chevron-circle-up"></i></li>

@@ -1,0 +1,118 @@
+.fontSelectorContent {
+    padding: 10px;
+}
+
+.fontSelectorList,
+#font-picker {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.fontOption {
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 8px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: 5px 0px;
+}
+
+.fontOption .font_dets {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.fontOption .font_dets .fontName {
+    font-size: 20px;
+}
+
+.fontOption .font_dets .fontWeights {
+    font-size: 10px;
+    color: #555;
+    margin-top: 5px;
+    text-transform: capitalize;
+}
+
+.fontOption:hover {
+    border-color: #0d6efd;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .1), -2px -2px 5px rgba(0, 0, 0, .1)
+}
+
+div[id^=font-picker] .dropdown-button,
+div[id^=font-picker] .dropdown-button:focus {
+    background: #cfe2ff;
+    border-radius: 5px;
+}
+
+div[id^=font-picker] .dropdown-button:hover {
+    background: #0d6efd;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.layoutCreatorHeader {
+    position: sticky;
+    top: 0px;
+    z-index: 99;
+}
+
+.deleteFont {
+    border: 1px solid red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: transparent;
+    color: red;
+    cursor: pointer;
+}
+
+.deleteFont:hover {
+    background: red;
+    color: #fff
+}
+
+.footerStickyFontManager {
+    position: sticky;
+    bottom: 0px;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.footerStickyFontManager .webpageSpeed span {
+    padding: 3px 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    min-width: 60px;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+}
+
+.applyFonts button {
+    background-color: #0d6efd;
+    border-radius: 40px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.outerLayoutHeader {
+    position: sticky;
+    top: 0px;
+}
+
+.fontSelectorList {
+    padding: 5px 10px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.fontOptionsList {
+    min-height: 200px;
+}

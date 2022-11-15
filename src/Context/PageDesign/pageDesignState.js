@@ -8,7 +8,14 @@ const PageDesignState = (props) => {
         settigMode: -1,
         isDropEnabled: true,
         dropIndex: 0,
-        fonts: [],
+        fonts: [{
+            "font": "Poppins",
+            "weights": [
+                "300",
+                "regular",
+                "700"
+            ]
+        }],
         elements: [{
             "previmg": "/assets/images/elements/layouts/1col.jpg",
             "elid": "layout_12_col_header",

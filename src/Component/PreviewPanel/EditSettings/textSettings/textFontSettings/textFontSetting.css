@@ -13,3 +13,26 @@
     border: 1px solid rgba(0, 0, 0, .1);
     border-radius: 5px;
 }
+
+.fontSelectorCus {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.fontSelectorCus select {
+    flex-grow: 1;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+}
+
+.fontSelectorCus button {
+    padding: px 10px;
+    background-color: #0d6efd;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    width: 40px;
+    box-shadow: 3px 3px 5px rgb(0 0 0 / 20%), -3px -3px 5px rgb(0 0 0 / 20%);
+    cursor: pointer;
+}

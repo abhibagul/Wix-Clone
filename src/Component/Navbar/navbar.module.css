@@ -213,7 +213,9 @@
     display: none;
 }
 
-
+.pointerHover {
+    cursor: pointer;
+}
 
 .navbar_user_details ul li:hover>ul {
     right: -10px;

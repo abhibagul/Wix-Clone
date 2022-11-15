@@ -123,8 +123,8 @@ export default function TextSettings(props) {
 
     const applyFontStyle = () => {
         //add the fonts to the reqlib
-        let __fonts = (pageDesignState.design.fonts.length > 0) ? [...pageDesignState.design.fonts, textSetting.adderFont] : [textSetting.adderFont];
-        pageDesignState.setDesign({ ...pageDesignState.design, fonts: __fonts });
+        // let __fonts = (pageDesignState.design.fonts.length > 0) ? [...pageDesignState.design.fonts, textSetting.adderFont] : [textSetting.adderFont];
+        // pageDesignState.setDesign({ ...pageDesignState.design, fonts: __fonts });
 
         let currentNode = props.currentlyActive.current;
         let __current_elem = getNodeData(currentNode, 0)
@@ -210,7 +210,7 @@ export default function TextSettings(props) {
                                         /**
                                          * Font type
                                          */
-                                        (textSetting.panelMode === 0) && <TextFontSetting textSetting={textSetting} setTextSetting={setTextSetting} />
+                                        (textSetting.panelMode === 0) && <TextFontSetting showFontListOption={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 1 }) }} fontList={pageDesignState.design.fonts} textSetting={textSetting} setTextSetting={setTextSetting} />
                                     }
                                     {
                                         /**

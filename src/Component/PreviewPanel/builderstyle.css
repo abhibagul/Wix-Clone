@@ -76,7 +76,7 @@ div[data-prevpanel] {
     container: previewLayout / inline-size;
 }
 
-@container previewLayout (max-width: 576px) {
+@container previewLayout (max-width: 768px) {
     .wd-row {
         flex-direction: column;
     }
@@ -87,7 +87,7 @@ div[data-prevpanel] {
 }
 
 /* real life responsive */
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
     .wd-row {
         flex-direction: column;
     }

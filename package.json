@@ -16,6 +16,7 @@
     "pexels": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-font-loader": "^1.1.0",
     "react-lodash": "^0.1.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"

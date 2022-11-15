@@ -1,14 +1,36 @@
-import React from 'react'
-import FontPicker from "font-picker-react";
-
+import React, { useEffect } from 'react'
 import './textFontSetting.css'
 
-export default function TextFontSetting({ textSetting, setTextSetting }) {
+export default function TextFontSetting(props) {
+
+    console.log(props);
+
+    useEffect(() => {
+
+    }, [props.fontList])
+
     return (
         <div className='textFontSelector'>
             <div className='inputTextFont'>
                 <h5>Select the typeface</h5>
-                <FontPicker
+                <div className='fontSelectorCus'>
+                    <select onChange={(e) => {
+
+                        props.setTextSetting({
+                            ...props.textSetting,
+                            fontFamily: e.target.value
+                        })
+
+                    }}>
+                        {
+                            props.fontList.map((e) => {
+                                return (<option key={e.font} value={e.font}>{e.font}</option>)
+                            })
+                        }
+                    </select>
+                    <button onClick={props.showFontListOption}><i className="las la-cog"></i></button>
+                </div>
+                {/* <FontPicker
                     apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                     activeFontFamily={textSetting.fontFamily}
                     onChange={(nextFont) => {
@@ -19,7 +41,7 @@ export default function TextFontSetting({ textSetting, setTextSetting }) {
                         })
                     }
                     }
-                />
+                /> */}
             </div>
         </div>
     )
