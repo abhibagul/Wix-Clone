@@ -3,6 +3,8 @@ import { pageDesignContext } from '../../Context/contexts'
 
 import CreateRowsLayout from './createRowsLayout/createRowsLayout';
 import FontManager from './fontManager/fontManager';
+import GoogleAnalytics from './googleAnalytics/googleAnalytics';
+import WebsiteSettings from './websiteSetting/websiteSetting';
 
 import './settingPanel.css';
 export default function SettingPanel() {
@@ -12,8 +14,6 @@ export default function SettingPanel() {
     const closeSettingPanel = () => {
         pageDesignState.setDesign({ ...pageDesignState.design, settigMode: -1 })
     }
-
-
 
 
     return (
@@ -32,6 +32,20 @@ export default function SettingPanel() {
                          * case 1
                          */
                         (pageDesignState.design.settigMode === 1) && <FontManager closeWin={closeSettingPanel} />
+                    }
+
+                    {
+                        /**
+                         * case 2
+                         */
+                        (pageDesignState.design.settigMode === 2) && <GoogleAnalytics closeWin={closeSettingPanel} />
+                    }
+
+                    {
+                        /**
+                         * case 3
+                         */
+                        (pageDesignState.design.settigMode === 3) && <WebsiteSettings closeWin={closeSettingPanel} />
                     }
 
                     {/* <button onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, settigMode: -1 })}>Close</button> */}

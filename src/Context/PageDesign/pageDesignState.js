@@ -4,9 +4,17 @@ import { pageDesignContext } from "../contexts";
 
 const PageDesignState = (props) => {
     const InitialDeisgnState = {
+        websiteSetting: {
+            siteName: "My Website",
+            favIco: "https://reactjs.org/favicon.ico",
+            socialImage: "",
+            desc: "Description for the webpage"
+        },
+        published: false,
         pageMode: 1,
         settigMode: -1,
         isDropEnabled: true,
+        analyticsID: "",
         dropIndex: 0,
         fonts: [{
             "font": "Poppins",

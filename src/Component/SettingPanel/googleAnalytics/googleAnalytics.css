@@ -1,0 +1,18 @@
+.googleAnalyticsInner {
+    padding: 10px;
+}
+
+.googleAnalyticsInner h5 {
+    margin: 4px 0px;
+}
+
+.googleAnalyticsInner input {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.googleAnalyticsContent {
+    padding: 10px;
+}

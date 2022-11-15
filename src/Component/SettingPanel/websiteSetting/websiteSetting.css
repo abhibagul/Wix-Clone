@@ -1,0 +1,159 @@
+.websitePublished {
+    margin: 10px;
+    padding: 10px 15px;
+    background: #f8d7da;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.websiteUnpublish {
+    margin: 10px;
+    padding: 10px 15px;
+    background: #d1e7dd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.websiteUnpublish span,
+.websitePublished span {
+    font-weight: 600;
+    font-size: 12px;
+    flex-grow: 1;
+}
+
+.websiteUnpublish button,
+.websitePublished button {
+    padding: 8px 12px;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .1), -2px -2px 5px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+}
+
+.websiteUnpublish button {
+    background-color: #dc3545;
+}
+
+.websitePublished button:hover {
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, .2), -4px -4px 7px rgba(0, 0, 0, .2);
+}
+
+.inputWebSet {
+    padding: 0px 10px;
+}
+
+.inputWebSet h5 {
+    margin: 0px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.inputWebSet input {
+    padding: 5px 10px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, .1);
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+
+.tab_prev:after {
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+.tab_prev {
+    position: relative;
+    padding: 0px 10px;
+}
+
+.tab_prev .tab_bg_tab {
+    max-width: 250px;
+    border-radius: 5px;
+}
+
+.tab_prev .tab_favico {
+    position: absolute;
+    left: 22px;
+    top: 10px;
+    width: 20px;
+}
+
+.tab_prev .tab_name {
+    position: absolute;
+    color: #fff;
+    left: 50px;
+    top: 10px;
+    font-size: 12px;
+    width: 140px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.all_prev {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.all_prev .tab_prev {
+    flex-shrink: 0;
+}
+
+.all_prev .googleSearchPrev:before {
+    content: "https://mywebsiteutl.com > your website";
+    font-size: 10px;
+    color: #202124;
+}
+
+.all_prev .googleSearchPrev {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: calc(100% - 40px);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .1)
+}
+
+.all_prev .googleSearchName {
+    color: #1a0dab;
+    font-weight: 600;
+    height: 28px;
+    overflow: hidden;
+
+}
+
+.all_prev .googleSearchDesc {
+    color: #4d5156;
+    font-size: 12px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.websettinghead {
+    z-index: 999;
+}
+
+.websiteSettingsPanelInner hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+}
+
+.websiteSettingsPanelInner h5.prevTxt {
+    margin: 3px 0px;
+    padding: 0px 15px;
+}

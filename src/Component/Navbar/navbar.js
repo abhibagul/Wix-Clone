@@ -91,10 +91,10 @@ export default function Navbar() {
                     <li data-elementid="2" data-dropheight="86" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
                         <a href='/'>Settings</a>
                         <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
-                            <li className={nvstyle["pointerHover"]}><a href='/'>Meta Details</a></li>
+                            <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 3 }) }}>Settings & Meta</a></li>
                             <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 1 }) }}>Font Manager</a></li>
-                            <li className={nvstyle["pointerHover"]}><a href='/'>Social Links</a></li>
-                            <li className={nvstyle["pointerHover"]}><a href='/'>Google Analytics</a></li>
+                            {/* <li className={nvstyle["pointerHover"]}><a href='/'>Social Links</a></li> */}
+                            <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 2 }) }} >Google Analytics</a></li>
                         </ul>
                     </li>
                     {/* <li data-elementId="3" data-dropheight="57" onMouseEnter={currentActiveMenu}>
