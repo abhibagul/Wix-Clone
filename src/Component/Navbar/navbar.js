@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react'
 import nvstyle from './navbar.module.css';
-import { pageDesignContext } from '../../Context/contexts';
-import { useNavigate } from 'react-router-dom';
+import { pageDesignContext, userDetailsContext } from '../../Context/contexts';
+import { useNavigate, useMatch } from 'react-router-dom';
 export default function Navbar() {
 
     const navigate = useNavigate();
@@ -10,7 +10,10 @@ export default function Navbar() {
     const dropdownSlide = useRef(null);
 
     const pageDesignState = useContext(pageDesignContext);
+    const UserDetailsState = useContext(userDetailsContext);
 
+    const isPageDesign = useMatch("/designer/:projectId/:pageId")
+    const isPageDesignEmpty = useMatch("/designer/")
 
     const currentActiveMenu = (e) => {
 
@@ -83,59 +86,63 @@ export default function Navbar() {
             </div>
             <div ref={parentDropDownSlide} className={nvstyle["navbar_menu_bar"]}>
                 <ul className={nvstyle["navbar_menu_level_one"]} onMouseEnter={showSliderBox} onMouseLeave={removeSliderBox}>
-                    <li data-elementid="1" data-dropheight="115" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
-                        <a href='/'>File</a>
-                        <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
-                            <li><a href='/'>Save</a></li>
-                            <li><a href='/'>Publish</a></li>
-                            <li><a href='/'>Delete</a></li>
-                            <li><a href='/'>Exit editor</a></li>
-                        </ul>
-                    </li>
-                    <li data-elementid="2" data-dropheight="86" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
-                        <a href='/'>Settings</a>
-                        <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
-                            <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 3 }) }}>Settings & Meta</a></li>
-                            <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 1 }) }}>Font Manager</a></li>
-                            {/* <li className={nvstyle["pointerHover"]}><a href='/'>Social Links</a></li> */}
-                            <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 2 }) }} >Google Analytics</a></li>
-                        </ul>
-                    </li>
-                    {/* <li data-elementId="3" data-dropheight="57" onMouseEnter={currentActiveMenu}>
-                        <a href='/'>Keyboard Shortcuts</a>
-                        <ul className={nvstyle["navbar_menu_level_two"]}>
-                            <li><a href='/'>Project Link</a></li>
-                            <li><a href='/'>Donate</a></li>
-                        </ul>
-                    </li> */}
-                    <li data-elementid="3" data-dropheight="57" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
+                    {(isPageDesign || isPageDesignEmpty) ? <>
+                        <li data-elementid="1" data-dropheight="115" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
+                            <a href='/'>File</a>
+                            <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
+                                <li><a href='/'>Save</a></li>
+                                <li><a href='/'>Publish</a></li>
+                                <li><a href='/'>Delete</a></li>
+                                <li><a href='/'>Exit editor</a></li>
+                            </ul>
+                        </li>
+                        <li data-elementid="2" data-dropheight="86" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
+                            <a href='/'>Settings</a>
+                            <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
+                                <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 3 }) }}>Settings & Meta</a></li>
+                                <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 1 }) }}>Font Manager</a></li>
+                                {/* <li className={nvstyle["pointerHover"]}><a href='/'>Social Links</a></li> */}
+                                <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 2 }) }} >Google Analytics</a></li>
+                            </ul>
+                        </li>
+
+                        <li data-elementid="3" data-dropheight="57" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
+                            <a href='/'>About</a>
+                            <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
+                                <li><a href='https://github.com/abhibagul/Wix-Clone' target="_blank">Project Link</a></li>
+                                <li><a href='/'>Donate</a></li>
+                            </ul>
+                        </li>
+                    </> : <li data-elementid="1" data-dropheight="57" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
                         <a href='/'>About</a>
                         <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
                             <li><a href='https://github.com/abhibagul/Wix-Clone' target="_blank">Project Link</a></li>
                             <li><a href='/'>Donate</a></li>
                         </ul>
-                    </li>
+                    </li>}
                 </ul>
                 <div ref={dropdownSlide} className={nvstyle["spanning_menu_box"]}>
 
                 </div>
             </div>
-            <div className={nvstyle["user_persistant_actions"]}>
-                <ul className={nvstyle["navbar_menu_level_one"]}>
-                    <li><a onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, pageMode: 1 })} className={nvstyle["btn_responsive"] + " responsive_mobile " + ((pageDesignState.design.pageMode) ? nvstyle["active"] : "")} href='#'><i className="las la-desktop"></i></a></li>
-                    <li><a onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, pageMode: 0 })} className={nvstyle["btn_responsive"] + " responsive_pc " + ((!pageDesignState.design.pageMode) ? nvstyle["active"] : "")} href='#'><i className="las la-mobile"></i></a></li>
-                </ul>
-            </div>
-            <div className={nvstyle["user_persistant_actions"]}>
-                <ul className={nvstyle["navbar_menu_level_one"]}>
-                    <li><a className={nvstyle["highlight_btn_light"]} href='/'>Save</a></li>
-                    <li><a className={nvstyle["highlight_btn"]} href='/'>Publish</a></li>
-                </ul>
-            </div>
+            {(isPageDesign || isPageDesignEmpty) && <>
+                <div className={nvstyle["user_persistant_actions"]}>
+                    <ul className={nvstyle["navbar_menu_level_one"]}>
+                        <li><a onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, pageMode: 1 })} className={nvstyle["btn_responsive"] + " responsive_mobile " + ((pageDesignState.design.pageMode) ? nvstyle["active"] : "")} href='#'><i className="las la-desktop"></i></a></li>
+                        <li><a onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, pageMode: 0 })} className={nvstyle["btn_responsive"] + " responsive_pc " + ((!pageDesignState.design.pageMode) ? nvstyle["active"] : "")} href='#'><i className="las la-mobile"></i></a></li>
+                    </ul>
+                </div>
+                <div className={nvstyle["user_persistant_actions"]}>
+                    <ul className={nvstyle["navbar_menu_level_one"]}>
+                        <li><a className={nvstyle["highlight_btn_light"]} href='/'>Save</a></li>
+                        <li><a className={nvstyle["highlight_btn"]} href='/'>Publish</a></li>
+                    </ul>
+                </div>
+            </>}
             <div className={nvstyle["navbar_user_details"]}>
                 <ul className={nvstyle["navbar_user_details"]}>
                     <li>
-                        <a href='/' className={nvstyle["navbar_user_profile"]}>A</a>
+                        <a href='/' className={nvstyle["navbar_user_profile"]}>{UserDetailsState.user.user.charAt(0).toUpperCase()}</a>
                         <ul>
                             <li><a href='/'>My Profile</a></li>
                             <li><a href='/'>My Projects</a></li>

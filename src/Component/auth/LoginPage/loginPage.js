@@ -17,7 +17,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (token) {
-            navigate('/designer');
+            navigate('/my-websites');
         }
     }, [])
 

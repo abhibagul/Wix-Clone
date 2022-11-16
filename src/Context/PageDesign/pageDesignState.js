@@ -1,12 +1,12 @@
-import { useEffect } from "react";
 import { useState, useRef } from "react";
-import { pageDesignContext } from "../contexts";
+import { pageDesignContext } from "../contexts"
 
 const PageDesignState = (props) => {
+
     const InitialDeisgnState = {
         projectId: null,
         projectDetils: {
-            projectAuthor: null
+            projectAuthor: ""
         },
         websiteSetting: {
             siteName: "My Website",
@@ -503,7 +503,6 @@ const PageDesignState = (props) => {
     }
 
 
-
     const dropPosition = useRef(0)
     const nodeLevel = useRef(null)
 
@@ -511,6 +510,7 @@ const PageDesignState = (props) => {
 
     const [design, setDesign] = useState(InitialDeisgnState);
     const [actElLayer, setELLayer] = useState("0,");
+
 
     // useEffect(() => {
     //     console.log(design, 'from state update');

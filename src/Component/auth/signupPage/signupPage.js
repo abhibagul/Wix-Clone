@@ -58,7 +58,7 @@ export default function SignupPage() {
             }).then(response => {
                 const { token } = response.data;
                 setToken(token);
-                navigate('/designer');
+                navigate('/my-websites');
             }).catch(error => {
                 console.error(error);
                 _errs.push("Something went wrong, Try recreating the account");

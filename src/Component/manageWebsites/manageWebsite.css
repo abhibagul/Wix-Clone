@@ -1,0 +1,88 @@
+.manage-web-container {
+    height: 100vh;
+    overflow: auto;
+}
+
+.welcome-back-msg {
+    display: flex;
+    align-items: center;
+    padding: 30px 20px;
+    background: #fff;
+}
+
+.welcome-back-msg h1 {
+    flex-grow: 1;
+    font-size: 20px;
+}
+
+.welcome-back-msg button {
+    flex-shrink: 0;
+    margin-right: 10px;
+    background: #0d6efd;
+    border: none;
+    color: #fff;
+    padding: 15px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .1), -3px -3px 5px rgba(0, 0, 0, .1);
+}
+
+.main_webpage {
+    background: #f7f7f7;
+    min-height: 100vh;
+}
+
+.manage-web-container {
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.manage-web-container aside {
+    flex-shrink: 0;
+    min-width: 300px;
+    background: rgb(19, 23, 32);
+    color: #fff;
+    box-shadow: 3px 0px rgba(0, 0, 0, .2);
+    overflow: auto;
+    height: 100vh;
+}
+
+.manage-web-container main {
+    flex-grow: 1;
+    overflow: auto;
+    height: 100vh;
+}
+
+.welcomeLeft {
+    flex-grow: 1;
+}
+
+.welcomeLeft h1 {
+    margin: 0px;
+}
+
+.welcomeLeft p {
+    margin: 0px;
+    font-size: 14px;
+}
+
+.flex-row-welcome {
+    display: flex;
+    width: 100%
+}
+
+.row-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.light-title-user-project {
+    padding: 10px;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, .7)
+}
+
+.projectoption {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, .05), -4px -4px 10px rgba(0, 0, 0, .05);
+}
