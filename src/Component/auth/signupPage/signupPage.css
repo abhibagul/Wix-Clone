@@ -1,0 +1,98 @@
+.create_account_page form {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.create_account_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.create_account_page form h1 {
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 20px;
+}
+
+.create_account_page form input {
+    width: 100%;
+    padding: 10px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    font-size: 12px;
+    margin: 7px 0px;
+}
+
+.create_account_page form label b {
+    color: #222;
+}
+
+.create_account_page form label {
+    font-size: 12px;
+}
+
+.create_account_container p {
+    color: #555;
+    text-align: center;
+    font-size: 12px;
+}
+
+.create_account_container p:first-of-type {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 10px;
+
+}
+
+.create_account_container button {
+    margin-top: 10px;
+    display: inline-block;
+    border-radius: 40px;
+    margin-left: auto;
+    outline: 0;
+    border: 0;
+    padding: 10px 0px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 100%;
+    background: transparent;
+    color: #0d6efd;
+    border: 1px solid #0d6efd;
+    transition: .2s all ease-in-out;
+}
+
+.create_account_page form input:focus {
+    outline: none;
+    border: 1px solid #0d6efd;
+    box-shadow: 2px 2px 4px #0d6efd30, -2px -2px 4px #0d6efd30;
+}
+
+.create_account_container button:hover {
+    background: #0d6efd;
+    ;
+    color: #fff;
+}
+
+.create_account_container a {
+    color: #0d6efd;
+}
+
+.errorsPanel {
+    font-size: 12px;
+}
+
+.errorsPanel ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+    background: #f8d7da;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #dc3545;
+}

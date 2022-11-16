@@ -1,12 +1,16 @@
 import React, { useRef, useContext } from 'react'
 import nvstyle from './navbar.module.css';
 import { pageDesignContext } from '../../Context/contexts';
-
+import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
+
+    const navigate = useNavigate();
+
     const parentDropDownSlide = useRef(null);
     const dropdownSlide = useRef(null);
 
-    const pageDesignState = useContext(pageDesignContext)
+    const pageDesignState = useContext(pageDesignContext);
+
 
     const currentActiveMenu = (e) => {
 
@@ -107,7 +111,7 @@ export default function Navbar() {
                     <li data-elementid="3" data-dropheight="57" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
                         <a href='/'>About</a>
                         <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
-                            <li><a href='/'>Project Link</a></li>
+                            <li><a href='https://github.com/abhibagul/Wix-Clone' target="_blank">Project Link</a></li>
                             <li><a href='/'>Donate</a></li>
                         </ul>
                     </li>
@@ -135,6 +139,7 @@ export default function Navbar() {
                         <ul>
                             <li><a href='/'>My Profile</a></li>
                             <li><a href='/'>My Projects</a></li>
+                            <li><a onClick={() => { localStorage.removeItem('token'); navigate("/") }}>Logout</a></li>
                         </ul>
                     </li>
                 </ul>

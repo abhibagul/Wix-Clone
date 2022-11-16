@@ -4,6 +4,10 @@ import { pageDesignContext } from "../contexts";
 
 const PageDesignState = (props) => {
     const InitialDeisgnState = {
+        projectId: null,
+        projectDetils: {
+            projectAuthor: null
+        },
         websiteSetting: {
             siteName: "My Website",
             favIco: "https://reactjs.org/favicon.ico",
