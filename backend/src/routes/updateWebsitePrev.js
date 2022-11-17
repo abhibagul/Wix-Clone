@@ -41,7 +41,6 @@ export const saveWebPrev = {
                     { returnOriginal: false }
                 );
 
-                console.log(result)
 
                 res.status(200).json({ message: "Image updated" })
 

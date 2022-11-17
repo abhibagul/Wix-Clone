@@ -16,7 +16,7 @@ export default function WebsiteSettings(props) {
             <div className="outerLayoutHeader websettinghead">
                 <div className='layoutCreatorHeader'>
                     <div className='layoutCreatorTitle'>
-                        Website Settings
+                        Page Settings
                     </div>
                     <div className='layoutCreatorAction'>
                         <button onClick={props.closeWin}><i className="las la-times"></i></button>
@@ -25,9 +25,9 @@ export default function WebsiteSettings(props) {
             </div>
             <div className='webSettingPanel'>
                 <div className="webSettingInner">
-                    <div className={(pageDesignState.design.published) ? "websiteUnpublish" : "websitePublished"}>
-                        <span> Website is {(pageDesignState.design.published) ? "Live" : "unpublished"} </span>
-                        <button onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, published: !pageDesignState.design.published })} className={(pageDesignState.design.published) ? "unpublish" : ""}>{(pageDesignState.design.published) ? "Unpublish" : "Publish"}</button>
+                    <div className={(pageDesignState.webDesignState.published) ? "websiteUnpublish" : "websitePublished"}>
+                        <span> Website is {(pageDesignState.webDesignState.published) ? "Live" : "unpublished"} </span>
+                        <button onClick={() => pageDesignState.setDesign({ ...pageDesignState.webDesignState, published: !pageDesignState.webDesignState.published })} className={(pageDesignState.webDesignState.published) ? "unpublish" : ""}>{(pageDesignState.webDesignState.published) ? "Unpublish" : "Publish"}</button>
                     </div>
 
                     <div className='websiteSettingsPanelInner'>
@@ -57,11 +57,11 @@ export default function WebsiteSettings(props) {
                             </div>
                         </div>
                         <div className='inputWebSet'>
-                            <h5>Website Name</h5>
+                            <h5>Page Name</h5>
                             <input type="text" onChange={(e) => pageDesignState.setDesign({ ...pageDesignState.design, websiteSetting: { ...pageDesignState.design.websiteSetting, siteName: e.target.value } })} value={pageDesignState.design.websiteSetting.siteName}></input>
                         </div>
                         <div className='inputWebSet'>
-                            <h5>Webpage Description</h5>
+                            <h5>Page Description</h5>
                             <input type="text" onChange={(e) => pageDesignState.setDesign({ ...pageDesignState.design, websiteSetting: { ...pageDesignState.design.websiteSetting, desc: e.target.value } })} value={pageDesignState.design.websiteSetting.desc}></input>
                         </div>
 

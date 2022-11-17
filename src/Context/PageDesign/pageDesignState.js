@@ -6,6 +6,8 @@ import axios from 'axios'
 import { userDetailsContext } from "../contexts";
 import * as htmlToImage from 'html-to-image';
 
+// import { useNavigate } from "react-router-dom";
+
 const PageDesignState = (props) => {
 
     const InitialDeisgnState = {
@@ -505,6 +507,8 @@ const PageDesignState = (props) => {
         }]
     }
 
+    // const navigate = useNavigate();
+
     const UserDetailsState = useContext(userDetailsContext);
 
 
@@ -541,7 +545,8 @@ const PageDesignState = (props) => {
         try {
             let __design_data = { ...design };
             delete __design_data['_id'];
-            __design_data.pageMode = 1;
+            __design_data.settigMode = -1;
+            console.log(__design_data)
 
             await axios.post('/api/save-webpage/', {
                 id: UserDetailsState.user._id,
@@ -563,9 +568,37 @@ const PageDesignState = (props) => {
         }
     }
 
+    const removeWebPage = async () => {
+        try {
+
+            await axios.post('/api/remove-webpage/', {
+                id: UserDetailsState.user._id,
+                pageId: UserDetailsState.editorState.pageId,
+                webId: UserDetailsState.editorState.websiteId
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
+            }).then(response => {
+                // console.log('got data', response);
+                alert("Deleted.")
+                console.log(response);
+                UserDetailsState.setEditorState({ ...UserDetailsState.editorState, pageId: response.data.pageId });
+                // navigate(`/designer/${UserDetailsState.editorState.websiteId}/${response.data.pageID}/`)
+
+            }).catch(err => {
+                alert("Can not delete the webpage")
+            })
+
+        } catch (e) {
+            console.log(e);
+            alert("Unable to delete the webpage try again!");
+        }
+    }
+
     const getWebPageImageAndSavePage = async () => {
         try {
-            await htmlToImage.toJpeg(document.querySelector('[data-prevpanel]'), { quality: 0.95, canvasWidth: 280, canvasHeight: 205, backgroundColor: '#ffffff' })
+            let sizes = document.querySelector('[data-prevpanel]').getBoundingClientRect();
+
+            await htmlToImage.toJpeg(document.querySelector('[data-prevpanel]'), { quality: 0.95, width: sizes.width, height: (205 / 280) * sizes.width, canvasWidth: 280, canvasHeight: 205, backgroundColor: '#ffffff' })
                 .then(function (dataUrl) {
                     //console.log(dataUrl);
                     saveWebPage(200, dataUrl)
@@ -583,7 +616,7 @@ const PageDesignState = (props) => {
     // }, [design])
 
     return (
-        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, nodeLevel, activeElemLayer, actElLayer, setELLayer, webDesignState, setWebDesignState, getWebPageImageAndSavePage }}>
+        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, nodeLevel, activeElemLayer, actElLayer, setELLayer, webDesignState, setWebDesignState, getWebPageImageAndSavePage, removeWebPage }}>
             {props.children}
         </pageDesignContext.Provider>
     )

@@ -21,10 +21,10 @@ export const newPage = {
             pageName: pageName,
             projectAuthor: id,
             websiteSetting: {
-                siteName: "My Website",
+                siteName: pageName,
                 favIco: "https://reactjs.org/favicon.ico",
                 socialImage: "",
-                desc: "Description for the webpage"
+                desc: "This is a " + pageName
             },
             published: false,
             pageMode: 1,
@@ -71,6 +71,7 @@ export const newPage = {
                 const { insertedId: pageId } = result;
 
 
+
                 const website = await db.collection("websites").findOneAndUpdate(
                     {
                         "_id": ObjectId(webId)
@@ -78,6 +79,7 @@ export const newPage = {
                     { $push: { pages: { pageId, pageName } } },
                     { returnOriginal: false }
                 );
+
 
 
                 res.status(200).json({ message: "WebPage created", pageId, webId })

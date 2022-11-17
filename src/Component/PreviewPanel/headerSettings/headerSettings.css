@@ -9,7 +9,7 @@
 
 .hederPositionSettingInner .headerPosOps {
     display: grid;
-    justify-content: space-between;
+    justify-content: flex-start;
     grid-template-columns: repeat(auto-fit, 120px);
     gap: 10px;
 }

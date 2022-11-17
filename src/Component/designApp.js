@@ -12,11 +12,18 @@ import { useUser } from './auth/useUser';
 import { useToken } from './auth/useToken'
 import axios from 'axios'
 
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { useParams } from 'react-router-dom';
 
 function DesignApp() {
 
     const __webpageParams = useParams();
+
+    const LocsParam = useLocation();
+
+
+    const navigate = useNavigate();
 
     let pageDesignState = useContext(pageDesignContext);
     let UserDetailsState = useContext(userDetailsContext);
@@ -54,43 +61,53 @@ function DesignApp() {
     const { id } = user;
 
     useEffect(() => {
-        setPageState();
-        // console.log(__webpageParams, UserDetailsState.user)
         UserDetailsState.setEditorState({ ...UserDetailsState.editorState, ...__webpageParams });
-
     }, [])
 
     useEffect(() => {
         if (UserDetailsState.editorState.pageId !== __webpageParams.pageId || UserDetailsState.editorState.websiteId !== __webpageParams.websiteId) {
             UserDetailsState.setEditorState({ ...UserDetailsState.editorState, ...__webpageParams });
-            setPageState();
         }
-        // setPageState();
     }, [__webpageParams])
 
-    const setPageState = async () => {
-        try {
+    useEffect(() => {
+        if (UserDetailsState.editorState.websiteId && UserDetailsState.editorState.pageId) setPageState(UserDetailsState.editorState.pageId, UserDetailsState.editorState.websiteId);
+    }, [UserDetailsState.editorState.websiteId, UserDetailsState.editorState.pageId])
 
+    const setPageState = async (pid, wid) => {
+        let _pid = pid;
+        let _wid = wid;
+        try {
+            console.log('setting page for', pid, wid)
             await axios.post('/api/getWebPage/', {
                 id,
-                pageId: __webpageParams.pageId,
-                websiteId: __webpageParams.websiteId
+                pageId: _pid,
+                websiteId: _wid
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(response => {
                 // console.log('got data', response);
+                if (response.data.result) {
+                    pageDesignState.setDesign(response.data.result)
+                    pageDesignState.setWebDesignState(response.data.webResult)
 
-                pageDesignState.setDesign(response.data.result)
-                pageDesignState.setWebDesignState(response.data.webResult)
+                } else {
+                    navigate("/my-websites")
+                }
+
+
             }).catch(err => {
-
+                navigate("/my-websites")
             })
 
         } catch (err) {
-
+            console.log(err);
+            // navigate("/my-websites")
         }
 
     }
+
+
 
     return (
         <div className={AppStyles["app"]}>

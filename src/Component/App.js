@@ -4,7 +4,11 @@ import SignupPage from './auth/signupPage/signupPage';
 import ManageWebsites from './manageWebsites/manageWebsites';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { PrivateRoute } from './auth/privateRoute';
+import { useContext } from 'react';
+import { userDetailsContext } from '../Context/contexts';
 function App() {
+  let UserDetailsState = useContext(userDetailsContext);
+
   return (
     <Router>
       <Routes>
@@ -18,7 +22,7 @@ function App() {
           <Route path="/designer/" element={<Navigate to="/my-websites" />}></Route>
         </Route>
         <Route path="/designer/:websiteId/" element={<PrivateRoute />}>
-          <Route path="/designer/:websiteId/" element={<DesignApp />}></Route>
+          <Route path="/designer/:websiteId/" element={<Navigate to="/my-websites" />}></Route>
         </Route>
         <Route path="/designer/:websiteId/:pageId" element={<PrivateRoute />}>
           <Route path="/designer/:websiteId/:pageId" element={<DesignApp />}></Route>

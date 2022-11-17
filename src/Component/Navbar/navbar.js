@@ -107,14 +107,16 @@ export default function Navbar() {
 
 
                     <>
-                        <button className='selectPage' onClick={() => { selectPageList.current.classList.toggle("show"); }}><i class="las la-angle-down"></i></button>
+                        <button className='selectPage' onClick={() => { selectPageList.current.classList.toggle("show"); }}><i className="las la-angle-down"></i></button>
                         <div ref={selectPageList} className='subPagesList'>
                             <ul className='selectPage'>
                                 <div className='inList'>
                                     {
                                         // console.log(pageDesignState.webDesignState.pages)
-                                        (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e) => {
-                                            return <li className={(UserDetailsState.editorState.pageId === e.pageId) ? "active" : ""}><Link className='pageOption' to={`/designer/${UserDetailsState.editorState.websiteId}/${e.pageId}/`} data-page-id={e.pageId}>{e.pageName}</Link></li>
+                                        (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e, i) => {
+                                            return (<li key={i} className={(UserDetailsState.editorState.pageId === e.pageId) ? "active menuPagesList" : "menuPagesList"}>
+                                                <Link className='pageOption' to={`/designer/${UserDetailsState.editorState.websiteId}/${e.pageId}/`} data-page-id={e.pageId}>{e.pageName}</Link>
+                                            </li>)
 
                                         })
                                     }
@@ -136,7 +138,7 @@ export default function Navbar() {
                                 <li><a onClick={createNewPage}>New Page</a></li>
                                 <li><a onClick={pageDesignState.getWebPageImageAndSavePage}>Save</a></li>
                                 <li><a href='/'>Publish</a></li>
-                                <li><a href='/'>Delete</a></li>
+                                {(pageDesignState.webDesignState.pages && pageDesignState.webDesignState.pages.length > 1) && <li><a onClick={pageDesignState.removeWebPage}>Delete</a></li>}
                                 <li><Link to='/my-websites'>Exit editor</Link></li>
                             </ul>
                         </li>

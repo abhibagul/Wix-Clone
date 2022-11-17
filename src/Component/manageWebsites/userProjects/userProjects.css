@@ -92,3 +92,31 @@
     cursor: pointer;
     box-shadow: 3px 3px 5px rgb(0 0 0 / 10%), -3px -3px 5px rgb(0 0 0 / 10%);
 }
+
+.projectoption:hover .projimgshowcase:before {
+    background: rgba(0, 0, 0, .1);
+}
+
+.projimgshowcase:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: .2s all ease-in-out;
+}
+
+.projimgshowcase {
+    position: relative;
+}
+
+.projectoption {
+    transition: .2s all ease-in-out;
+}
+
+.projectoption:hover {
+    transform: translateY(-5px);
+}

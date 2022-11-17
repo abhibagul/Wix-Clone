@@ -102,3 +102,27 @@ span.pageSelectorSpan {
     /* Standard syntax */
     cursor: pointer;
 }
+
+
+.subPagesList ul li.menuPagesList {
+    display: flex;
+}
+
+.subPagesList ul li a {
+    flex-grow: 1;
+}
+
+.subPagesList ul li button {
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: red;
+    background: #cccccc60;
+    cursor: pointer;
+}
+
+.subPagesList ul li.active button {
+    background: red;
+    color: white;
+
+}

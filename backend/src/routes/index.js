@@ -6,6 +6,7 @@ import { getWebPage } from "./getWebsitePage.js";
 import { saveWebPage } from "./saveWebpage.js";
 import { saveWebPrev } from "./updateWebsitePrev.js";
 import { newPage } from "./newPage.js";
+import { removeWebPage } from "./removePage.js";
 export const routes = [
     signUpRoute,
     loginRoute,
@@ -14,5 +15,6 @@ export const routes = [
     getWebPage,
     saveWebPage,
     saveWebPrev,
-    newPage
+    newPage,
+    removeWebPage
 ]

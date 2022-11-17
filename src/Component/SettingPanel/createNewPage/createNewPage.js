@@ -6,12 +6,14 @@ import { userDetailsContext } from '../../../Context/contexts';
 import { useNavigate } from 'react-router-dom';
 import { useToken } from '../../auth/useToken';
 import { useEffect } from 'react';
+import { pageDesignContext } from '../../../Context/contexts';
 
 export default function CreateNewPage(props) {
 
     let UserDetailsState = useContext(userDetailsContext);
+    let pageDesignState = useContext(pageDesignContext);
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     let [pageName, setPageName] = useState("About")
     let [pageUri, setNewPageUri] = useState("about")
@@ -27,12 +29,15 @@ export default function CreateNewPage(props) {
         let _pageUri = pageUri.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 
         if (pageName.length < 5) {
-            alert("Page name has to be at least 5 characters")
+            alert("Page name has to be at least 5 characters");
+            return;
         }
 
         if (_pageUri.length < 5) {
             alert("Page Uri has to be at least 5 characters")
+            return;
         }
+
 
         try {
             let _pageUri = pageUri.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
@@ -40,14 +45,20 @@ export default function CreateNewPage(props) {
                 id: UserDetailsState.user._id,
                 webId: UserDetailsState.editorState.websiteId,
                 pageName,
-                _pageUri
+                pageUri: _pageUri
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(response => {
                 // console.log('got data', response);
                 UserDetailsState.setEditorState({ ...UserDetailsState.editorState, pageId: response.data.pageId })
+                navigate(`/designer/${UserDetailsState.editorState.websiteId}/${response.data.pageId}/`, {
+                    state: {
+                        websiteId: UserDetailsState.editorState.websiteId,
+                        pageId: response.data.pageId
+                    }
+                });
+                console.log(response.data);
                 props.closeWin();
-                navigate(`/designer/${response.data.webId}/${response.data.pageId}/`)
 
             }).catch(err => {
                 console.log(err);
