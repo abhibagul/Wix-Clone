@@ -5,7 +5,7 @@ import CreateRowsLayout from './createRowsLayout/createRowsLayout';
 import FontManager from './fontManager/fontManager';
 import GoogleAnalytics from './googleAnalytics/googleAnalytics';
 import WebsiteSettings from './websiteSetting/websiteSetting';
-
+import CreateNewPage from './createNewPage/createNewPage';
 import './settingPanel.css';
 export default function SettingPanel() {
 
@@ -46,6 +46,13 @@ export default function SettingPanel() {
                          * case 3
                          */
                         (pageDesignState.design.settigMode === 3) && <WebsiteSettings closeWin={closeSettingPanel} />
+                    }
+
+                    {
+                        /**
+                         * case 4
+                         */
+                        (pageDesignState.design.settigMode === 4) && <CreateNewPage closeWin={closeSettingPanel} />
                     }
 
                     {/* <button onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, settigMode: -1 })}>Close</button> */}

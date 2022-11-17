@@ -85,38 +85,55 @@ export default function Navbar() {
         dropdownSlide.current.style.scale = 1
     }
 
+    const createNewPage = () => {
+        pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 4 })
+    }
+
 
 
     return (
         <nav className={nvstyle["navbar"]}>
             <div className={nvstyle["navbar_header_logo"]}>
                 WebPage Builder
+            </div>
+            {(isPageDesign && pageDesignState.webDesignState.pages && (pageDesignState.webDesignState.pages.length > 0)) &&
+                <div className={nvstyle["navbar_header_logo"]}>
+                    <span className='pageSelectorSpan' onClick={() => { selectPageList.current.classList.toggle("show"); }}>{
+                        // console.log(pageDesignState.webDesignState.pages)
+                        (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e) => {
+                            return (UserDetailsState.editorState.pageId === e.pageId) ? e.pageName : ""
+                        })
+                    }</span>
 
-                {(isPageDesign && pageDesignState.webDesignState.pages && (pageDesignState.webDesignState.pages.length > 0)) &&
+
                     <>
                         <button className='selectPage' onClick={() => { selectPageList.current.classList.toggle("show"); }}><i class="las la-angle-down"></i></button>
                         <div ref={selectPageList} className='subPagesList'>
                             <ul className='selectPage'>
-                                {
-                                    // console.log(pageDesignState.webDesignState.pages)
-                                    (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e) => {
-                                        return <li className={(UserDetailsState.user.pageId === e.pageId) ? "active" : ""}><Link className='pageOption' to={`/designer/${UserDetailsState.editorState.websiteId}/${e.pageId}/`} data-page-id={e.pageId}>{e.pageName}</Link></li>
+                                <div className='inList'>
+                                    {
+                                        // console.log(pageDesignState.webDesignState.pages)
+                                        (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e) => {
+                                            return <li className={(UserDetailsState.editorState.pageId === e.pageId) ? "active" : ""}><Link className='pageOption' to={`/designer/${UserDetailsState.editorState.websiteId}/${e.pageId}/`} data-page-id={e.pageId}>{e.pageName}</Link></li>
 
-                                    })
-                                }
+                                        })
+                                    }
+                                </div>
                                 <hr />
-                                <button>+ Create New Page</button>
+                                <button onClick={createNewPage}>+ Create New Page</button>
                             </ul>
                         </div>
                     </>
-                }
-            </div>
+
+                </div>
+            }
             <div ref={parentDropDownSlide} className={nvstyle["navbar_menu_bar"]}>
                 <ul className={nvstyle["navbar_menu_level_one"]} onMouseEnter={showSliderBox} onMouseLeave={removeSliderBox}>
                     {(isPageDesign || isPageDesignEmpty) ? <>
                         <li data-elementid="1" data-dropheight="115" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
-                            <a href='/'>File</a>
+                            <a href='#'>File</a>
                             <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
+                                <li><a onClick={createNewPage}>New Page</a></li>
                                 <li><a onClick={pageDesignState.getWebPageImageAndSavePage}>Save</a></li>
                                 <li><a href='/'>Publish</a></li>
                                 <li><a href='/'>Delete</a></li>
@@ -124,7 +141,7 @@ export default function Navbar() {
                             </ul>
                         </li>
                         <li data-elementid="2" data-dropheight="86" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
-                            <a href='/'>Settings</a>
+                            <a href='#'>Settings</a>
                             <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
                                 <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 3 }) }}>Settings & Meta</a></li>
                                 <li className={nvstyle["pointerHover"]}><a onClick={() => { pageDesignState.setDesign({ ...pageDesignState.design, settigMode: 1 }) }}>Font Manager</a></li>

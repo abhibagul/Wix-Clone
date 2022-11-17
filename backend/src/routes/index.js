@@ -5,6 +5,7 @@ import { getUserProject } from "./getUserProjects.js";
 import { getWebPage } from "./getWebsitePage.js";
 import { saveWebPage } from "./saveWebpage.js";
 import { saveWebPrev } from "./updateWebsitePrev.js";
+import { newPage } from "./newPage.js";
 export const routes = [
     signUpRoute,
     loginRoute,
@@ -12,5 +13,6 @@ export const routes = [
     getUserProject,
     getWebPage,
     saveWebPage,
-    saveWebPrev
+    saveWebPrev,
+    newPage
 ]

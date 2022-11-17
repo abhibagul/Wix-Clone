@@ -55,14 +55,16 @@ function DesignApp() {
 
     useEffect(() => {
         setPageState();
-        console.log(__webpageParams, UserDetailsState.user)
+        // console.log(__webpageParams, UserDetailsState.user)
         UserDetailsState.setEditorState({ ...UserDetailsState.editorState, ...__webpageParams });
 
     }, [])
 
     useEffect(() => {
-        UserDetailsState.setEditorState({ ...UserDetailsState.editorState, ...__webpageParams });
-
+        if (UserDetailsState.editorState.pageId !== __webpageParams.pageId || UserDetailsState.editorState.websiteId !== __webpageParams.websiteId) {
+            UserDetailsState.setEditorState({ ...UserDetailsState.editorState, ...__webpageParams });
+            setPageState();
+        }
         // setPageState();
     }, [__webpageParams])
 

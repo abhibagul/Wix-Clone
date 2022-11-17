@@ -103,6 +103,7 @@
     text-decoration: none;
     font-size: 13px;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .navbar ul ul li:last-of-type a {

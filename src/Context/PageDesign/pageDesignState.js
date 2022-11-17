@@ -524,7 +524,7 @@ const PageDesignState = (props) => {
 
 
     const saveWebPage = async (status, ImgUri) => {
-        if (status === 200) {
+        if (status === 200 && design.elements.length > 0) {
             setWebDesignState({ ...webDesignState, prevImgUri: ImgUri });
             //update the website setting
             await axios.post('/api/save-webprev/', {
@@ -541,6 +541,7 @@ const PageDesignState = (props) => {
         try {
             let __design_data = { ...design };
             delete __design_data['_id'];
+            __design_data.pageMode = 1;
 
             await axios.post('/api/save-webpage/', {
                 id: UserDetailsState.user._id,

@@ -4,7 +4,7 @@ import GoogleFontLoader from 'react-google-font-loader';
 export default function FontLoader(props) {
 
     useEffect(() => {
-        console.log(props.fontList);
+        // console.log(props.fontList);
     }, [props.fontList])
 
     return (

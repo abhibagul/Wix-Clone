@@ -16,13 +16,13 @@ const UserDetailsState = (props) => {
     const [user, setUserDeatils] = useState(initialUserDetails)
     const [editorState, setEditorState] = useState({})
 
-    useEffect(() => {
-        console.log("effect on", user);
-    }, [user])
+    // useEffect(() => {
+    //     console.log("effect on", user);
+    // }, [user])
 
-    useEffect(() => {
-        console.log("effect on editor", editorState);
-    }, [editorState])
+    // useEffect(() => {
+    //     console.log("effect on editor", editorState);
+    // }, [editorState])
 
     return (
         <userDetailsContext.Provider value={{ user, setUserDeatils, editorState, setEditorState }}>
