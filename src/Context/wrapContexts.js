@@ -5,13 +5,13 @@ import DragElemsState from './DragElems/dragElemsState';
 export default function wrapContexts(props) {
     return (
         <>
-            <PageDesignState>
-                <UserDetailsState>
+            <UserDetailsState>
+                <PageDesignState>
                     <DragElemsState>
                         {props.children}
                     </DragElemsState>
-                </UserDetailsState>
-            </PageDesignState>
+                </PageDesignState>
+            </UserDetailsState>
         </>
     )
 }

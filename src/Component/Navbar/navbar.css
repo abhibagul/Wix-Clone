@@ -1,0 +1,76 @@
+.subPagesList {
+    position: absolute;
+    z-index: 899;
+    background: #fff;
+    padding: 10px 0px;
+    left: 0px;
+    top: 40px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+    display: none;
+}
+
+.subPagesList.show {
+    display: block;
+}
+
+.subPagesList ul {
+    list-style-type: none;
+    display: block;
+    min-width: 185px;
+
+}
+
+.subPagesList ul>li,
+.subPagesList ul>button {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.subPagesList ul>hr {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.selectPage {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.subPagesList ul>button {
+    background-color: #cfe2ff;
+    border-radius: 40px;
+    color: #116dff;
+    border: none;
+    padding: 8px 10px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.subPagesList ul>li {
+    font-size: 12px;
+    padding: 5px 20px;
+}
+
+.subPagesList ul>li:hover {
+    background-color: #cfe2ff;
+
+}
+
+
+.subPagesList ul a {
+    text-decoration: none;
+    color: #000;
+}
+
+.subPagesList ul li.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.subPagesList ul li.active a {
+    color: #fff;
+}

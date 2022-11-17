@@ -1,19 +1,25 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useEffect } from 'react'
 import nvstyle from './navbar.module.css';
+import './navbar.css'
 import { pageDesignContext, userDetailsContext } from '../../Context/contexts';
-import { useNavigate, useMatch } from 'react-router-dom';
+import { useNavigate, useMatch, Link } from 'react-router-dom';
 export default function Navbar() {
 
     const navigate = useNavigate();
 
     const parentDropDownSlide = useRef(null);
     const dropdownSlide = useRef(null);
+    const selectPageList = useRef(null);
 
     const pageDesignState = useContext(pageDesignContext);
     const UserDetailsState = useContext(userDetailsContext);
 
     const isPageDesign = useMatch("/designer/:projectId/:pageId")
-    const isPageDesignEmpty = useMatch("/designer/")
+    const isPageDesignEmpty = useMatch("/designer/:projectId/:pageId")
+
+    useEffect(() => {
+
+    }, [pageDesignState.webDesignState])
 
     const currentActiveMenu = (e) => {
 
@@ -79,10 +85,31 @@ export default function Navbar() {
         dropdownSlide.current.style.scale = 1
     }
 
+
+
     return (
         <nav className={nvstyle["navbar"]}>
             <div className={nvstyle["navbar_header_logo"]}>
                 WebPage Builder
+
+                {(isPageDesign && pageDesignState.webDesignState.pages && (pageDesignState.webDesignState.pages.length > 0)) &&
+                    <>
+                        <button className='selectPage' onClick={() => { selectPageList.current.classList.toggle("show"); }}><i class="las la-angle-down"></i></button>
+                        <div ref={selectPageList} className='subPagesList'>
+                            <ul className='selectPage'>
+                                {
+                                    // console.log(pageDesignState.webDesignState.pages)
+                                    (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e) => {
+                                        return <li className={(UserDetailsState.user.pageId === e.pageId) ? "active" : ""}><Link className='pageOption' to={`/designer/${UserDetailsState.editorState.websiteId}/${e.pageId}/`} data-page-id={e.pageId}>{e.pageName}</Link></li>
+
+                                    })
+                                }
+                                <hr />
+                                <button>+ Create New Page</button>
+                            </ul>
+                        </div>
+                    </>
+                }
             </div>
             <div ref={parentDropDownSlide} className={nvstyle["navbar_menu_bar"]}>
                 <ul className={nvstyle["navbar_menu_level_one"]} onMouseEnter={showSliderBox} onMouseLeave={removeSliderBox}>
@@ -90,10 +117,10 @@ export default function Navbar() {
                         <li data-elementid="1" data-dropheight="115" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
                             <a href='/'>File</a>
                             <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
-                                <li><a href='/'>Save</a></li>
+                                <li><a onClick={pageDesignState.getWebPageImageAndSavePage}>Save</a></li>
                                 <li><a href='/'>Publish</a></li>
                                 <li><a href='/'>Delete</a></li>
-                                <li><a href='/'>Exit editor</a></li>
+                                <li><Link to='/my-websites'>Exit editor</Link></li>
                             </ul>
                         </li>
                         <li data-elementid="2" data-dropheight="86" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
@@ -134,7 +161,7 @@ export default function Navbar() {
                 </div>
                 <div className={nvstyle["user_persistant_actions"]}>
                     <ul className={nvstyle["navbar_menu_level_one"]}>
-                        <li><a className={nvstyle["highlight_btn_light"]} href='/'>Save</a></li>
+                        <li><a className={nvstyle["highlight_btn_light"]} onClick={pageDesignState.getWebPageImageAndSavePage}>Save</a></li>
                         <li><a className={nvstyle["highlight_btn"]} href='/'>Publish</a></li>
                     </ul>
                 </div>
@@ -145,7 +172,7 @@ export default function Navbar() {
                         <a href='/' className={nvstyle["navbar_user_profile"]}>{UserDetailsState.user.user.charAt(0).toUpperCase()}</a>
                         <ul>
                             <li><a href='/'>My Profile</a></li>
-                            <li><a href='/'>My Projects</a></li>
+                            <li><Link to='/my-websites'>My Websites</Link></li>
                             <li><a onClick={() => { localStorage.removeItem('token'); navigate("/") }}>Logout</a></li>
                         </ul>
                     </li>

@@ -27,9 +27,7 @@ export const createWebsite = {
             projectId: null,
             pageUri: "/index",
             pageName: "Home",
-            projectDetils: {
-                projectAuthor: id
-            },
+            projectAuthor: id,
             websiteSetting: {
                 siteName: "My Website",
                 favIco: "https://reactjs.org/favicon.ico",
@@ -81,7 +79,7 @@ export const createWebsite = {
                 const { insertedId: pageId } = result;
 
                 let newWebsite = getNewWebsite(req.body);
-                newWebsite.pages = [pageId];
+                newWebsite.pages = [{ pageName: "Home", pageId }];
 
                 const website = await db.collection("websites").insertOne(newWebsite);
 

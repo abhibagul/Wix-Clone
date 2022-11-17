@@ -40,7 +40,7 @@ export default function ManageWebsites() {
                         <div className='projects_showcase'>
                             <div className="row-container">
                                 <div className='light-title-user-project'>My sites</div>
-                                <UserProjects />
+                                <UserProjects createNewWeb={() => setMPr({ ...mPr, showNewWebsite: true })} />
                             </div>
                         </div>
                     </div >

@@ -1,15 +1,25 @@
-// import { useContext } from 'react';
+import { useEffect, useContext, useRef, useState } from 'react';
 // import { pageDesignContext, userDetailsContext } from '../Context/contexts';
 import AppStyles from './designApp.module.css';
 import Navbar from './Navbar/navbar';
 import Sidecolumn from './Sidecolumn/sidecolumn';
 import PreviewPanel from './PreviewPanel/previewPanel';
 import SettingPanel from './SettingPanel/settingPanel';
+import { userDetailsContext } from '../Context/contexts';
+import { pageDesignContext } from '../Context/contexts';
 
-import { useRef, useState } from 'react';
+import { useUser } from './auth/useUser';
+import { useToken } from './auth/useToken'
+import axios from 'axios'
+
+import { useParams } from 'react-router-dom';
+
 function DesignApp() {
 
+    const __webpageParams = useParams();
 
+    let pageDesignState = useContext(pageDesignContext);
+    let UserDetailsState = useContext(userDetailsContext);
 
     const resizer = useRef({ currentWidth: "300px", isDragStarted: false });
 
@@ -34,6 +44,50 @@ function DesignApp() {
                 dockl.style.top = (dockSize.y - parentPosition.y) + "px";
             }
         }
+    }
+
+
+
+    const user = useUser();
+    const [token,] = useToken();
+
+    const { id } = user;
+
+    useEffect(() => {
+        setPageState();
+        console.log(__webpageParams, UserDetailsState.user)
+        UserDetailsState.setEditorState({ ...UserDetailsState.editorState, ...__webpageParams });
+
+    }, [])
+
+    useEffect(() => {
+        UserDetailsState.setEditorState({ ...UserDetailsState.editorState, ...__webpageParams });
+
+        // setPageState();
+    }, [__webpageParams])
+
+    const setPageState = async () => {
+        try {
+
+            await axios.post('/api/getWebPage/', {
+                id,
+                pageId: __webpageParams.pageId,
+                websiteId: __webpageParams.websiteId
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
+            }).then(response => {
+                // console.log('got data', response);
+
+                pageDesignState.setDesign(response.data.result)
+                pageDesignState.setWebDesignState(response.data.webResult)
+            }).catch(err => {
+
+            })
+
+        } catch (err) {
+
+        }
+
     }
 
     return (

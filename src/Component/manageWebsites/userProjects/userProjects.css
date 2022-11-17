@@ -1,5 +1,5 @@
 .projectoption {
-    width: 300px;
+    width: 280px;
     display: flex;
     background: white;
     justify-content: center;
@@ -24,7 +24,7 @@
 .project-showcase {
     display: grid;
     justify-content: flex-start;
-    grid-template-columns: repeat(auto-fit, 330px);
+    grid-template-columns: repeat(auto-fit, 300px);
 }
 
 .projects_case_container {
@@ -72,4 +72,23 @@
 .projStatus {
     padding: 2px 7px;
     margin-left: 5px;
+}
+
+.createFirstProject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.createFirstProject button {
+    flex-shrink: 0;
+    margin-right: 10px;
+    background: #0d6efd;
+    border: none;
+    color: #fff;
+    padding: 15px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgb(0 0 0 / 10%), -3px -3px 5px rgb(0 0 0 / 10%);
 }

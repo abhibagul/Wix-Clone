@@ -1,13 +1,16 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { pageDesignContext } from "../contexts"
+import { useUser } from "../../Component/auth/useUser";
+import { useToken } from "../../Component/auth/useToken";
+import axios from 'axios'
+import { userDetailsContext } from "../contexts";
+import * as htmlToImage from 'html-to-image';
 
 const PageDesignState = (props) => {
 
     const InitialDeisgnState = {
         projectId: null,
-        projectDetils: {
-            projectAuthor: ""
-        },
+        projectAuthor: "",
         websiteSetting: {
             siteName: "My Website",
             favIco: "https://reactjs.org/favicon.ico",
@@ -502,6 +505,8 @@ const PageDesignState = (props) => {
         }]
     }
 
+    const UserDetailsState = useContext(userDetailsContext);
+
 
     const dropPosition = useRef(0)
     const nodeLevel = useRef(null)
@@ -510,14 +515,74 @@ const PageDesignState = (props) => {
 
     const [design, setDesign] = useState(InitialDeisgnState);
     const [actElLayer, setELLayer] = useState("0,");
+    const [webDesignState, setWebDesignState] = useState({});
 
+    // const user = useUser();
+    const [token,] = useToken();
+
+    // const { id } = user;
+
+
+    const saveWebPage = async (status, ImgUri) => {
+        if (status === 200) {
+            setWebDesignState({ ...webDesignState, prevImgUri: ImgUri });
+            //update the website setting
+            await axios.post('/api/save-webprev/', {
+                id: UserDetailsState.user._id,
+                websiteId: UserDetailsState.editorState.websiteId,
+                imageUri: "" + ImgUri
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+        }
+
+        //go for regular saving of page
+        console.log(UserDetailsState);
+        try {
+            let __design_data = { ...design };
+            delete __design_data['_id'];
+
+            await axios.post('/api/save-webpage/', {
+                id: UserDetailsState.user._id,
+                pageId: UserDetailsState.editorState.pageId,
+                pageJso: __design_data
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
+            }).then(response => {
+                // console.log('got data', response);
+                alert("Saved.")
+
+            }).catch(err => {
+                alert("Can not save the webpage")
+            })
+
+        } catch (e) {
+            console.log(e);
+            alert("Unable to save the webpage try again!");
+        }
+    }
+
+    const getWebPageImageAndSavePage = async () => {
+        try {
+            await htmlToImage.toJpeg(document.querySelector('[data-prevpanel]'), { quality: 0.95, canvasWidth: 280, canvasHeight: 205, backgroundColor: '#ffffff' })
+                .then(function (dataUrl) {
+                    //console.log(dataUrl);
+                    saveWebPage(200, dataUrl)
+                }).catch(err => {
+                    saveWebPage(500, "")
+                })
+        } catch (e) {
+            console.log(e);
+            alert("Unable to save the webpage! Try again!");
+        }
+    }
 
     // useEffect(() => {
     //     console.log(design, 'from state update');
     // }, [design])
 
     return (
-        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, nodeLevel, activeElemLayer, actElLayer, setELLayer }}>
+        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, nodeLevel, activeElemLayer, actElLayer, setELLayer, webDesignState, setWebDesignState, getWebPageImageAndSavePage }}>
             {props.children}
         </pageDesignContext.Provider>
     )

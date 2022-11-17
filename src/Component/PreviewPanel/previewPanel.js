@@ -21,6 +21,7 @@ import NavigationSettings from './navigationSettings/navigationSettings'
 import HeaderSettings from './headerSettings/headerSettings'
 import GetNodeData from './getNodeData/getNodeData'
 
+
 /** Google font loader */
 import FontLoader from './fontLoader/fontLoader'
 
@@ -28,7 +29,6 @@ import FontLoader from './fontLoader/fontLoader'
 import parse from 'html-react-parser';
 import { useState } from 'react'
 import { useEffect } from 'react'
-
 
 
 export default function PreviewPanel() {
@@ -55,6 +55,9 @@ export default function PreviewPanel() {
 
     let [rCount, setRCount] = useState({ refreshCount: 0 })
 
+
+
+
     useEffect(() => {
         //refresh helper
         // //console.log(rCount.refreshCount);
@@ -75,6 +78,10 @@ export default function PreviewPanel() {
             width: "100%"
         }
     }
+
+
+
+
     const enableNewAdding = (e) => {
         ////console.log("enableNewAdding : 44");
         // //////console.log(e.target.classList.value.indexOf("temp_elem"), e.target.classList.value.indexOf("temp_infocus"));

@@ -69,28 +69,37 @@ export default function UserProjects(props) {
                         Loading failed try again
                     </div>
                 }
-                {(userProj.userProject.length > 0) && <div className="project-showcase">
+                {(userProj.userProject.length > 0) ?
+                    <div className="project-showcase">
 
-                    {
-                        userProj.userProject.map((e, i) => {
-                            return (
-                                <div key={i} className="projectoption">
-                                    <Link to={`/designer/${e._id}/${e.pages[0]}`}>
-                                        <div className='projimgshowcase'>
-                                            <img src={(e.prevImgUri) ? e.prevImgUri : "/assets/images/elements/html/dummyImage.jpg"} />
-                                        </div>
-                                        <div className='projectDetails'>
-                                            <div className='projTitle'>{e.websiteName}</div>
-                                            <div className='projDets'>{e.pages.length} page(s) &nbsp;&nbsp;| <div className='projStatus' >{(e.published) ? "Live" : "Unpublished"}</div>
+                        {
+                            userProj.userProject.map((e, i) => {
+                                return (
+                                    <div key={i} className="projectoption">
+                                        <Link to={`/designer/${e._id}/${e.pages[0].pageId}/`}>
+                                            <div className='projimgshowcase'>
+                                                <img src={(e.prevImgUri) ? e.prevImgUri : "/assets/images/elements/html/dummyImage.jpg"} />
                                             </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            )
-                        })
-                    }
+                                            <div className='projectDetails'>
+                                                <div className='projTitle'>{e.websiteName}</div>
+                                                <div className='projDets'>{e.pages.length} page(s) &nbsp;&nbsp;| <div className='projStatus' >{(e.published) ? "Live" : "Unpublished"}</div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                )
+                            })
+                        }
 
-                </div>}
+                    </div>
+                    :
+                    <>
+                        <div className='createFirstProject'>
+                            <h4>Let's get started with your first website</h4>
+                            <button onClick={props.createNewWeb}>Create my first website!</button>
+                        </div>
+                    </>
+                }
 
             </div>
 

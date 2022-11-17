@@ -38,7 +38,7 @@ export default function CreateNewWebsite(props) {
                 props.closeModal();
 
                 //in future directly take the user to the editor
-                navigate(`/designer/${response.data.webId}/${response.data.pageId}`)
+                navigate(`/designer/${response.data.webId}/${response.data.pageId}/`)
 
             }).catch(err => {
                 console.log(err);

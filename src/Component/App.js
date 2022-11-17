@@ -2,7 +2,7 @@ import DesignApp from './designApp';
 import LoginPage from './auth/LoginPage/loginPage';
 import SignupPage from './auth/signupPage/signupPage';
 import ManageWebsites from './manageWebsites/manageWebsites';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { PrivateRoute } from './auth/privateRoute';
 function App() {
   return (
@@ -15,7 +15,10 @@ function App() {
           <Route path="/my-websites" element={<ManageWebsites />}></Route>
         </Route>
         <Route path="/designer" element={<PrivateRoute />}>
-          <Route path="/designer/" element={<DesignApp />}></Route>
+          <Route path="/designer/" element={<Navigate to="/my-websites" />}></Route>
+        </Route>
+        <Route path="/designer/:websiteId/" element={<PrivateRoute />}>
+          <Route path="/designer/:websiteId/" element={<DesignApp />}></Route>
         </Route>
         <Route path="/designer/:websiteId/:pageId" element={<PrivateRoute />}>
           <Route path="/designer/:websiteId/:pageId" element={<DesignApp />}></Route>
