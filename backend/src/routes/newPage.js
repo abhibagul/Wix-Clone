@@ -16,7 +16,7 @@ export const newPage = {
 
         //initial index page
         const indexPage = {
-            projectId: null,
+            projectId: webId,
             pageUri: "/" + pageUri,
             pageName: pageName,
             projectAuthor: id,
@@ -65,6 +65,14 @@ export const newPage = {
                 }
 
                 const db = getDbConnection(process.env.API_DB_NAME);
+
+                //check if page exists on the sam uri
+                const pagebyURi = await db.collection("web-pages").find({ projectAuthor: id, projectId: webId, pageUri: '/' + pageUri }).count();
+
+                if (pagebyURi > 0) {
+                    return res.status(409).json({ message: "Page on same uri already exist" });
+                }
+
                 const result = await db.collection("web-pages").insertOne(indexPage);
 
                 //now add above page to the new website project

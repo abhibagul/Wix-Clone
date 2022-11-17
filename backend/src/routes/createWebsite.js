@@ -1,7 +1,7 @@
 import { getDbConnection } from '../db.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-
+import { ObjectId } from 'mongodb';
 export const createWebsite = {
     path: '/api/create-website/:id',
     method: 'put',
@@ -24,7 +24,7 @@ export const createWebsite = {
 
         //initial index page
         const indexPage = {
-            projectId: null,
+            projectId: "",
             pageUri: "/index",
             pageName: "Home",
             projectAuthor: id,
@@ -84,6 +84,21 @@ export const createWebsite = {
                 const website = await db.collection("websites").insertOne(newWebsite);
 
                 const { insertedId: webId } = website;
+
+                //update back the project id to the inserted
+                let updateWebId = await db.collection("web-pages").update(
+                    {
+                        "_id": pageId,
+                        projectAuthor: id
+                    },
+                    {
+                        $set: { projectId: webId.toString() }
+                    }
+                );
+
+
+
+                // console.log(updateWebId, pageId, webId, checkdata, webId.toString())
 
                 res.status(200).json({ message: "Website created", pageId, webId })
 

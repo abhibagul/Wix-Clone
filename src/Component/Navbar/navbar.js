@@ -133,12 +133,12 @@ export default function Navbar() {
                 <ul className={nvstyle["navbar_menu_level_one"]} onMouseEnter={showSliderBox} onMouseLeave={removeSliderBox}>
                     {(isPageDesign || isPageDesignEmpty) ? <>
                         <li data-elementid="1" data-dropheight="115" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
-                            <a href='#'>File</a>
+                            <a href='#'>WebPage</a>
                             <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
                                 <li><a onClick={createNewPage}>New Page</a></li>
-                                <li><a onClick={pageDesignState.getWebPageImageAndSavePage}>Save</a></li>
-                                <li><a href='/'>Publish</a></li>
-                                {(pageDesignState.webDesignState.pages && pageDesignState.webDesignState.pages.length > 1) && <li><a onClick={pageDesignState.removeWebPage}>Delete</a></li>}
+                                <li><a onClick={pageDesignState.getWebPageImageAndSavePage}>Save Page</a></li>
+                                <li><a href='/'>Publish Page</a></li>
+                                {(pageDesignState.webDesignState.pages && pageDesignState.webDesignState.pages.length > 1) && <li><a onClick={pageDesignState.removeWebPage}>Delete Page</a></li>}
                                 <li><Link to='/my-websites'>Exit editor</Link></li>
                             </ul>
                         </li>
