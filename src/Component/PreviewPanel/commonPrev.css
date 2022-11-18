@@ -19,15 +19,15 @@ body {
     /* background-color: #f7f7f7; */
 }
 
-.temp_elem:hover {
+div[data-prevpanel] .temp_elem:hover {
     outline: 1px dashed #116dff;
 }
 
-.wd-row *:hover {
+div[data-prevpanel] .wd-row *:hover {
     outline: 1px dashed #116dff;
 }
 
-.wd-row:hover {
+div[data-prevpanel] .wd-row:hover {
     outline: 1px dashed #116dff;
 }
 

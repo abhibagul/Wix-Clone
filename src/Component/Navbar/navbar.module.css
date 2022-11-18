@@ -180,6 +180,14 @@
     background-color: #cfe2ff;
     border-radius: 40px;
     color: #116dff;
+    cursor: pointer;
+}
+
+.highlight_btn_light_prev {
+    border-radius: 40px;
+    color: #116dff;
+    border: 1px solid #116dff;
+    margin-right: 10px;
 }
 
 .navbar_menu_level_one>li:hover>a.highlight_btn_light {

@@ -180,8 +180,9 @@ export default function Navbar() {
                 </div>
                 <div className={nvstyle["user_persistant_actions"]}>
                     <ul className={nvstyle["navbar_menu_level_one"]}>
-                        <li><a className={nvstyle["highlight_btn_light"]} onClick={pageDesignState.getWebPageImageAndSavePage}>Save</a></li>
-                        <li><a className={nvstyle["highlight_btn"]} href='/'>Publish</a></li>
+                        <li><a className={nvstyle["highlight_btn_light_prev"]} href={`/preview/${UserDetailsState.editorState.websiteId}/${UserDetailsState.editorState.pageId}/`} target="_blank">Preview</a></li>
+                        <li><a className={nvstyle["highlight_btn_light"]} onClick={pageDesignState.getWebPageImageAndSavePage}>{(!pageDesignState.design.published) ? "Save" : "Update"}</a></li>
+                        <li><a className={nvstyle["highlight_btn"]} href='/'>{(!pageDesignState.design.published) ? "Publish" : "UnPublish"}</a></li>
                     </ul>
                 </div>
             </>}

@@ -78,7 +78,7 @@ function DesignApp() {
         let _pid = pid;
         let _wid = wid;
         try {
-            console.log('setting page for', pid, wid)
+            // console.log('setting page for', pid, wid)
             await axios.post('/api/getWebPage/', {
                 id,
                 pageId: _pid,

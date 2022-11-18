@@ -22,6 +22,7 @@
     "react-lodash": "^0.1.2",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "react-style-tag": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

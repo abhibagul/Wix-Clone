@@ -1,0 +1,8 @@
+.webPagePrev {
+    overflow: auto;
+    height: 100vh;
+}
+
+.web_page_preview {
+    position: relative;
+}

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { PrivateRoute } from './auth/privateRoute';
 import { useContext } from 'react';
 import { userDetailsContext } from '../Context/contexts';
+import PreviewPage from './previewPage/previewPage';
 function App() {
   let UserDetailsState = useContext(userDetailsContext);
 
@@ -26,6 +27,15 @@ function App() {
         </Route>
         <Route path="/designer/:websiteId/:pageId" element={<PrivateRoute />}>
           <Route path="/designer/:websiteId/:pageId" element={<DesignApp />}></Route>
+        </Route>
+        <Route path="/preview/" element={<PrivateRoute />}>
+          <Route path="/preview/" element={<DesignApp />}></Route>
+        </Route>
+        <Route path="/preview/:websiteId/" element={<PrivateRoute />}>
+          <Route path="/preview/:websiteId/" element={<DesignApp />}></Route>
+        </Route>
+        <Route path="/preview/:websiteId/:pageId" element={<PrivateRoute />}>
+          <Route path="/preview/:websiteId/:pageId" element={<PreviewPage />}></Route>
         </Route>
         <Route path="/login" element={<LoginPage />} exact></Route>
         <Route path="/signup" element={<SignupPage />} exact></Route>

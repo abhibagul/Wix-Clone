@@ -31,12 +31,17 @@ export const getWebPage = {
                     return res.status(403).json({ message: "Does not have privilage to modify page" });
                 }
 
-                const db = getDbConnection(process.env.API_DB_NAME);
+                try {
 
-                const result = await db.collection("web-pages").findOne({ "_id": ObjectId(pageId) });
-                const webResult = await db.collection("websites").findOne({ "_id": ObjectId(websiteId) });
+                    const db = getDbConnection(process.env.API_DB_NAME);
 
-                res.status(200).json({ message: "WebPage Fetched", result, webResult })
+                    const result = await db.collection("web-pages").findOne({ "_id": ObjectId(pageId) });
+                    const webResult = await db.collection("websites").findOne({ "_id": ObjectId(websiteId) });
+
+                    res.status(200).json({ message: "WebPage Fetched", result, webResult })
+                } catch (e) {
+                    res.status(500).json({ message: "Something went wrong" })
+                }
 
             }
         )
