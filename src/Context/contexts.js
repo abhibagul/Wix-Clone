@@ -15,4 +15,9 @@ export const userDetailsContext = createContext();
  */
 export const dragElemsContext = createContext();
 
+/**
+ * WebCSS
+ */
+export const cssSheetPreview = createContext();
+
 

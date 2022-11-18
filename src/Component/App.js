@@ -4,6 +4,8 @@ import SignupPage from './auth/signupPage/signupPage';
 import ManageWebsites from './manageWebsites/manageWebsites';
 import PreviewPage from './previewPage/previewPage';
 import WebPage from './web/webPage';
+import Homepage from './Homepage/homepage';
+import NotFound from './NotFound/notFound'
 
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { PrivateRoute } from './auth/privateRoute';
@@ -15,7 +17,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<h1>Homepage</h1>} exact>
+        <Route path="/" element={<Homepage />} exact>
 
         </Route>
         <Route path="/web/:websiteId/:pageUri" element={<WebPage />} exact>
@@ -44,6 +46,7 @@ function App() {
         </Route>
         <Route path="/login" element={<LoginPage />} exact></Route>
         <Route path="/signup" element={<SignupPage />} exact></Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

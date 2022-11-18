@@ -5,6 +5,7 @@ import { useToken } from "../../Component/auth/useToken";
 import axios from 'axios'
 import { userDetailsContext } from "../contexts";
 import * as htmlToImage from 'html-to-image';
+import { useEffect } from "react";
 
 // import { useNavigate } from "react-router-dom";
 
@@ -528,7 +529,12 @@ const PageDesignState = (props) => {
     // const { id } = user;
 
 
+
+
     const saveWebPage = async (status, ImgUri, type) => {
+
+        console.log(UserDetailsState)
+
         if (status === 200 && design.elements.length > 0) {
             setWebDesignState({ ...webDesignState, prevImgUri: ImgUri });
             //update the website setting

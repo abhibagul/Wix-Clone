@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { useUser } from '../auth/useUser';
 import { useToken } from '../auth/useToken';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import FontLoader from '../PreviewPanel/fontLoader/fontLoader';
-import { Style } from 'react-style-tag';
+import SetStyle from '../previewPage/setStyle';
+import { cssSheetPreview } from '../../Context/contexts';
+
 import '../previewPage/previewPage.css'
 export default function WebPage() {
 
-    const user = useUser();
-    const [token,] = useToken();
     const __webpageParams = useParams();
 
     const pageStyle = useRef([`html,body{border: 0;padding: 0;margin: 0;outline: 0;}`]);
     const scrollPosition = useRef(0);
+    let cssSheetPreviewState = useContext(cssSheetPreview)
 
     const [prevPage, setPrevPage] = useState({
         loaded: false,
@@ -54,7 +55,7 @@ export default function WebPage() {
                 pageUri: __webpageParams.pageUri,
                 websiteId: __webpageParams.websiteId
             }, {
-                headers: { Authorization: `Bearer ${token}` }
+
             }).then(response => {
                 // console.log('got data', response);
                 if (response.data.result) {
@@ -222,9 +223,12 @@ export default function WebPage() {
                         <FontLoader fontList={prevPage.page.fonts} />
                         {
                             prevPage.page.elements.map((e, i) => {
-
+                                if (prevPage.page.elements.length == (i + 1)) {
+                                    cssSheetPreviewState.setCssSheet(pageStyle.current.join("\n"))
+                                }
 
                                 return (
+
 
                                     <GenerateHTMLComp key={i} datapath={i + ','} element={e} />
 
@@ -240,8 +244,7 @@ export default function WebPage() {
             }
 
         </div>
-        {(pageStyle.current.length > 1) && <style>{pageStyle.current.join(" ")}</style>}
-        {/* {pageStyle.current = []} */}
+        <SetStyle />
     </>
     )
 }

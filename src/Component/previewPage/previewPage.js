@@ -1,17 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { useUser } from '../auth/useUser';
 import { useToken } from '../auth/useToken';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import FontLoader from '../PreviewPanel/fontLoader/fontLoader';
-import { Style } from 'react-style-tag';
+import SetStyle from './setStyle';
+import { cssSheetPreview } from '../../Context/contexts';
+
 import './previewPage.css'
 export default function PreviewPage() {
 
     const user = useUser();
     const [token,] = useToken();
     const __webpageParams = useParams();
+    let cssSheetPreviewState = useContext(cssSheetPreview)
+
 
     const pageStyle = useRef([`html,body{border: 0;padding: 0;margin: 0;outline: 0;}`]);
     const scrollPosition = useRef(0);
@@ -24,13 +28,18 @@ export default function PreviewPage() {
 
 
 
+
     useEffect(() => {
         getCurrentScollPosition();
 
         bindScrollingListners();
     }, [prevPage])
 
+
+
     useEffect(() => {
+
+        console.log("mounted");
 
         getPagePrev();
 
@@ -45,7 +54,9 @@ export default function PreviewPage() {
 
     }, []);
 
-
+    // useEffect(() => {
+    //     console.log(css);
+    // }, [css])
 
     const getPagePrev = async () => {
         try {
@@ -227,6 +238,9 @@ export default function PreviewPage() {
                         {
                             prevPage.page.elements.map((e, i) => {
 
+                                if (prevPage.page.elements.length == (i + 1)) {
+                                    cssSheetPreviewState.setCssSheet(pageStyle.current.join("\n"))
+                                }
 
                                 return (
 
@@ -234,6 +248,8 @@ export default function PreviewPage() {
 
                                 );
                             })
+
+
                         }
                     </div>
                 </>
@@ -244,8 +260,8 @@ export default function PreviewPage() {
             }
 
         </div>
-        {(pageStyle.current.length > 1) && <style>{pageStyle.current.join(" ")}</style>}
-        {/* {pageStyle.current = []} */}
+        <SetStyle />
+
     </>
     )
 }

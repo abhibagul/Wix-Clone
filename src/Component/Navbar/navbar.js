@@ -173,7 +173,7 @@ export default function Navbar() {
             </div>
             {(isPageDesign || isPageDesignEmpty) && <>
                 <div className='user-web-link'>
-                    <span>{`http://wixclone.com/web/${pageDesignState.webDesignState._id}${pageDesignState.design.pageUri}`}</span>
+                    <span>{`http://${window.location.hostname}/web/${pageDesignState.webDesignState._id}${pageDesignState.design.pageUri}`}</span>
                     <a className='external-open' target="_blank" href={(!pageDesignState.design.published) ? `/preview/${UserDetailsState.editorState.websiteId}/${UserDetailsState.editorState.pageId}/` : `/web/${pageDesignState.webDesignState._id}${pageDesignState.design.pageUri}`}><i className="las la-external-link-alt"></i></a>
                 </div>
                 <div className={nvstyle["user_persistant_actions"]}>
@@ -195,7 +195,10 @@ export default function Navbar() {
                     <li>
                         <a href='/' className={nvstyle["navbar_user_profile"]}>{UserDetailsState.user.user.charAt(0).toUpperCase()}</a>
                         <ul>
-                            <li><a href='/'>My Profile</a></li>
+                            {
+                            /** 
+                            /* Will do that sometime else
+                            <li><a href='/'>My Profile</a></li> */}
                             <li><Link to='/my-websites'>My Websites</Link></li>
                             <li><a onClick={() => { localStorage.removeItem('token'); navigate("/") }}>Logout</a></li>
                         </ul>
