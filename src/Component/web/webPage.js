@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import FontLoader from '../PreviewPanel/fontLoader/fontLoader';
 import { Style } from 'react-style-tag';
-import './previewPage.css'
-export default function PreviewPage() {
+import '../previewPage/previewPage.css'
+export default function WebPage() {
 
     const user = useUser();
     const [token,] = useToken();
@@ -50,9 +50,8 @@ export default function PreviewPage() {
     const getPagePrev = async () => {
         try {
 
-            await axios.post('/api/getWebPage/', {
-                id: user.id,
-                pageId: __webpageParams.pageId,
+            await axios.post('/api/PublishPage/', {
+                pageUri: __webpageParams.pageUri,
                 websiteId: __webpageParams.websiteId
             }, {
                 headers: { Authorization: `Bearer ${token}` }
@@ -217,9 +216,6 @@ export default function PreviewPage() {
 
     return (<>
         <div className='webPagePrev'>
-            <div className='preview_panel_bar'>
-                ⚠ This is just a preview of your website, the link will not work for any other user.<br /> Actual link can be opened when page is published.
-            </div>
             {(prevPage.loaded && prevPage.authorized) ?
                 <>
                     <div className='web_page_preview'>

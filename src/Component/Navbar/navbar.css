@@ -126,3 +126,50 @@ span.pageSelectorSpan {
     color: white;
 
 }
+
+.user-web-link {
+    flex-grow: 1;
+}
+
+.user-web-link span {
+    background: #f7f7f7;
+    padding: 5px 20px;
+    font-size: 12px;
+    border-radius: 15px;
+    width: 100%;
+    display: block;
+    padding-left: 30px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.user-web-link span:before {
+    content: "\f57d";
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    font-size: 15px;
+    position: absolute;
+    left: 20px;
+}
+
+a.external-open {
+    position: absolute;
+    right: 16px;
+    top: 6px;
+    font-size: 18px;
+    background: #f7f7f7;
+
+}
+
+.user-web-link {
+    position: relative;
+    max-width: calc(100% - 890px);
+    overflow: hidden;
+
+}
+
+.user-web-link span {
+    padding-right: 50px;
+    overflow: hidden;
+
+}

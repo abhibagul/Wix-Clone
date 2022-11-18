@@ -13,6 +13,7 @@ const PageDesignState = (props) => {
     const InitialDeisgnState = {
         projectId: null,
         projectAuthor: "",
+        pageUri: "",
         websiteSetting: {
             siteName: "My Website",
             favIco: "https://reactjs.org/favicon.ico",
@@ -527,7 +528,7 @@ const PageDesignState = (props) => {
     // const { id } = user;
 
 
-    const saveWebPage = async (status, ImgUri) => {
+    const saveWebPage = async (status, ImgUri, type) => {
         if (status === 200 && design.elements.length > 0) {
             setWebDesignState({ ...webDesignState, prevImgUri: ImgUri });
             //update the website setting
@@ -544,6 +545,10 @@ const PageDesignState = (props) => {
         console.log(UserDetailsState);
         try {
             let __design_data = { ...design };
+            if (type === "publish") {
+                __design_data.published = !design.published;
+                setDesign({ ...design, published: !design.published })
+            }
             delete __design_data['_id'];
             __design_data.settigMode = -1;
             console.log(__design_data)
@@ -594,14 +599,15 @@ const PageDesignState = (props) => {
         }
     }
 
-    const getWebPageImageAndSavePage = async () => {
+    const getWebPageImageAndSavePage = async (type = "save") => {
+
         try {
             let sizes = document.querySelector('[data-prevpanel]').getBoundingClientRect();
 
             await htmlToImage.toJpeg(document.querySelector('[data-prevpanel]'), { quality: 0.95, width: sizes.width, height: (205 / 280) * sizes.width, canvasWidth: 280, canvasHeight: 205, backgroundColor: '#ffffff' })
                 .then(function (dataUrl) {
                     //console.log(dataUrl);
-                    saveWebPage(200, dataUrl)
+                    saveWebPage(200, dataUrl, type)
                 }).catch(err => {
                     saveWebPage(500, "")
                 })
@@ -611,12 +617,22 @@ const PageDesignState = (props) => {
         }
     }
 
+
+    const publishWebPage = async () => {
+
+        if (design.elements.length < 1) {
+            alert("Can not publish blank page. Add elements to publish.");
+            return;
+        }
+        getWebPageImageAndSavePage("publish");
+
+    }
     // useEffect(() => {
     //     console.log(design, 'from state update');
     // }, [design])
 
     return (
-        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, nodeLevel, activeElemLayer, actElLayer, setELLayer, webDesignState, setWebDesignState, getWebPageImageAndSavePage, removeWebPage }}>
+        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, publishWebPage, nodeLevel, activeElemLayer, actElLayer, setELLayer, webDesignState, setWebDesignState, getWebPageImageAndSavePage, removeWebPage }}>
             {props.children}
         </pageDesignContext.Provider>
     )

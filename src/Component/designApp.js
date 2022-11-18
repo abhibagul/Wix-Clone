@@ -5,6 +5,7 @@ import Navbar from './Navbar/navbar';
 import Sidecolumn from './Sidecolumn/sidecolumn';
 import PreviewPanel from './PreviewPanel/previewPanel';
 import SettingPanel from './SettingPanel/settingPanel';
+
 import { userDetailsContext } from '../Context/contexts';
 import { pageDesignContext } from '../Context/contexts';
 

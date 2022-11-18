@@ -2,11 +2,13 @@ import DesignApp from './designApp';
 import LoginPage from './auth/LoginPage/loginPage';
 import SignupPage from './auth/signupPage/signupPage';
 import ManageWebsites from './manageWebsites/manageWebsites';
+import PreviewPage from './previewPage/previewPage';
+import WebPage from './web/webPage';
+
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { PrivateRoute } from './auth/privateRoute';
 import { useContext } from 'react';
 import { userDetailsContext } from '../Context/contexts';
-import PreviewPage from './previewPage/previewPage';
 function App() {
   let UserDetailsState = useContext(userDetailsContext);
 
@@ -14,6 +16,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<h1>Homepage</h1>} exact>
+
+        </Route>
+        <Route path="/web/:websiteId/:pageUri" element={<WebPage />} exact>
 
         </Route>
         <Route path="/my-websites" element={<PrivateRoute />}>

@@ -17,7 +17,7 @@ export const newPage = {
         //initial index page
         const indexPage = {
             projectId: webId,
-            pageUri: "/" + pageUri,
+            pageUri: "/" + pageUri.toLowerCase(),
             pageName: pageName,
             projectAuthor: id,
             websiteSetting: {

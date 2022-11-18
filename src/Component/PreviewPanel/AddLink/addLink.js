@@ -98,12 +98,12 @@ export default function AddLink(props) {
     }
 
     const createScrollHTML = () => {
-        let __url = "javascript:";
+        let __url = "modify:";
 
         if (addLinkState.scrollLink.targetScroll === "top") {
-            __url += "pageFunctionMoveToTop();"
+            __url += "pageFunctionMoveToTop"
         } else {
-            __url += "pageFunctionMoveToBottom();"
+            __url += "pageFunctionMoveToBottom"
         }
         // __url += addLinkState.phoneLink.targetPhone;
 

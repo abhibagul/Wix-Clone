@@ -129,7 +129,7 @@ export default function Navbar() {
 
                 </div>
             }
-            <div ref={parentDropDownSlide} className={nvstyle["navbar_menu_bar"]}>
+            <div ref={parentDropDownSlide} className={(isPageDesign || isPageDesignEmpty) ? nvstyle["navbar_menu_bar"] : nvstyle["navbar_menu_bar"] + " " + nvstyle["expanded"]}>
                 <ul className={nvstyle["navbar_menu_level_one"]} onMouseEnter={showSliderBox} onMouseLeave={removeSliderBox}>
                     {(isPageDesign || isPageDesignEmpty) ? <>
                         <li data-elementid="1" data-dropheight="115" onMouseEnter={currentActiveMenu} onMouseLeave={elementLeaveRemove}>
@@ -137,7 +137,7 @@ export default function Navbar() {
                             <ul className={nvstyle["navbar_menu_level_two"]} onMouseLeave={elementInnerLeaveRemove}>
                                 <li><a onClick={createNewPage}>New Page</a></li>
                                 <li><a onClick={pageDesignState.getWebPageImageAndSavePage}>Save Page</a></li>
-                                <li><a href='/'>Publish Page</a></li>
+                                <li><a onClick={pageDesignState.publishWebPage} >Publish Page</a></li>
                                 {(pageDesignState.webDesignState.pages && pageDesignState.webDesignState.pages.length > 1) && <li><a onClick={pageDesignState.removeWebPage}>Delete Page</a></li>}
                                 <li><Link to='/my-websites'>Exit editor</Link></li>
                             </ul>
@@ -172,6 +172,10 @@ export default function Navbar() {
                 </div>
             </div>
             {(isPageDesign || isPageDesignEmpty) && <>
+                <div className='user-web-link'>
+                    <span>{`http://wixclone.com/web/${pageDesignState.webDesignState._id}${pageDesignState.design.pageUri}`}</span>
+                    <a className='external-open' target="_blank" href={(!pageDesignState.design.published) ? `/preview/${UserDetailsState.editorState.websiteId}/${UserDetailsState.editorState.pageId}/` : `/web/${pageDesignState.webDesignState._id}${pageDesignState.design.pageUri}`}><i className="las la-external-link-alt"></i></a>
+                </div>
                 <div className={nvstyle["user_persistant_actions"]}>
                     <ul className={nvstyle["navbar_menu_level_one"]}>
                         <li><a onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, pageMode: 1 })} className={nvstyle["btn_responsive"] + " responsive_mobile " + ((pageDesignState.design.pageMode) ? nvstyle["active"] : "")} href='#'><i className="las la-desktop"></i></a></li>
@@ -180,9 +184,9 @@ export default function Navbar() {
                 </div>
                 <div className={nvstyle["user_persistant_actions"]}>
                     <ul className={nvstyle["navbar_menu_level_one"]}>
-                        <li><a className={nvstyle["highlight_btn_light_prev"]} href={`/preview/${UserDetailsState.editorState.websiteId}/${UserDetailsState.editorState.pageId}/`} target="_blank">Preview</a></li>
+                        <li><a className={nvstyle["highlight_btn_light_prev"]} href={(!pageDesignState.design.published) ? `/preview/${UserDetailsState.editorState.websiteId}/${UserDetailsState.editorState.pageId}/` : `/web/${pageDesignState.webDesignState._id}${pageDesignState.design.pageUri}`} target="_blank">{(!pageDesignState.design.published) ? "Preview" : "Open"}</a></li>
                         <li><a className={nvstyle["highlight_btn_light"]} onClick={pageDesignState.getWebPageImageAndSavePage}>{(!pageDesignState.design.published) ? "Save" : "Update"}</a></li>
-                        <li><a className={nvstyle["highlight_btn"]} href='/'>{(!pageDesignState.design.published) ? "Publish" : "UnPublish"}</a></li>
+                        <li><a onClick={pageDesignState.publishWebPage} className={nvstyle["highlight_btn"]}>{(!pageDesignState.design.published) ? "Publish" : "UnPublish"}</a></li>
                     </ul>
                 </div>
             </>}

@@ -6,3 +6,14 @@
 .web_page_preview {
     position: relative;
 }
+
+.preview_panel_bar {
+    text-align: center;
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+    background: #ffc107;
+    padding: 10px 0px;
+    font-size: 12px;
+    font-weight: 600;
+}

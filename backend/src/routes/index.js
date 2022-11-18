@@ -7,6 +7,7 @@ import { saveWebPage } from "./saveWebpage.js";
 import { saveWebPrev } from "./updateWebsitePrev.js";
 import { newPage } from "./newPage.js";
 import { removeWebPage } from "./removePage.js";
+import { pubWebPage } from "./pubWebPage.js";
 export const routes = [
     signUpRoute,
     loginRoute,
@@ -16,5 +17,6 @@ export const routes = [
     saveWebPage,
     saveWebPrev,
     newPage,
-    removeWebPage
+    removeWebPage,
+    pubWebPage
 ]

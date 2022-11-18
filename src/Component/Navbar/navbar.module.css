@@ -21,7 +21,6 @@
 
 .navbar_menu_bar {
     align-self: stretch;
-    flex-grow: 1;
 }
 
 .navbar_menu_bar ul {
@@ -35,6 +34,10 @@
 
 .user_persistant_actions>ul {
     display: inline-block;
+}
+
+.expanded {
+    flex-grow: 1
 }
 
 .navbar_menu_level_one>li>a {
@@ -181,6 +184,7 @@
     border-radius: 40px;
     color: #116dff;
     cursor: pointer;
+    border: 1px solid #116dff;
 }
 
 .highlight_btn_light_prev {
@@ -200,6 +204,7 @@
     border-radius: 40px;
     color: #fff;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .navbar_menu_level_one>li:hover>a.highlight_btn {

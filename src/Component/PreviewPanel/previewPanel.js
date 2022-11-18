@@ -196,7 +196,7 @@ export default function PreviewPanel() {
         let e = props.element;
         let formatStyle = { ...e.styles };
         //////console.log(formatStyle);
-        if (formatStyle.hasOwnProperty('animationIterationCount')) formatStyle.animationIterationCount = 1;
+        if (formatStyle.hasOwnProperty('animationIterationCount')) formatStyle.animationIterationCount = 0;
         //////console.log(formatStyle);
         if (formatStyle.hasOwnProperty('position')) formatStyle.position = "relative";
 
