@@ -41,11 +41,10 @@ export default function UserProjects(props) {
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(response => {
-                // console.log('got data', response);
 
                 setUserProj({ ...userProj, loadingProj: false, loadFailed: false, userProject: response.data.result, currentPage: userProj.currentPage + 1 })
             }).catch(err => {
-                console.log('error', err);
+
                 setUserProj({ ...userProj, loadingProj: false, loadFailed: true })
             })
 

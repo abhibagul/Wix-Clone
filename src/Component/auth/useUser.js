@@ -25,7 +25,8 @@ export const useUser = () => {
         } else {
             let __userData = getPayloadFromToken(token);
             setUser(__userData);
-            userDetailsState.setUserDeatils({ ...userDetailsState.user, user: __userData.username, email: __userData.email, _id: __userData.id, id: __userData.id })
+
+            if (userDetailsState) userDetailsState.setUserDeatils({ ...userDetailsState.user, user: __userData.username, email: __userData.email, _id: __userData.id, id: __userData.id })
         }
     }, [token]);
 

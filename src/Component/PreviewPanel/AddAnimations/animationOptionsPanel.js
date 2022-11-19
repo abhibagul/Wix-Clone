@@ -199,12 +199,10 @@ export default function AnimationOptionsPanel(props) {
     // }, [animParam])
 
     const elemAnimUpdate = () => {
-        // console.log(animParam);
         let animAddon = "";
         if (animParam.animDirection.length > 0) {
             animAddon = animParam.animDirection;
         }
-        console.log(animParam.animationName.length, 'alength')
         if (animParam.animationName.length < 1) {
             return;
         }
@@ -250,7 +248,6 @@ export default function AnimationOptionsPanel(props) {
             set(_pageDesign, 'elements[' + _elemNodeLast + '].styles', { ..._el.styles, ..._animStyles })
         }
 
-        console.log(animParam.animationName.length, 'alength has to be true')
         if (animParam.animationName.length > 0) pageDesignState.setDesign(_pageDesign);
 
         props.closePanel();
@@ -262,7 +259,6 @@ export default function AnimationOptionsPanel(props) {
 
 
     const switchMode = () => {
-        // console.log("switch click", panelMode)
         if (panelMode)
             setPanelMode(0)
         else {
@@ -279,14 +275,12 @@ export default function AnimationOptionsPanel(props) {
                         animations.map((el, idx) => {
                             return (<div className='animItem' key={el.itemName} data-animationname={el.animationName} data-animationnum={idx} onClick={(e) => {
                                 //anim name
-                                // console.log(e.target, e.target.closest("[data-animationname]"));
                                 let aniN = (e.target.hasAttribute("data-animationname")) ? e.target.getAttribute("data-animationname") : e.target.closest("[data-animationname]").getAttribute("data-animationname");
 
                                 let subOptions = (e.target.hasAttribute("data-animationnum")) ? e.target.getAttribute("data-animationnum") : e.target.closest("[data-animationnum]").getAttribute("data-animationnum");
 
                                 let animDirection = "";
                                 if (!animations[subOptions].hasDirection) {
-                                    //console.log(animations[subOptions]);
                                     animDirection = animations[subOptions].extraOptions[0].addon;
                                 }
 

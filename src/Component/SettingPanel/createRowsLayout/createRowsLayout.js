@@ -34,7 +34,6 @@ export default function CreateRowsLayout(props) {
             __col_wd.push(__new_col);
         }
 
-        console.log("layout_" + __colStr.join("_") + "_col");
 
         return {
             previmg: imageURI,
@@ -58,7 +57,6 @@ export default function CreateRowsLayout(props) {
         setTimeout(() => {
             htmlToImage.toJpeg(document.getElementById('prevImg'), { quality: 0.2, canvasWidth: 128, canvasHeight: 50, backgroundColor: '#ffffff' })
                 .then(function (dataUrl) {
-                    //console.log(dataUrl);
                     addRowLayout(dataUrl);
                     imageCaptureMode.current.classList.remove("captureImg");
                 }).catch(err => {

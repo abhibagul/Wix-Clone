@@ -116,7 +116,6 @@ export default function RowWidth(props) {
             setPr = { ...setPr, marginSide: parseFloat(node.style.marginLeft) };
         }
 
-        //console.log(node.style.maxWidth)
 
         if (node.style.maxWidth === "100%" || node.style.maxWidth.indexOf("calc") >= 0) {
             setPr = { ...setPr, fullRow: true }
@@ -125,7 +124,6 @@ export default function RowWidth(props) {
             //set current width based of bounding box
         }
 
-        //console.log(rowWidthState, setPr);
         setRowWidthState({ ...rowWidthState, ...setPr });
 
 
@@ -168,7 +166,6 @@ export default function RowWidth(props) {
                         <h5>Side margins:</h5>
                         <div className='anim_slider_input' data-parentslide>
                             <input onChange={(e) => {
-                                // //console.log(rowWidthState)
                                 setRowWidthState({ ...rowWidthState, marginSide: e.target.value })
                                 showPrevWidth();
                             }} type="range" min="0" max="200" step="1" value={rowWidthState.marginSide} className="slider" />
@@ -180,7 +177,6 @@ export default function RowWidth(props) {
                         <h5>Container Max Width:</h5>
                         <div className='anim_slider_input' data-parentslide>
                             <input onChange={(e) => {
-                                // //console.log(rowWidthState)
                                 setRowWidthState({ ...rowWidthState, containerWidth: e.target.value })
                                 showPrevWidth();
                             }} type="range" min="760" max="1400" step="10" value={rowWidthState.containerWidth} className="slider" />

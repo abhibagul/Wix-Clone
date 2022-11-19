@@ -85,73 +85,73 @@ export default function Homepage() {
     .bld_10_{max-width:calc(100% - 0px);margin:0px 0px;padding:5px;min-height:86.3084487915039px;}`
 
     return (
-        <div class="webPagePrev">
+        <div className="webPagePrev">
             <style>{css}
             </style>
-            <div class="web_page_preview">
-                <header class="wd-row bld_0_">
-                    <div class="wd wd-12 bld_0_0_">
-                        <div class="wd-row bld_0_0_0_">
-                            <div class="wd wd-3 bld_0_0_0_0_">
-                                <h1 class=" bld_0_0_0_0_0_">Website Builder</h1>
+            <div className="web_page_preview">
+                <header className="wd-row bld_0_">
+                    <div className="wd wd-12 bld_0_0_">
+                        <div className="wd-row bld_0_0_0_">
+                            <div className="wd wd-3 bld_0_0_0_0_">
+                                <h1 className=" bld_0_0_0_0_0_">Website Builder</h1>
                             </div>
-                            <div class="wd wd-6 bld_0_0_0_1_">
-                                <nav data-navigation-menu="true" class=" bld_0_0_0_1_0_">
-                                    <ul class=" bld_0_0_0_1_0_0_">
-                                        <li class=" bld_0_0_0_1_0_0_0_"><Link to="/" target="_self" class=" bld_0_0_0_1_0_0_0_0_">Home</Link></li>
-                                        <li class=" bld_0_0_0_1_0_0_1_"><a href="https://github.com/abhibagul/" target="_blank" class=" bld_0_0_0_1_0_0_1_0_">My Github</a></li>
+                            <div className="wd wd-6 bld_0_0_0_1_">
+                                <nav data-navigation-menu="true" className=" bld_0_0_0_1_0_">
+                                    <ul className=" bld_0_0_0_1_0_0_">
+                                        <li className=" bld_0_0_0_1_0_0_0_"><Link to="/" target="_self" className=" bld_0_0_0_1_0_0_0_0_">Home</Link></li>
+                                        <li className=" bld_0_0_0_1_0_0_1_"><a href="https://github.com/abhibagul/" target="_blank" className=" bld_0_0_0_1_0_0_1_0_">My Github</a></li>
                                     </ul>
                                 </nav>
                             </div>
-                            <div class="wd wd-3 bld_0_0_0_2_">
-                                <nav data-navigation-menu="true" class=" bld_0_0_0_2_0_">
-                                    <ul class=" bld_0_0_0_2_0_0_">
-                                        <li class=" bld_0_0_0_2_0_0_0_"><Link to="/login" target="_self" class=" bld_0_0_0_2_0_0_0_0_">Login</Link></li>
-                                        <li class=" bld_0_0_0_2_0_0_1_"><Link to="/signup" target="_self" class=" bld_0_0_0_2_0_0_1_0_">Get Started</Link></li>
+                            <div className="wd wd-3 bld_0_0_0_2_">
+                                <nav data-navigation-menu="true" className=" bld_0_0_0_2_0_">
+                                    <ul className=" bld_0_0_0_2_0_0_">
+                                        <li className=" bld_0_0_0_2_0_0_0_"><Link to="/login" target="_self" className=" bld_0_0_0_2_0_0_0_0_">Login</Link></li>
+                                        <li className=" bld_0_0_0_2_0_0_1_"><Link to="/signup" target="_self" className=" bld_0_0_0_2_0_0_1_0_">Get Started</Link></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                     </div>
                 </header>
-                <div class="wd-row bld_1_">
-                    <div class="wd wd-12 bld_1_0_">
-                        <div class="wd-row bld_1_0_0_">
-                            <div class="wd wd-12 bld_1_0_0_0_">
-                                <h1 class=" bld_1_0_0_0_0_">🌍 This is open source Project</h1>
+                <div className="wd-row bld_1_">
+                    <div className="wd wd-12 bld_1_0_">
+                        <div className="wd-row bld_1_0_0_">
+                            <div className="wd wd-12 bld_1_0_0_0_">
+                                <h1 className=" bld_1_0_0_0_0_">🌍 This is open source Project</h1>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="wd-row bld_2_">
-                    <div class="wd wd-12 bld_2_0_">
-                        <div class="wd-row bld_2_0_0_">
-                            <div class="wd wd-12 bld_2_0_0_0_">
-                                <h1 class=" bld_2_0_0_0_0_">
+                <div className="wd-row bld_2_">
+                    <div className="wd wd-12 bld_2_0_">
+                        <div className="wd-row bld_2_0_0_">
+                            <div className="wd wd-12 bld_2_0_0_0_">
+                                <h1 className=" bld_2_0_0_0_0_">
                                     Build More than a
                                     <div>Website..</div>
                                 </h1>
-                                <p class=" bld_2_0_0_0_1_">Design your website as the way you want it&nbsp;
+                                <p className=" bld_2_0_0_0_1_">Design your website as the way you want it&nbsp;
                                     <div>
                                         with just some clicks here some clicks there...&nbsp;
                                         <div>and within blink you will have the&nbsp;</div>
                                         <div>website as you imagined!</div>
                                     </div>
-                                </p><Link class=" bld_2_0_0_0_2_" to="/signup">Get started</Link>
+                                </p><Link className=" bld_2_0_0_0_2_" to="/signup">Get started</Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="wd-row bld_3_">
-                    <div class="wd wd-12 bld_3_0_">
-                        <div class="wd-row bld_3_0_0_">
-                            <div class="wd wd-6 bld_3_0_0_0_"><img src="https://images.pexels.com/photos/5137664/pexels-photo-5137664.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="Long exposure of small vibrant Sun in light blue pink sky over mountain range and cliffs next to coast of endless wavy ocean in evening at dawn by Sami Anas" height="auto" width="80%" class="bld_3_0_0_0_0_ animate" data-has-animation="true" /></div>
-                            <div class="wd wd-6 bld_3_0_0_1_">
-                                <h1 class=" bld_3_0_0_1_0_">
+                <div className="wd-row bld_3_">
+                    <div className="wd wd-12 bld_3_0_">
+                        <div className="wd-row bld_3_0_0_">
+                            <div className="wd wd-6 bld_3_0_0_0_"><img src="https://images.pexels.com/photos/5137664/pexels-photo-5137664.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="Long exposure of small vibrant Sun in light blue pink sky over mountain range and cliffs next to coast of endless wavy ocean in evening at dawn by Sami Anas" height="auto" width="80%" className="bld_3_0_0_0_0_ animate" data-has-animation="true" /></div>
+                            <div className="wd wd-6 bld_3_0_0_1_">
+                                <h1 className=" bld_3_0_0_1_0_">
                                     From the animations,
                                     <div>It has everything!</div>
                                 </h1>
-                                <p class=" bld_3_0_0_1_1_">It is as easy as clicking on the magic wand and selecting the effect!
+                                <p className=" bld_3_0_0_1_1_">It is as easy as clicking on the magic wand and selecting the effect!
                                     <div><br /></div>
                                     <div>There are tonns of effects and customizations waiting!</div>
                                 </p>
@@ -159,76 +159,76 @@ export default function Homepage() {
                         </div>
                     </div>
                 </div>
-                <div class="wd-row bld_4_">
-                    <div class="wd wd-12 bld_4_0_">
-                        <div class="wd-row bld_4_0_0_">
-                            <div class="wd wd-4 bld_4_0_0_0_">
-                                <img src="https://images.pexels.com/photos/192273/pexels-photo-192273.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="White Turned on Samsung Android Smartphone by Lisa Fotios" height="auto" width="90%" class=" bld_4_0_0_0_0_" />
-                                <h1 class=" bld_4_0_0_0_1_">Has Pexels images integration</h1>
-                                <p class=" bld_4_0_0_0_2_">Stop wasting time on finding the perfect royalty free image, the image search feature allows you to find the perfect image match for you!</p>
+                <div className="wd-row bld_4_">
+                    <div className="wd wd-12 bld_4_0_">
+                        <div className="wd-row bld_4_0_0_">
+                            <div className="wd wd-4 bld_4_0_0_0_">
+                                <img src="https://images.pexels.com/photos/192273/pexels-photo-192273.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="White Turned on Samsung Android Smartphone by Lisa Fotios" height="auto" width="90%" className=" bld_4_0_0_0_0_" />
+                                <h1 className=" bld_4_0_0_0_1_">Has Pexels images integration</h1>
+                                <p className=" bld_4_0_0_0_2_">Stop wasting time on finding the perfect royalty free image, the image search feature allows you to find the perfect image match for you!</p>
                             </div>
-                            <div class="wd wd-4 bld_4_0_0_1_">
-                                <h1 class=" bld_4_0_0_1_0_">
+                            <div className="wd wd-4 bld_4_0_0_1_">
+                                <h1 className=" bld_4_0_0_1_0_">
                                     Create&nbsp;
                                     <div>some beautiful gradients!</div>
                                 </h1>
-                                <p class=" bld_4_0_0_1_1_">It is as easy as picking the colors and adjusting the sliders!</p>
+                                <p className=" bld_4_0_0_1_1_">It is as easy as picking the colors and adjusting the sliders!</p>
                             </div>
-                            <div class="wd wd-4 bld_4_0_0_2_">
-                                <h1 class=" bld_4_0_0_2_0_">How can we forget some emojis 😎?&nbsp;</h1>
-                                <p class=" bld_4_0_0_2_1_">We need emoji! Everywhere! In the lists also!</p>
-                                <ul class=" bld_4_0_0_2_2_">
-                                    <li class=" bld_4_0_0_2_2_0_">Emoji List Item</li>
-                                    <ul class=" bld_4_0_0_2_2_1_">
-                                        <li class=" bld_4_0_0_2_2_1_0_">&nbsp;have emoji?</li>
+                            <div className="wd wd-4 bld_4_0_0_2_">
+                                <h1 className=" bld_4_0_0_2_0_">How can we forget some emojis 😎?&nbsp;</h1>
+                                <p className=" bld_4_0_0_2_1_">We need emoji! Everywhere! In the lists also!</p>
+                                <ul className=" bld_4_0_0_2_2_">
+                                    <li className=" bld_4_0_0_2_2_0_">Emoji List Item</li>
+                                    <ul className=" bld_4_0_0_2_2_1_">
+                                        <li className=" bld_4_0_0_2_2_1_0_">&nbsp;have emoji?</li>
                                     </ul>
-                                    <li class=" bld_4_0_0_2_2_2_">Emoji List Item 2</li>
-                                    <ul class=" bld_4_0_0_2_2_3_">
-                                        <li class=" bld_4_0_0_2_2_3_0_">sub Emoji (mind Blown)</li>
+                                    <li className=" bld_4_0_0_2_2_2_">Emoji List Item 2</li>
+                                    <ul className=" bld_4_0_0_2_2_3_">
+                                        <li className=" bld_4_0_0_2_2_3_0_">sub Emoji (mind Blown)</li>
                                     </ul>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="wd-row bld_5_">
-                    <div class="wd wd-12 bld_5_0_">
-                        <div class="wd-row bld_5_0_0_">
-                            <div class="wd wd-6 bld_5_0_0_0_">
-                                <h1 class=" bld_5_0_0_0_0_">
+                <div className="wd-row bld_5_">
+                    <div className="wd wd-12 bld_5_0_">
+                        <div className="wd-row bld_5_0_0_">
+                            <div className="wd wd-6 bld_5_0_0_0_">
+                                <h1 className=" bld_5_0_0_0_0_">
                                     Deep under there are some cool,
                                     <div>Parallax Effects waiting for you!</div>
                                 </h1>
                             </div>
-                            <div class="wd wd-6 bld_5_0_0_1_"></div>
+                            <div className="wd wd-6 bld_5_0_0_1_"></div>
                         </div>
                     </div>
                 </div>
-                <div class="wd-row bld_6_">
-                    <div class="wd wd-12 bld_6_0_"></div>
+                <div className="wd-row bld_6_">
+                    <div className="wd wd-12 bld_6_0_"></div>
                 </div>
-                <div class="wd-row bld_7_">
-                    <div class="wd wd-8 bld_7_0_">
-                        <div class="wd-row bld_7_0_0_">
-                            <div class="wd wd-12 bld_7_0_0_0_">
-                                <h1 class=" bld_7_0_0_0_0_">Why wait?</h1>
-                                <h1 class=" bld_7_0_0_0_1_">Let's Get Started Creating Something New!</h1>
+                <div className="wd-row bld_7_">
+                    <div className="wd wd-8 bld_7_0_">
+                        <div className="wd-row bld_7_0_0_">
+                            <div className="wd wd-12 bld_7_0_0_0_">
+                                <h1 className=" bld_7_0_0_0_0_">Why wait?</h1>
+                                <h1 className=" bld_7_0_0_0_1_">Let's Get Started Creating Something New!</h1>
                             </div>
                         </div>
                     </div>
-                    <div class="wd wd-4 bld_7_1_"></div>
+                    <div className="wd wd-4 bld_7_1_"></div>
                 </div>
-                <div class="wd-row bld_8_">
-                    <div class="wd wd-12 bld_8_0_"></div>
+                <div className="wd-row bld_8_">
+                    <div className="wd wd-12 bld_8_0_"></div>
                 </div>
-                <div class="wd-row bld_9_">
-                    <div class="wd wd-12 bld_9_0_">
-                        <p class=" bld_9_0_0_">WebPage Builder - Open Source Project
+                <div className="wd-row bld_9_">
+                    <div className="wd wd-12 bld_9_0_">
+                        <p className=" bld_9_0_0_">WebPage Builder - Open Source Project
                             <div><a href="https://github.com/abhibagul/Wix-Clone" target="_blank" rel="noopner noreffer">https://github.com/abhibagul/Wix-Clone/</a><br /></div>
                         </p>
                     </div>
                 </div>
-                <div class="wd-row bld_10_"></div>
+                <div className="wd-row bld_10_"></div>
             </div>
         </div>
     )

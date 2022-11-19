@@ -49,24 +49,27 @@ export default function CreateNewPage(props) {
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(response => {
-                // console.log('got data', response);
+
                 UserDetailsState.setEditorState({ ...UserDetailsState.editorState, pageId: response.data.pageId })
+
                 navigate(`/designer/${UserDetailsState.editorState.websiteId}/${response.data.pageId}/`, {
                     state: {
                         websiteId: UserDetailsState.editorState.websiteId,
                         pageId: response.data.pageId
                     }
                 });
-                console.log(response.data);
+
+
+
                 props.closeWin();
 
             }).catch(err => {
-                console.log(err);
+
                 alert("Can not create the webpage")
             })
 
         } catch (e) {
-            console.log(e);
+
             alert("Something went wrong.")
         }
     }

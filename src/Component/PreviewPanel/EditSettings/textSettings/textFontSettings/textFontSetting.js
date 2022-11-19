@@ -3,7 +3,6 @@ import './textFontSetting.css'
 
 export default function TextFontSetting(props) {
 
-    console.log(props);
 
     useEffect(() => {
 

@@ -15,6 +15,8 @@ export default function NavigationSettings(props) {
 
 
     useEffect(() => {
+
+
         loadLinkStructure();
     }, [])
 
@@ -57,9 +59,14 @@ export default function NavigationSettings(props) {
 
         let __nav = getNodeData(props.currentlyActive.current, 0, "");
 
+        if (__nav.elemType !== "ul" && __nav.elemType !== "li" && __nav.elemType !== "a" && __nav.elemType !== "nav") {
+            props.closePanel()
+        }
+
         if (__nav.elemType === "ul") {
             __nav = getNodeData(props.currentlyActive.current, 1, "");
         }
+
 
         if (__nav.elemType === "li" || __nav.elemType === "a") {
             let node = document.querySelector("[data-path=\"" + props.currentlyActive.current + ",\"]");
@@ -68,7 +75,6 @@ export default function NavigationSettings(props) {
 
         }
 
-        // console.log(__nav.elements[0].elements)
         if (__nav) {
 
             setLinksState({ ...linksState, navEl: __nav.elements[0].elements });
@@ -180,7 +186,6 @@ export default function NavigationSettings(props) {
         } else {
             _rm_el_pos = +e.target.closest("[data-link-idx]").getAttribute("data-link-idx");
         }
-        // console.log(_rm_el_pos);
         let _rm_el = __linkState.navEl.splice(_rm_el_pos, 1)[0];
         __linkState.navEl.splice(_rm_el_pos - 1, 0, _rm_el);
         setLinksState(__linkState);
@@ -195,7 +200,6 @@ export default function NavigationSettings(props) {
         } else {
             _rm_el_pos = +e.target.closest("[data-link-idx]").getAttribute("data-link-idx");
         }
-        // console.log(_rm_el_pos);
         let _rm_el = __linkState.navEl.splice(_rm_el_pos, 1)[0];
         __linkState.navEl.splice(_rm_el_pos + 1, 0, _rm_el);
         setLinksState(__linkState);
@@ -254,8 +258,8 @@ export default function NavigationSettings(props) {
         __nav.elements[0].elements = linksState.navEl;
 
         setNodeData(props.currentlyActive.current, __isParent, __nav.elements, '["elements"]')
-        // console.log(__nav.elements[0].elements)
         // setLinksState({ ...linksState, navEl: __nav.elements[0].elements });
+        props.closePanel()
     }
 
     const deleteLink = (e) => {
@@ -285,7 +289,7 @@ export default function NavigationSettings(props) {
                         linksState.navEl.map((e, i) => {
                             return (
                                 <div key={i} data-is-dragel draggable
-                                    onDragStart={(e) => { dragPositionStart.current = +e.target.getAttribute("data-link-idx"); console.log("Start", +e.target.getAttribute("data-link-idx")) }}
+                                    onDragStart={(e) => { dragPositionStart.current = +e.target.getAttribute("data-link-idx"); }}
                                     onDragEnter={updateDragEnterPosition}
                                     onDragEnd={arrangeElemsDragged}
                                     className='linkModify' data-link-idx={i} >

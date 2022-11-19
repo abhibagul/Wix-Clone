@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { userDetailsContext } from "../contexts";
-
+import { useUser } from "../../Component/auth/useUser";
 
 const UserDetailsState = (props) => {
 
@@ -9,19 +9,26 @@ const UserDetailsState = (props) => {
         email: "",
         _id: "",
         pageId: "",
-        websiteId: ""
+        websiteId: "",
+        id: ""
     }
 
 
     const [user, setUserDeatils] = useState(initialUserDetails)
     const [editorState, setEditorState] = useState({})
 
-    // useEffect(() => {
-    //     console.log("effect on", user);
-    // }, [user])
+    const userId = useUser();
+
+    useEffect(() => {
+
+        if (userId) {
+            setUserDeatils({ ...userId, user: userId.username })
+
+        }
+    }, [userId])
 
     // useEffect(() => {
-    //     console.log("effect on editor", editorState);
+    //     
     // }, [editorState])
 
     return (

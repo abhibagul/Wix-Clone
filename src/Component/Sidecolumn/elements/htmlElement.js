@@ -174,30 +174,23 @@ export default function HtmlElement() {
     const [htmlElem, setHtmlElem] = useState(htmlElems);
 
     const AddSubElement = (elNode, index) => {
-        ////console.log("HTML : AddSubElement: 38")
         //lets deal with the sub elems!
         elNode = elNode.substr(0, [elNode.length - 1]).split(',');
         let _depth = { ...pageDesignState.design }
         let tempOpt = [...htmlElem]
         // for (let i = 0; i < elNode.length; i++) {
-        //     ////console.log(subDepth.elements[elNode[i]]);
         //     subDepth = { ...subDepth.elements[elNode[i]] }
         // }
 
-        // ////console.log(elNode.reduce((o, i) => o.elements[i], subDepth), 'highway')
-        // ////console.log(_depth);
         // let parentNode = [...elNode];
         // parentNode = parentNode.slice(0, -1);
-        // ////console.log(parentNode, parentNode.splice(0, -1), elNode, 'nods');
 
         // let _parent_el = get(_depth, 'elements[' + parentNode.join('].elements[') + '].elements')
         let _earlier_options = get(_depth, 'elements[' + elNode.join('].elements[') + ']');
-        // ////console.log(_earlier_options, _parent_el, 'eo');
 
 
         if (!_earlier_options.enableDropping) {
             //remove the last elem might help
-            ////console.log(elNode);
             elNode = elNode.slice(0, -1);
             if (elNode.length > 0) {
                 _earlier_options = get(_depth, 'elements[' + elNode.join('].elements[') + '].elements');
@@ -206,7 +199,6 @@ export default function HtmlElement() {
                 _earlier_options = get(_depth, 'elements');
                 _depth = set(_depth, 'elements', [..._earlier_options, JSON.parse(JSON.stringify(tempOpt[index]))]);
             }
-            ////console.log(_earlier_options, elNode)
 
         } else {
 
@@ -215,8 +207,6 @@ export default function HtmlElement() {
         }
 
         pageDesignState.setDesign(_depth);
-        // ////console.log(elNode);
-        // ////console.log("Final Return", SetObjValues(_depth, elNode, "Hello i am set"))
 
 
         /**
@@ -233,15 +223,11 @@ export default function HtmlElement() {
     const AddDroppedElement = (e) => {
         //lets get new context
         // let pageDesignStateNew = useContext(pageDesignContext)
-        ////console.log("HTML : AddDroppedElement: 97")
         if (pageDesignState.design.isDropEnabled) {
 
             //reset the insert position
-            // ////console.log(pageDesignState.nodeLevel.current, 'currentType');
-            // ////console.log(_elems);
             if (pageDesignState.nodeLevel.current === null) {
 
-                ////console.log("this way 1")
 
                 let _elems = [];
                 let tempOptions = [];
@@ -249,10 +235,7 @@ export default function HtmlElement() {
                 _elems = [...pageDesignState.design.elements];
 
                 //insert at index
-                // ////console.log(pageDesignState.dropPosition)
-                //e.target.closest("").getAttribute("data-elementindex")
 
-                ////console.log(_elems);
 
                 _elems.splice(pageDesignState.dropPosition.current, 0, JSON.parse(JSON.stringify(tempOptions[e.target.closest(".item_drag").getAttribute("data-elementindex")])));
 
@@ -264,10 +247,7 @@ export default function HtmlElement() {
                 if (pageDesignState.nodeLevel.current) {
 
                     AddSubElement(pageDesignState.nodeLevel.current, e.target.closest(".item_drag").getAttribute("data-elementindex"));
-                    // ////console.log(objR, 'ObjR');
-                    // ////console.log('before', pageDesignState.design);
 
-                    //////console.log(objR);
                     pageDesignState.nodeLevel.current = null;
                 }
             }

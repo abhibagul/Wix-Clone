@@ -147,7 +147,6 @@ export default function HeaderSettings(props) {
             __temp_style_setter.positions.bottomEl = +e.target.value;
         }
 
-        // console.log("updating the values", __temp_style_setter)
         setHeaderSetting({ ...headerSetting, ...__temp_style_setter })
     }
 

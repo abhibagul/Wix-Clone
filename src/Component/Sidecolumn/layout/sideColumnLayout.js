@@ -115,11 +115,11 @@ export default function SideColumnLayout() {
 
         // let _parent_el = get(_depth, 'elements[' + parentNode.join('].elements[') + '].elements')
         let _earlier_options = get(_depth, 'elements[' + elNode.join('].elements[') + ']');
-        // ////console.log(_earlier_options, _parent_el, 'eo');
+
 
         if (!_earlier_options.enableDropping) {
             //remove the last elem might help
-            ////console.log(elNode);
+
             elNode = elNode.slice(0, -1);
             if (elNode.length > 0) {
                 _earlier_options = get(_depth, 'elements[' + elNode.join('].elements[') + '].elements');
@@ -128,7 +128,7 @@ export default function SideColumnLayout() {
                 _earlier_options = get(_depth, 'elements');
                 _depth = set(_depth, 'elements', [..._earlier_options, JSON.parse(JSON.stringify(tempOpt[index]))]);
             }
-            ////console.log(_earlier_options, elNode)
+
 
         } else {
 
@@ -137,8 +137,7 @@ export default function SideColumnLayout() {
         }
 
         pageDesignState.setDesign(_depth);
-        // ////console.log(elNode);
-        // ////console.log("Final Return", SetObjValues(_depth, elNode, "Hello i am set"))
+
 
 
         /**
@@ -159,10 +158,9 @@ export default function SideColumnLayout() {
 
 
             //reset the insert position
-            // ////console.log(pageDesignState.nodeLevel.current, 'currentType');
-            // ////console.log(_elems);
+
             if (pageDesignState.nodeLevel.current === null) {
-                //console.log("nodeLv1", pageDesignState.nodeLevel.current)
+
 
                 let _elems = [];
                 let tempOptions = [];
@@ -170,11 +168,11 @@ export default function SideColumnLayout() {
                 _elems = [...pageDesignState.design.elements];
 
                 //insert at index
-                // ////console.log(pageDesignState.dropPosition)
+
                 //e.target.closest("").getAttribute("data-elementindex")
 
                 _elems.splice(pageDesignState.dropPosition.current, 0, JSON.parse(JSON.stringify(tempOptions[e.target.closest(".item_drag").getAttribute("data-elementindex")])));
-                ////console.log(pageDesignState.design.elements);
+
                 // if (!pageDesignState.design.elements[pageDesignState.dropPosition.current].enableDropping) {
                 //     alert("Can not add sub element to this element");
                 //     return;
@@ -184,7 +182,7 @@ export default function SideColumnLayout() {
                 pageDesignState.dropPosition.current = null;
 
             } else {
-                //console.log("nodeLv2", pageDesignState.nodeLevel.current)
+
                 if (pageDesignState.nodeLevel.current) {
                     AddSubElement(pageDesignState.nodeLevel.current, e.target.closest(".item_drag").getAttribute("data-elementindex"));
                     pageDesignState.nodeLevel.current = null;

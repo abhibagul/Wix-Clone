@@ -3,6 +3,7 @@ import nvstyle from './navbar.module.css';
 import './navbar.css'
 import { pageDesignContext, userDetailsContext } from '../../Context/contexts';
 import { useNavigate, useMatch, Link } from 'react-router-dom';
+import { useUser } from '../auth/useUser';
 export default function Navbar() {
 
     const navigate = useNavigate();
@@ -16,6 +17,8 @@ export default function Navbar() {
 
     const isPageDesign = useMatch("/designer/:projectId/:pageId")
     const isPageDesignEmpty = useMatch("/designer/:projectId/:pageId")
+
+    const isUser = useUser();
 
     useEffect(() => {
 
@@ -58,7 +61,6 @@ export default function Navbar() {
         if (el) {
             el.style.transform = `translateX(0px) rotateY(0deg) scale(0)`
             el.style.scale = 0;
-            // console.log("element removed to 0");
         }
     }
 
@@ -99,7 +101,7 @@ export default function Navbar() {
             {(isPageDesign && pageDesignState.webDesignState.pages && (pageDesignState.webDesignState.pages.length > 0)) &&
                 <div className={nvstyle["navbar_header_logo"]}>
                     <span className='pageSelectorSpan' onClick={() => { selectPageList.current.classList.toggle("show"); }}>{
-                        // console.log(pageDesignState.webDesignState.pages)
+
                         (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e) => {
                             return (UserDetailsState.editorState.pageId === e.pageId) ? e.pageName : ""
                         })
@@ -112,7 +114,6 @@ export default function Navbar() {
                             <ul className='selectPage'>
                                 <div className='inList'>
                                     {
-                                        // console.log(pageDesignState.webDesignState.pages)
                                         (pageDesignState.webDesignState.pages) && pageDesignState.webDesignState.pages.map((e, i) => {
                                             return (<li key={i} className={(UserDetailsState.editorState.pageId === e.pageId) ? "active menuPagesList" : "menuPagesList"}>
                                                 <Link className='pageOption' to={`/designer/${UserDetailsState.editorState.websiteId}/${e.pageId}/`} data-page-id={e.pageId}>{e.pageName}</Link>
@@ -193,7 +194,11 @@ export default function Navbar() {
             <div className={nvstyle["navbar_user_details"]}>
                 <ul className={nvstyle["navbar_user_details"]}>
                     <li>
-                        <a href='/' className={nvstyle["navbar_user_profile"]}>{UserDetailsState.user.user.charAt(0).toUpperCase()}</a>
+                        <a href='/' className={nvstyle["navbar_user_profile"]}>{
+
+                            (UserDetailsState.user.user) ? UserDetailsState.user.user.charAt(0).toUpperCase() : "U"
+
+                        }</a>
                         <ul>
                             {
                             /** 

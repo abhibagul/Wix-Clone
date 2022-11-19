@@ -60,7 +60,6 @@ export default function PreviewPanel() {
 
     useEffect(() => {
         //refresh helper
-        // //console.log(rCount.refreshCount);
     }, [rCount]);
 
 
@@ -83,10 +82,8 @@ export default function PreviewPanel() {
 
 
     const enableNewAdding = (e) => {
-        ////console.log("enableNewAdding : 44");
-        // //////console.log(e.target.classList.value.indexOf("temp_elem"), e.target.classList.value.indexOf("temp_infocus"));
         // if (e.target.classList.value.indexOf("temp_elem") > -1 && e.target.classList.value.indexOf("temp_infocus") < 0) {
-        // //////console.log("seems to be true");
+
         pageDesignState.nodeLevel.current = e.target.getAttribute("data-path");
         dragEnterSelector.current = e.target.getAttribute("data-path");
         //e.target.classList.add("temp_infocus");
@@ -94,7 +91,6 @@ export default function PreviewPanel() {
     }
 
     const updateInsertPosition = (e) => {
-        ////console.log("updateInsertPosition : 55");
 
         let _msg = document.createElement("div");
         _msg.classList = "temp_add_here";
@@ -104,7 +100,6 @@ export default function PreviewPanel() {
         removeGuides();
 
         let _sizes = e.target.closest("section").getBoundingClientRect();
-        ////////console.log(e.target.getBoundingClientRect(), e.clientY, _sizes.y + (_sizes.height * 0.2), _sizes.y + (_sizes.height * 0.8))
 
         if (e.clientY <= (_sizes.y + (15))) {
             // TODO : Element Adding helper
@@ -123,14 +118,11 @@ export default function PreviewPanel() {
             pageDesignState.nodeLevel.current = null;
         } else {
             //insert it inside the element
-            ////////console.log("In the range")
             let dpa;
             if (e.target.hasAttribute("data-path")) {
                 dpa = (e.target.getAttribute("data-path"))
             }
             else {
-                //////console.log(e.target, e.target.closest("[data-path]"));
-                ////console.log(e.target);
                 if (e.target.hasAttribute("data-path"))
                     dpa = (e.target.getAttribute("data-path"))
                 else
@@ -146,8 +138,6 @@ export default function PreviewPanel() {
     }
 
     const removeGuides = (e) => {
-        ////console.log("removeGuides : 105");
-        ////////console.log('removed all');
         let _rem_elems = document.querySelectorAll(".temp_add_here");
         for (let j = 0; j < _rem_elems.length; j++) {
             _rem_elems[j].remove()
@@ -178,7 +168,6 @@ export default function PreviewPanel() {
 
     const MultiHTMLComp = (props) => {
 
-        // //////console.log(props);
         return (
             <>
                 {
@@ -192,12 +181,10 @@ export default function PreviewPanel() {
         )
     }
     const GenerateHTMLComp = (props) => {
-        ////////console.log(props, ' props');
         let e = props.element;
         let formatStyle = { ...e.styles };
-        //////console.log(formatStyle);
         if (formatStyle.hasOwnProperty('animationIterationCount')) formatStyle.animationIterationCount = 0;
-        //////console.log(formatStyle);
+
         if (formatStyle.hasOwnProperty('position')) formatStyle.position = "relative";
 
 
@@ -329,27 +316,27 @@ export default function PreviewPanel() {
                 _elm.classList.add("editable_infocus");
                 //lets make consistancy for the color
                 let _dp = _elm.getAttribute("data-path");
-                // //////console.log(_dp);
+
                 _dp = _dp.substring(0, _dp.length - 1);
                 _dp = _dp.split(',');
                 _dp = _dp.reduce((a, b) => a += b);
                 _dp = _dp % colorPallets.length;
                 // _elm.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
                 _elm.style.outline = "2px solid " + colorPallets[_dp];
-                // //////console.log("color pallet at", _dp, colorPallets[_dp])
+
             } else {
-                // //////console.log("Get the nearest data path")
+
                 _elm.closest("[data-path]").classList.add("editable_infocus");
                 //lets make consistancy for the color
                 let _dp = _elm.closest("[data-path]").getAttribute("data-path");
-                // //////console.log(_dp);
+
                 _dp = _dp.substring(0, _dp.length - 1);
                 _dp = _dp.split(',');
                 _dp = _dp.reduce((a, b) => a += b);
                 _dp = _dp % colorPallets.length;
                 // _elm.style.outline = "2px solid " + colorPallets[Math.floor(Math.random() * colorPallets.length)]
                 _elm.closest("[data-path]").style.outline = "2px solid " + colorPallets[_dp];
-                // //////console.log("color pallet at", _dp, colorPallets[_dp])
+
             }
         }
         if (_elm.getAttribute("contenteditable") === "false") {
@@ -365,9 +352,7 @@ export default function PreviewPanel() {
         let boxPosition = (_elm.hasAttribute("data-path")) ? _elm.getBoundingClientRect() : _elm.closest("[data-path]").getBoundingClientRect();
         let posLeft = (boxPosition.x - parentPosition.x - 30);
         let posBottom = (boxPosition.y - parentPosition.y);
-        // //////console.log(boxPosition);
-        // //////console.log(posBottom, (parentPosition.bottom - 127 - parentPosition.y), " /cond:  ", (posBottom + parentPosition.y + 127), (parentPosition.bottom));
-        //////console.log(posLeft, parentPosition.left);
+
         let PosX = ((posLeft + parentPosition.left) < parentPosition.left) ? posLeft + 30 : posLeft;
         ElementSwitcher.current.style.left = (PosX) + "px";
         // ElementSwitcher.current.style.left = (boxPosition.x > parentPosition.x) ? PosX + "px" : (PosX) + "px";
@@ -405,7 +390,7 @@ export default function PreviewPanel() {
         }
 
         //181
-        // //////console.log("Current elem set to", nodeP);
+
         ElementNodeSelector.current = nodeP.substring(0, nodeP.length - 1);
         pageDesignState.activeElemLayer.current = nodeP.substring(0, nodeP.length - 1);
         pageDesignState.setELLayer(nodeP.substring(0, nodeP.length - 1));
@@ -497,7 +482,7 @@ export default function PreviewPanel() {
         } else {
             selectorStr += '"]'
         }
-        //////console.log(selectorStr);
+
         document.querySelector(selectorStr).classList.add("temp_infocus");
 
         let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
@@ -617,7 +602,7 @@ export default function PreviewPanel() {
             let _parent_node = get(_depth, 'elements[' + _elNode.join('].elements[') + '].elements');
 
             //remove last element
-            ////////console.log(ElementNodeSelector.current, _elNode, _elNodeLast, 'last pos');
+
             _parent_node.splice(_elNodeLast, 1);
 
             //remove the node
@@ -642,10 +627,7 @@ export default function PreviewPanel() {
     }
 
     const handleContentEdit = (e) => {
-        ////console.log("handleContentEdit : 481");
-        //////console.log(e);
-        //////console.log(e.target);
-        // //////console.log("Edit requested");
+
         if (e.target.getAttribute("contentEditable") === "true") {
             //update the state of app
 
@@ -653,14 +635,14 @@ export default function PreviewPanel() {
             let $e;
 
             let _depth = { ...pageDesignState.design };
-            // //////console.log("Getting trig", e.target.getAttribute("data-optionstype"));
+
             if (e.target.getAttribute("data-optionstype") === "ListItem" && e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
-                //////console.log("hit enterGot!");
+
 
                 // let parentPos = e.target.closest('[data-optionstype="List"]').getAttribute("data-path");
                 let $elms = e.target.closest('[data-optionstype="List"]').querySelectorAll("li");
-                //////console.log($elms);
+
 
                 //node
                 let setNodePath = e.target.closest('[data-optionstype="List"]').getAttribute("data-path");
@@ -723,11 +705,10 @@ export default function PreviewPanel() {
 
             if (_elPath.length > 1) {
                 // _elPath = _elPath.slice(0, -1);
-                // //////console.log("El path string", get(_depth, 'elements[' + _elPath.join('].elements[') + "].inHTML"))
-                //////console.log("will setup as ", $e.innerHTML)
+
                 set(_depth, 'elements[' + _elPath.join('].elements[') + "].inHTML", encodeURIComponent($e.innerHTML))
             } else {
-                //////console.log("will setup as ", $e.innerHTML)
+
                 set(_depth, 'elements[' + _elPath[0] + '].inHTML', encodeURIComponent($e.innerHTML));
             }
             //elChangeTimer
@@ -735,7 +716,7 @@ export default function PreviewPanel() {
             if (elChangeTimer.current) clearTimeout(elChangeTimer.current);
 
             elChangeTimer.current = setTimeout(() => {
-                // //////console.log(_depth, 'd');
+
                 pageDesignState.setDesign(_depth);
             }, 2000);
 
@@ -746,7 +727,7 @@ export default function PreviewPanel() {
 
 
     const updateDragPosition = (e) => {
-        ////console.log("updateDragPos : 622");
+
         let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
         //position
         let parentPosition = document.querySelector("div[data-panelmain]").getBoundingClientRect();
@@ -756,7 +737,7 @@ export default function PreviewPanel() {
     }
 
     const moveDraggedElem = (e) => {
-        ////console.log("Move Drag : 632");
+
         let scrlTop = document.querySelector("[data-panelmain]").scrollTop;
 
         //position of box
@@ -775,12 +756,12 @@ export default function PreviewPanel() {
 
         let _elNode = ElementNodeSelector.current;
 
-        // //////console.log(_elNode);
+
         // _elNode = _elNode.substring(0, _elNode.length - 1);
         _elNode = _elNode.split(',');
         let _elNodeLast = _elNode[_elNode.length - 1]
         _elNode = _elNode.slice(0, -1);
-        // //////console.log(_elNode);
+
 
         //To Place Node
         let _dSel = dragEnterSelector.current;
@@ -788,7 +769,7 @@ export default function PreviewPanel() {
         _dSel = _dSel.split(',');
         let _dSelLast = _dSel[_dSel.length - 1];
         _dSel = _dSel.slice(0, -1);
-        // //////console.log(_dSel);
+
 
 
 
@@ -809,7 +790,7 @@ export default function PreviewPanel() {
             }
 
             toPlaceNodeContent = toPlaceNodeContent.elements;
-            // //////console.log(_elNodeLast, currentNodeContent);
+
             let currentAppendElem = currentNodeContent[_elNodeLast];
             currentNodeContent.splice(_elNodeLast, 1);
 
@@ -873,33 +854,25 @@ export default function PreviewPanel() {
                 let currentAppendElem = currentNodeContent[_elNodeLast];
                 currentNodeContent.splice(_elNodeLast, 1);
 
-                // //////console.log([toPlaceNodeContent, currentAppendElem], currentNodeContent, 'el');
 
                 //set the appending node
                 if (_dSel.length > 0) {
-                    // //////console.log("dsel1", 'elements[' + _dSel.join('].elements[') + '].elements')
                     // set(_depth, 'elements[' + _dSel.join('].elements[') + '].elements', [...toPlaceNodeContent, JSON.parse(JSON.stringify(currentAppendElem))]);
                     set(_depth, 'elements[' + _dSel.join('].elements[') + '].elements', [currentAppendElem]);
                 } else {
-                    // //////console.log("dsel2")
                     set(_depth, 'elements', [currentAppendElem]);
                 }
 
                 //set the getter node
                 if (_elNode.length > 0) {
-                    // //////console.log("elnd1")
                     set(_depth, 'elements[' + _elNode.join('].elements[') + '].elements', [...currentNodeContent]);
                 } else {
-
-                    // //////console.log("elnd2")
                     set(_depth, 'elements', [...currentNodeContent]);
                 }
 
-                // //////console.log(_depth, 'finished as');
                 pageDesignState.setDesign(_depth);
             }
 
-            ////////console.log(_dSel, _elNode);
 
 
         }
@@ -917,7 +890,6 @@ export default function PreviewPanel() {
             pageDesignState.setELLayer((+(_dSelLast) + 1) + "")
         }
 
-        // //////console.log(`div[data-path="${dragEnterSelector.current}"]`);
         //select the element again after render
         document.querySelector(`div[data-path="${dragEnterSelector.current}"]`).classList.add("temp_infocus");
 
@@ -934,7 +906,6 @@ export default function PreviewPanel() {
     }
 
     const removeActiveElemStyle = () => {
-        ////console.log("removeActiveElemStyle : 805");
         let elms = document.querySelectorAll('.temp_infocus');
         if (elms.length) {
             for (let el of elms) {
@@ -955,7 +926,6 @@ export default function PreviewPanel() {
     }
 
     const showSettingsPanel = (e, name, type, selectText) => {
-        ////console.log("showSettingsPanel : 826");
         setPanelSettings({ ...panelSettings, panelTitle: name, panelMode: type })
 
         let scrlTopp = document.querySelector("[data-panelmain]").scrollTop;
@@ -984,7 +954,6 @@ export default function PreviewPanel() {
 
         let selectTextCls = get(pageDesignState.design, _node_path);
 
-        //////console.log("should focus", __focus_enable)
 
         //check the node about which type of link has to be added
 
@@ -1043,9 +1012,6 @@ export default function PreviewPanel() {
         pageDesignState.setDesign(__temp_structure);
     }
     const setElementHeight = (e) => {
-        ////console.log("setElementHeight", 914)
-        // ////console.log(e.clientX, e.clientY)
-        // ////console.log(e.clientX, e.clientY)
         let scrlTopp = document.querySelector("[data-panelmain]").scrollTop;
         let panelSize = document.querySelector("[data-panelmain]").getBoundingClientRect();
 
@@ -1074,11 +1040,8 @@ export default function PreviewPanel() {
 
 
     const setElemHtMin = (e) => {
-        ////console.log("setElemHtMin", 945)
-        // ////console.log("drag left");
         e.target.classList.remove("active");
 
-        // ////console.log(e.clientX, e.clientY)
         let scrlTopp = document.querySelector("[data-panelmain]").scrollTop;
         let panelSize = document.querySelector("[data-panelmain]").getBoundingClientRect();
 
@@ -1109,14 +1072,12 @@ export default function PreviewPanel() {
         let __currentStyles = getNodeData(ElementNodeSelector.current, 0);
         let __minHtStyle = { ...__currentStyles.styles, minHeight: height + "px" }
         let __newElement = { ...__currentStyles, styles: __minHtStyle }
-        // ////console.log(__currentStyles, __minHtStyle);
         setNodeData(ElementNodeSelector.current, 0, __newElement);
 
         elementalOptions.current.style.display = "none"
     }
 
     const elemHeightResizeY = (e) => {
-        ////console.log("elemHeightResizeY", 987)
         e.target.classList.add("active");
         let parentP = document.querySelector("[data-path=\"" + ElementNodeSelector.current + ",\"]");
         parentP.classList.add("temp_infocus_drag")
@@ -1184,9 +1145,7 @@ export default function PreviewPanel() {
             <div className='settings_panel' ref={elementalOptionsSettings}>
                 <div className='setting_dragger_option'>
                     <div className='settings_dragger_title' draggable onDrag={(e) => {
-                        // e.clientX;
-                        // e.clientY;
-                        // ////console.log(e.clientX, e.clientY);
+
 
                         let selfSize = elementalOptionsSettings.current.getBoundingClientRect();
                         let panelSize = document.querySelector("[data-panelmain]").getBoundingClientRect();
@@ -1200,7 +1159,6 @@ export default function PreviewPanel() {
 
                         topPos = (topPos < panelSize.top) ? 0 : topPos;
 
-                        // ////console.log(topPos, selfSize.top, panelSize.top, (e.clientY - panelSize.top + scrlTopp - 20))
                         elementalOptionsSettings.current.style.top = topPos + "px";
 
                     }} onDragEnd={(e) => {
@@ -1333,9 +1291,9 @@ export default function PreviewPanel() {
 
                                 return (
                                     <section style={styles} data-elid={(e.elid + "_" + i)} onDragEnter={(e) => updateInsertPosition(e)} onDragLeave={removeGuides} data-elposition={i} key={(e.elid + "_" + i)}>
-                                        {/* {//////console.log(e, 'ele_for_rnd')} */}
+
                                         <GenerateHTMLComp element={e} datapath={i + ','} />
-                                        {/* {generateHTMLComp(e, i + ',')} */}
+
                                     </section>
                                 )
                             })

@@ -1,12 +1,14 @@
 import React from 'react'
 import { useToken } from '../useToken'
 import axios from 'axios'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { pageDesignContext } from '../../../Context/contexts';
 import './signupPage.css'
 export default function SignupPage() {
 
     const navigate = useNavigate();
+    let pageDesignState = useContext(pageDesignContext)
 
     const [signupPageDet, setSignupPageDet] = useState({
         email: "",
@@ -58,6 +60,7 @@ export default function SignupPage() {
             }).then(response => {
                 const { token } = response.data;
                 setToken(token);
+                pageDesignState.setTokenTracker(token);
                 navigate('/my-websites');
             }).catch(error => {
                 console.error(error);

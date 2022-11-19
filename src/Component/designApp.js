@@ -79,7 +79,7 @@ function DesignApp() {
         let _pid = pid;
         let _wid = wid;
         try {
-            // console.log('setting page for', pid, wid)
+            // 
             await axios.post('/api/getWebPage/', {
                 id,
                 pageId: _pid,
@@ -87,7 +87,7 @@ function DesignApp() {
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(response => {
-                // console.log('got data', response);
+                // 
                 if (response.data.result) {
                     pageDesignState.setDesign(response.data.result)
                     pageDesignState.setWebDesignState(response.data.webResult)
@@ -102,7 +102,7 @@ function DesignApp() {
             })
 
         } catch (err) {
-            console.log(err);
+
             // navigate("/my-websites")
         }
 

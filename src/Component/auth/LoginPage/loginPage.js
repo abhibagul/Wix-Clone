@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios';
 import { useToken } from '../useToken';
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { pageDesignContext } from '../../../Context/contexts';
 export default function LoginPage() {
 
     const navigate = useNavigate();
+    const pageDesignState = useContext(pageDesignContext);
 
     const [token, setToken] = useToken();
 
@@ -33,6 +35,7 @@ export default function LoginPage() {
 
             const { token } = response.data;
             setToken(token);
+            pageDesignState.setTokenTracker(token);
             navigate('/designer');
 
         }).catch(error => {
@@ -67,7 +70,7 @@ export default function LoginPage() {
                     <input type="email" onChange={(e) => setLoginDet({ ...LoginDet, email: e.target.value })} value={LoginDet.email} placeholder="Enter Email" name="email" required />
 
                     <label htmlFor="psw"><b>Password</b></label>
-                    <input type="password" onChange={(e) => setLoginDet({ ...LoginDet, password: e.target.value })} value={LoginDet.password} placeholder="Enter Password" name="psw" required />
+                    <input type="password" autoComplete="on" onChange={(e) => setLoginDet({ ...LoginDet, password: e.target.value })} value={LoginDet.password} placeholder="Enter Password" name="psw" required />
 
                     <div className="clearfix">
                         <button type="submit" className="signupbtn">Login</button>

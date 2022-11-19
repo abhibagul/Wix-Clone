@@ -10,7 +10,7 @@ const CssSheetPreviewState = (props) => {
 
 
     // useEffect(() => {
-    //     console.log(design, 'from state update');
+    //     
     // }, [design])
 
     return (

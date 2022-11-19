@@ -57,7 +57,7 @@ export default function WebPage() {
             }, {
 
             }).then(response => {
-                // console.log('got data', response);
+                // 
                 if (response.data.result) {
 
                     setPrevPage({ ...prevPage, page: response.data.result, authorized: true, loaded: true })
@@ -75,14 +75,14 @@ export default function WebPage() {
             })
 
         } catch (e) {
-            console.log(e);
+
             setPrevPage({ ...prevPage, authorized: false, loaded: true })
         }
     }
 
     const MultiHTMLComp = (props) => {
 
-        // //////console.log(props);
+        // //////
         return (
             <>
                 {
@@ -181,14 +181,14 @@ export default function WebPage() {
     }
 
     const pageFunctionMoveToTop = () => {
-        console.log("requested to top");
+
         document.querySelector(".webPagePrev").scrollTop = 0;
     }
 
     const bindScrollingListners = () => {
         let _els = document.querySelectorAll(`a[href="modify:pageFunctionMoveToTop"]`);
         for (let _e of _els) {
-            console.log(_e);
+
             _e.removeAttribute("href");
             _e.addEventListener("onclick", () => {
                 pageFunctionMoveToTop();
@@ -199,7 +199,7 @@ export default function WebPage() {
     const getCurrentScollPosition = (e) => {
         // const position = window.pageYOffset;
         // scrollPosition.current = (position);
-        // console.log(scrollPosition.current);
+        // 
         let __posTop = document.querySelector('.webPagePrev').scrollTop;
 
         let __elm = document.querySelectorAll('[data-has-animation]');

@@ -176,7 +176,6 @@ export default function ColumnWidthSetting(props) {
         let currentNode = props.currentlyActive.current;
         let __parent_node = { ...getNodeData(currentNode, 1, '') };
         let __parent_node_elems = [...__parent_node.elements];
-        // console.log(__parent_node, __parent_node_elems);
 
         let _empty_colJson = { classList: ["wd wd-" + colSize.emptySpace], elemType: "div", styles: { padding: "5px" }, elemEditable: false, enableDropping: true, elementType: "Column", elements: [{ classList: ["temp_elem"], elemEditable: false, enableDropping: true, styles: { color: "#dddddd", padding: "30px 0px" }, elemType: "div", inHTML: "Column " + (colSize.colSizes.length + 1), elementType: "tempElem", elements: [] }] };
 

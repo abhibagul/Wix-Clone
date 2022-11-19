@@ -116,7 +116,6 @@ export default function AddLink(props) {
         let __parentEl = getNodeData(currentNode, -1);
 
 
-        //console.log(__currentEl.elemEditable);
         if (__currentEl.elemEditable) {
             let ws = window.getSelection();
             if (ws.toString().length < 1) {
@@ -217,7 +216,6 @@ export default function AddLink(props) {
             // let __currentEl = getNodeData(currentNode, 0);
             // let __parentEl = getNodeData(currentNode, -1);
 
-            //console.log(__currentEl, __parentEl);
             let __a;
             switch (addLinkState.currentMode) {
                 case "none":

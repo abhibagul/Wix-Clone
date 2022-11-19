@@ -208,13 +208,13 @@ export default function ElementLayer() {
         __all_els.splice(lastIdx, 0, JSON.parse(JSON.stringify(__el)));
 
         if (__active_node.split(",").length < 2) {
-            //console.log("same stream");
+
             let __all_els = [...pageDesignState.design.elements];
             __all_els.splice(lastIdx, 0, JSON.parse(JSON.stringify(__el)));
 
             let __temp_structure = { ...pageDesignState.design }
             __temp_structure.elements = __all_els;
-            //console.log(__temp_structure, pageDesignState.design);
+
             pageDesignState.setDesign(__temp_structure);
 
         } else {

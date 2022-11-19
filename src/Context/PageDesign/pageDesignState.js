@@ -519,36 +519,49 @@ const PageDesignState = (props) => {
 
     const activeElemLayer = useRef(null);
 
+
     const [design, setDesign] = useState(InitialDeisgnState);
     const [actElLayer, setELLayer] = useState("0,");
     const [webDesignState, setWebDesignState] = useState({});
 
-    // const user = useUser();
+    const user = useUser();
     const [token,] = useToken();
 
-    // const { id } = user;
 
+    const [tokenTracker, setTokenTracker] = useState(token);
 
+    useEffect(() => {
+        if (user) {
+            let { id } = user;
+            if (id) UserDetailsState.setUserDeatils({ ...UserDetailsState.user, _id: id, id: id })
+        }
+
+    }, [user])
+
+    useEffect(() => {
+
+        setTokenTracker(token);
+    }, [token])
 
 
     const saveWebPage = async (status, ImgUri, type) => {
 
-        console.log(UserDetailsState)
+
 
         if (status === 200 && design.elements.length > 0) {
             setWebDesignState({ ...webDesignState, prevImgUri: ImgUri });
             //update the website setting
             await axios.post('/api/save-webprev/', {
-                id: UserDetailsState.user._id,
+                id: UserDetailsState.user.id,
                 websiteId: UserDetailsState.editorState.websiteId,
                 imageUri: "" + ImgUri
             }, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${tokenTracker}` }
             })
         }
 
         //go for regular saving of page
-        console.log(UserDetailsState);
+
         try {
             let __design_data = { ...design };
             if (type === "publish") {
@@ -557,16 +570,16 @@ const PageDesignState = (props) => {
             }
             delete __design_data['_id'];
             __design_data.settigMode = -1;
-            console.log(__design_data)
+
 
             await axios.post('/api/save-webpage/', {
-                id: UserDetailsState.user._id,
+                id: UserDetailsState.user.id,
                 pageId: UserDetailsState.editorState.pageId,
                 pageJso: __design_data
             }, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${tokenTracker}` }
             }).then(response => {
-                // console.log('got data', response);
+                // 
                 alert("Saved.")
 
             }).catch(err => {
@@ -574,7 +587,7 @@ const PageDesignState = (props) => {
             })
 
         } catch (e) {
-            console.log(e);
+
             alert("Unable to save the webpage try again!");
         }
     }
@@ -583,15 +596,15 @@ const PageDesignState = (props) => {
         try {
 
             await axios.post('/api/remove-webpage/', {
-                id: UserDetailsState.user._id,
+                id: UserDetailsState.user.id,
                 pageId: UserDetailsState.editorState.pageId,
                 webId: UserDetailsState.editorState.websiteId
             }, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${tokenTracker}` }
             }).then(response => {
-                // console.log('got data', response);
+                // 
                 alert("Deleted.")
-                console.log(response);
+
                 UserDetailsState.setEditorState({ ...UserDetailsState.editorState, pageId: response.data.pageId });
                 // navigate(`/designer/${UserDetailsState.editorState.websiteId}/${response.data.pageID}/`)
 
@@ -600,7 +613,7 @@ const PageDesignState = (props) => {
             })
 
         } catch (e) {
-            console.log(e);
+
             alert("Unable to delete the webpage try again!");
         }
     }
@@ -612,13 +625,13 @@ const PageDesignState = (props) => {
 
             await htmlToImage.toJpeg(document.querySelector('[data-prevpanel]'), { quality: 0.95, width: sizes.width, height: (205 / 280) * sizes.width, canvasWidth: 280, canvasHeight: 205, backgroundColor: '#ffffff' })
                 .then(function (dataUrl) {
-                    //console.log(dataUrl);
+                    //
                     saveWebPage(200, dataUrl, type)
                 }).catch(err => {
                     saveWebPage(500, "")
                 })
         } catch (e) {
-            console.log(e);
+
             alert("Unable to save the webpage! Try again!");
         }
     }
@@ -634,11 +647,11 @@ const PageDesignState = (props) => {
 
     }
     // useEffect(() => {
-    //     console.log(design, 'from state update');
+    //     
     // }, [design])
 
     return (
-        <pageDesignContext.Provider value={{ design, setDesign, dropPosition, publishWebPage, nodeLevel, activeElemLayer, actElLayer, setELLayer, webDesignState, setWebDesignState, getWebPageImageAndSavePage, removeWebPage }}>
+        <pageDesignContext.Provider value={{ design, setDesign, tokenTracker, setTokenTracker, dropPosition, publishWebPage, nodeLevel, activeElemLayer, actElLayer, setELLayer, webDesignState, setWebDesignState, getWebPageImageAndSavePage, removeWebPage }}>
             {props.children}
         </pageDesignContext.Provider>
     )

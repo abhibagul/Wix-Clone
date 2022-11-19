@@ -94,10 +94,7 @@ export default function BackgroundImageSettings(props) {
         loadImages("curated");
     }, [])
 
-    // Just wanted to check the changes being made
-    // useEffect(() => {
-    //     console.log(imageSearchSetting);
-    // }, [imageSearchSetting])
+
 
     const loadMore = async () => {
 
@@ -142,7 +139,7 @@ export default function BackgroundImageSettings(props) {
                     }
                     setImageSearchSetting({ ...imageSearchSetting, nextURI: photos.next_page, page: (photos.page + 1), totalResult: photos.total_results, loadType: "search", isLoading: false, rType: `Currently showing: ${imageSearchSetting.q}` });
                 }).catch(err => {
-                    console.log(err);
+
                     setImageSearchSetting({ ...imageSearchSetting, isLoading: false, rType: "Something went wrong!" });
                     loadMoreImages.current.style.display = "none";
                 });

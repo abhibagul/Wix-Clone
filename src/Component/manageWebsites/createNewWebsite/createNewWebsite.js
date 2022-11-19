@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { useUser } from '../../auth/useUser';
 import { useToken } from '../../auth/useToken';
 import { useNavigate } from 'react-router-dom';
 import './newWebsiteModal.css';
+import { userDetailsContext } from '../../../Context/contexts';
+
 export default function CreateNewWebsite(props) {
 
     let navigate = useNavigate();
     const user = useUser();
     const [token,] = useToken();
+    let UserDetailsState = useContext(userDetailsContext);
 
     const { id } = user;
 
@@ -34,20 +37,22 @@ export default function CreateNewWebsite(props) {
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(response => {
-                console.log(response);
+
+                UserDetailsState.setEditorState({ ...UserDetailsState.editorState, websiteId: response.data.webId, pageId: response.data.pageId })
+
                 props.closeModal();
 
                 //in future directly take the user to the editor
                 navigate(`/designer/${response.data.webId}/${response.data.pageId}/`)
 
             }).catch(err => {
-                console.log(err);
+
                 alert("Unable to create a website");
             })
 
 
         } catch (err) {
-            console.log(err);
+
         }
     }
 
