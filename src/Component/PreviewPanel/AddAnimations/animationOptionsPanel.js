@@ -11,13 +11,13 @@ export default function AnimationOptionsPanel(props) {
      */
     let animationList = [{
         itemName: "None",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/none.png",
         animationName: "",
         hasDirection: true,
         extraOptions: []
     }, {
         itemName: "Bounce",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/bounce.png",
         animationName: "bounce",
         hasDirection: true,
         extraOptions: [
@@ -31,7 +31,7 @@ export default function AnimationOptionsPanel(props) {
     },
     {
         itemName: "Fade",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/fadeIn.png",
         animationName: "fadeIn",
         hasDirection: true,
         extraOptions: [
@@ -52,7 +52,7 @@ export default function AnimationOptionsPanel(props) {
     },
     {
         itemName: "Flip",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/flip.png",
         animationName: "flip",
         hasDirection: true,
         extraOptions: [
@@ -63,7 +63,7 @@ export default function AnimationOptionsPanel(props) {
     },
     {
         itemName: "Rotate",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/rotate.png",
         animationName: "rotateIn",
         hasDirection: true,
         extraOptions: [
@@ -76,7 +76,7 @@ export default function AnimationOptionsPanel(props) {
     },
     {
         itemName: "LightSpeed",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/lightspeed.png",
         animationName: "lightSpeed",
         hasDirection: false,
         extraOptions: [
@@ -85,7 +85,7 @@ export default function AnimationOptionsPanel(props) {
         ]
     }, {
         itemName: "Zoom In",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/zoom.png",
         animationName: "zoomIn",
         hasDirection: true,
         extraOptions: [
@@ -98,7 +98,7 @@ export default function AnimationOptionsPanel(props) {
     },
     {
         itemName: "Slide",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/slide.png",
         animationName: "slide",
         hasDirection: false,
         extraOptions: [
@@ -110,28 +110,28 @@ export default function AnimationOptionsPanel(props) {
     },
     {
         itemName: "Flash",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/flash.png",
         animationName: "flash",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Pulse",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/pulse.png",
         animationName: "pulse",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Rubber Band",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/rubberBand.png",
         animationName: "rubberBand",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Shake",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/shake.png",
         animationName: "shake",
         hasDirection: false,
         extraOptions: [
@@ -140,42 +140,42 @@ export default function AnimationOptionsPanel(props) {
     },
     {
         itemName: "Light Shake",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/shake.png",
         animationName: "headShake",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Swing",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/swing.png",
         animationName: "swing",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Tada",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/tada.png",
         animationName: "tada",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Wobble",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/shake.png",
         animationName: "wobble",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Jello",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/jello.png",
         animationName: "jello",
         hasDirection: true,
         extraOptions: []
     },
     {
         itemName: "Heart Beat",
-        itemImage: "/assets/images/animation/temp.PNG",
+        itemImage: "/assets/images/animation/pulse.png",
         animationName: "heartBeat",
         hasDirection: true,
         extraOptions: []

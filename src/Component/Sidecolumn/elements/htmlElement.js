@@ -7,7 +7,7 @@ export default function HtmlElement() {
     const pageDesignState = useContext(pageDesignContext)
     const htmlElems = [
         {
-            previmg: "/assets/images/elements/layouts/2col.png",
+            previmg: "/assets/images/elements/html/paragraph.png",
             elid: "paragraph",
             inHTML: "Type your content here...",
             desc: "Paragraph",
@@ -21,7 +21,7 @@ export default function HtmlElement() {
             elements: []
         },
         {
-            previmg: "/assets/images/elements/layouts/2col.png",
+            previmg: "/assets/images/elements/html/button.png",
             elid: "linkbutton",
             inHTML: "Type your content here...",
             desc: "Link Button",
@@ -35,10 +35,10 @@ export default function HtmlElement() {
             elements: []
         },
         {
-            previmg: "/assets/images/elements/layouts/2col.png",
+            previmg: "/assets/images/elements/html/headingTag.png",
             elid: "headers",
             inHTML: "Header element",
-            desc: "headers",
+            desc: "Heading Tag",
             attributes: {},
             elementType: "Headings",
             classList: "",
@@ -49,7 +49,7 @@ export default function HtmlElement() {
             elements: []
         },
         {
-            previmg: "/assets/images/elements/layouts/2col.png",
+            previmg: "/assets/images/elements/html/image.png",
             elid: "image",
             inHTML: "",
             desc: "Image",
@@ -63,7 +63,7 @@ export default function HtmlElement() {
             elements: []
         },
         {
-            previmg: "/assets/images/elements/layouts/2col.png",
+            previmg: "/assets/images/elements/html/nav.png",
             elid: "navMenu",
             inHTML: "",
             desc: "Navigation Menu",
@@ -125,7 +125,7 @@ export default function HtmlElement() {
             ]
         },
         {
-            previmg: "/assets/images/elements/layouts/2col.png",
+            previmg: "/assets/images/elements/html/list.png",
             elid: "ullistedItem",
             inHTML: "",
             desc: "List",
@@ -156,7 +156,7 @@ export default function HtmlElement() {
             ]
         },
         {
-            previmg: "/assets/images/elements/layouts/2col.png",
+            previmg: "/assets/images/elements/html/iframe.png",
             elid: "iframe",
             inHTML: "",
             desc: "Inline Frame",

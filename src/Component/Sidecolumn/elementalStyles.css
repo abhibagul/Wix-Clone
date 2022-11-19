@@ -29,7 +29,7 @@
 }
 
 .item_drag_img {
-    width: 100%;
+    max-width: 100%;
     text-align: center;
 }
 

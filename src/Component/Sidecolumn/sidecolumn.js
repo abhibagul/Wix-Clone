@@ -22,7 +22,7 @@ export default function SideColumn(props) {
 
     const updateMarkerPos = (e) => {
         markerpos.current.style.scale = 1;
-        markerpos.current.style.top = (e.target.getBoundingClientRect().top + 0) + "px";
+        markerpos.current.style.top = (e.target.getBoundingClientRect().top - 40) + "px";
     }
 
 

@@ -9,6 +9,9 @@
 .options_menu {
     min-height: calc(100vh - 40px);
     display: flex;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 10%);
+    position: relative;
+    z-index: 1;
 }
 
 .options_menu_main {
@@ -37,4 +40,9 @@
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+}
+
+.NavBar {
+    z-index: 999;
+    position: sticky;
 }

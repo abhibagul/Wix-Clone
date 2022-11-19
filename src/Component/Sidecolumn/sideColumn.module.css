@@ -7,6 +7,9 @@
     width: 40px;
     flex-shrink: 0;
     height: 100%;
+    box-shadow: 2px 5px 4px rgb(0 0 0 / 10%);
+    position: relative;
+    z-index: 100;
 }
 
 .sidebar_optionResults {

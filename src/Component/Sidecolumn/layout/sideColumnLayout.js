@@ -17,7 +17,7 @@ export default function SideColumnLayout() {
 
 
     let layout = [{
-        previmg: "/assets/images/elements/layouts/1col.jpg",
+        previmg: "/assets/images/elements/layouts/header.jpg",
         elid: "layout_12_col_header",
         desc: "Header Layout",
         classList: "wd-row",
