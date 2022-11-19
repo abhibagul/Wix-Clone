@@ -35,6 +35,14 @@ div[data-prevpanel] .wd-row:hover {
     padding: 5px;
 }
 
+li.actionListical:hover i {
+    color: #fff
+}
+
+.no-wrap-text {
+    white-space: nowrap;
+}
+
 .temp_add_here {
     width: 100%;
     text-align: center;

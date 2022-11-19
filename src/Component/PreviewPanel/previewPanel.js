@@ -6,6 +6,7 @@ import './builderstyle.css'
 import { useRef } from 'react'
 import { set, get } from "lodash";
 
+
 /**Element utiities */
 import AnimationOptionsPanel from './AddAnimations/animationOptionsPanel'
 import AddLink from './AddLink/addLink'
@@ -20,7 +21,7 @@ import ColumnWidthSetting from './columnWidthSetting/columnWidthSetting'
 import NavigationSettings from './navigationSettings/navigationSettings'
 import HeaderSettings from './headerSettings/headerSettings'
 import GetNodeData from './getNodeData/getNodeData'
-
+import ToolTip from './ToolTip/toolTip'
 
 /** Google font loader */
 import FontLoader from './fontLoader/fontLoader'
@@ -1121,25 +1122,53 @@ export default function PreviewPanel() {
             <div className='html_elem_option_list' ref={elementalOptions}>
                 <ul>
                     <li className='actionListical' onClick={(e) => showSettingsPanel(e, "Style options", "editSettings", false)}><i className="las la-palette"></i> Edit Options</li>
-                    <li className='actionListical' ref={showRowOption} onClick={(e) => showSettingsPanel(e, "Row Layout", "rowLayout", false)}><i className="lab la-microsoft"></i></li>
-                    <li className='actionListical' ref={showColOption} onClick={(e) => showSettingsPanel(e, "Align Items", "AlignItems", false)}><i className="las la-align-center"></i></li>
-                    <li className='actionListical' ref={showHeaderOption} onClick={(e) => showSettingsPanel(e, "Heading Type", "headingType", false)}><i className="las la-heading"></i></li>
-                    <li className='actionListical' ref={showListOption} onClick={(e) => showSettingsPanel(e, "List Settings", "ListType", false)}><i className="las la-list-ul"></i></li>
-                    <li className='actionListical' ref={showImageSetting} onClick={(e) => showSettingsPanel(e, "Image Settings", "ImageType", false)}><i className="las la-image"></i></li>
-                    <li className='actionListical' ref={iframeSettings} onClick={(e) => showSettingsPanel(e, "Inline Frame Settings", "iframeType", false)}><i className="las la-window-maximize"></i></li>
-                    <li className='actionListical' ref={columnWidthSetting} onClick={(e) => showSettingsPanel(e, "Column Width Settings", "columnType", false)}><i className="las la-arrows-alt-h"></i></li>
-                    <li className='actionListical' ref={naviagtionMenuSettings} onClick={(e) => showSettingsPanel(e, "Navigation Links Settings", "navigationType", false)}><i className="las la-bars"></i></li>
-                    <li className='actionListical' ref={headerPositionSettings} onClick={(e) => showSettingsPanel(e, "Header Settings", "headerSetType", false)}><i className="las la-cog"></i></li>
+                    <li className='actionListical' ref={showRowOption} onClick={(e) => showSettingsPanel(e, "Row Layout", "rowLayout", false)}>
+                        <ToolTip iconclass="lab la-microsoft" tooltipcontent={<span className='no-wrap-text'>Row Layout</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={showColOption} onClick={(e) => showSettingsPanel(e, "Align Items", "AlignItems", false)}>
+                        <ToolTip iconclass="las la-align-center" tooltipcontent={<span className='no-wrap-text'>Align Itmes</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={showHeaderOption} onClick={(e) => showSettingsPanel(e, "Heading Type", "headingType", false)}>
+                        <ToolTip iconclass="las la-heading" tooltipcontent={<span className='no-wrap-text'>Heading Tag</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={showListOption} onClick={(e) => showSettingsPanel(e, "List Settings", "ListType", false)}>
+                        <ToolTip iconclass="las la-list-ul" tooltipcontent={<span className='no-wrap-text'>List Settings</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={showImageSetting} onClick={(e) => showSettingsPanel(e, "Image Settings", "ImageType", false)}>
+                        <ToolTip iconclass="las la-image" tooltipcontent={<span className='no-wrap-text'>Image Settings</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={iframeSettings} onClick={(e) => showSettingsPanel(e, "Inline Frame Settings", "iframeType", false)}>
+                        <ToolTip iconclass="las la-window-maximize" tooltipcontent={<span className='no-wrap-text'>iframe Settings</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={columnWidthSetting} onClick={(e) => showSettingsPanel(e, "Column Width Settings", "columnType", false)}>
+                        <ToolTip iconclass="las la-arrows-alt-h" tooltipcontent={<span className='no-wrap-text'>Column Width Change<br />& Create New Column</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={naviagtionMenuSettings} onClick={(e) => showSettingsPanel(e, "Navigation Links Settings", "navigationType", false)}>
+                        <ToolTip iconclass="las la-bars" tooltipcontent={<span className='no-wrap-text'>Manage Menu Links</span>}></ToolTip>
+                    </li>
+                    <li className='actionListical' ref={headerPositionSettings} onClick={(e) => showSettingsPanel(e, "Header Settings", "headerSetType", false)}>
+                        <ToolTip iconclass="las la-cog" tooltipcontent={<span className='no-wrap-text'>Set Header Positions</span>}></ToolTip>
+                    </li>
 
-                    {(creatorDevMode.current) && <li className='actionListical' onClick={(e) => showSettingsPanel(e, "Node JSON", "previewNode", false)}><i className="las la-laptop-code"></i></li>}
+                    {(creatorDevMode.current) && <li className='actionListical' onClick={(e) => showSettingsPanel(e, "Node JSON", "previewNode", false)}>
+                        <ToolTip iconclass="las la-laptop-code" tooltipcontent={<span className='no-wrap-text'>Show Node JSON</span>}></ToolTip>
+                    </li>}
+
                     <li className='actionListical small_btn_actionListical' onClick={(e) => {
                         e.preventDefault();
                         showSettingsPanel(e, "Animation", "animation", false)
-                    }}><i className="las la-magic"></i></li>
-                    <li className='actionListical small_btn_actionListical' ><button onClick={(e) => {
-                        e.preventDefault();
-                        showSettingsPanel(e, "Link", "hyperlink", true);
-                    }}><i className="las la-link"></i></button></li>
+                    }}>
+                        <ToolTip iconclass="las la-magic" tooltipcontent={<span className='no-wrap-text'>Add Animations</span>}></ToolTip>
+                    </li>
+
+                    <li className='actionListical small_btn_actionListical' >
+                        <button onClick={(e) => {
+                            e.preventDefault();
+                            showSettingsPanel(e, "Link", "hyperlink", true);
+                        }}>
+                            <ToolTip iconclass="las la-link" tooltipcontent={<span className='no-wrap-text'>Insert Link</span>}></ToolTip>
+                        </button>
+                    </li>
                 </ul>
             </div>
             <div className='settings_panel' ref={elementalOptionsSettings}>
