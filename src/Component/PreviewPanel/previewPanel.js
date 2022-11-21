@@ -1141,7 +1141,7 @@ export default function PreviewPanel() {
                         <ToolTip iconclass="las la-window-maximize" tooltipcontent={<span className='no-wrap-text'>iframe Settings</span>}></ToolTip>
                     </li>
                     <li className='actionListical' ref={columnWidthSetting} onClick={(e) => showSettingsPanel(e, "Column Width Settings", "columnType", false)}>
-                        <ToolTip iconclass="las la-arrows-alt-h" tooltipcontent={<span className='no-wrap-text'>Column Width Change<br />& Create New Column</span>}></ToolTip>
+                        <ToolTip iconclass="las la-arrows-alt-h" tooltipcontent={<span className='no-wrap-text'>Manage Columns</span>}></ToolTip>
                     </li>
                     <li className='actionListical' ref={naviagtionMenuSettings} onClick={(e) => showSettingsPanel(e, "Navigation Links Settings", "navigationType", false)}>
                         <ToolTip iconclass="las la-bars" tooltipcontent={<span className='no-wrap-text'>Manage Menu Links</span>}></ToolTip>

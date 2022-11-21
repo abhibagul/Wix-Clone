@@ -27,7 +27,7 @@ export default function WebsiteSettings(props) {
                 <div className="webSettingInner">
                     <div className={(pageDesignState.design.published) ? "websiteUnpublish" : "websitePublished"}>
                         <span> This page is {(pageDesignState.design.published) ? "Live" : "unpublished"} </span>
-                        <button onClick={() => pageDesignState.setDesign({ ...pageDesignState.design, published: !pageDesignState.design.published })} className={(pageDesignState.design.published) ? "unpublish" : ""}>{(pageDesignState.design.published) ? "Unpublish" : "Publish"}</button>
+                        <button onClick={pageDesignState.publishWebPage} className={(pageDesignState.design.published) ? "unpublish" : ""}>{(pageDesignState.design.published) ? "Unpublish" : "Publish"}</button>
                     </div>
 
                     <div className='websiteSettingsPanelInner'>
