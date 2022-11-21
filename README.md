@@ -32,9 +32,9 @@ Full functional Wix clone created in React, express and MongoDB. Has drag drop f
 ### Frontend
 
 1. `npm install -y` to install the required dependecies.
-2. Create the `.env` file in the directory with the following details.
-   ` REACT_APP_GOOGLE_API_KEY="[Google font API KEY : https://developers.google.com/fonts/docs/developer_api]"`
-   `REACT_APP_PEXELS_API_KEY="[Pexels API key : https://www.pexels.com/api/]"`
+2. Create the `.env` file in the directory with the following details.<br/>
+   ` REACT_APP_GOOGLE_API_KEY="[Google font API KEY : https://developers.google.com/fonts/docs/developer_api]"`<br/>
+   `REACT_APP_PEXELS_API_KEY="[Pexels API key : https://www.pexels.com/api/]"`<br/>
 3. `npm run build` to create a build version of the front-end.
 4. (If you want to modify the frontend you can`npm start` the frontend and `npm run dev` for the backend)
 
@@ -43,13 +43,13 @@ Full functional Wix clone created in React, express and MongoDB. Has drag drop f
 1. Copy the build folder generated into the backend folder.
 2. `cd backend/` go in the backend folder.
 3. `npm install -y` to install the dependencies
-4. Create the `.env` file in the directory with the following details.
-   ` JWT_SECRET=" [RANDOM STRING USED TO CREATE JWT TOKEN ]"`
-   `PORT=8000`
-   `API_DB_NAME="[ REMOVED FROM THE CODE ]"`
-   `API_LOGIN_PERIOD="2d"`
-   `API_MONGO_URI="[ REMOVED FROM THE CODE ]"`
-   `API_MONGO_PASS="[ MONGODB PASSWORD ]"`
-   `API_MONGO_USER="[ MONGO DB NAME ]"`
+4. Create the `.env` file in the directory with the following details.<br/>
+   ` JWT_SECRET=" [RANDOM STRING USED TO CREATE JWT TOKEN ]"`<br/>
+   `PORT=8000`<br/>
+   `API_DB_NAME="[ REMOVED FROM THE CODE ]"`<br/>
+   `API_LOGIN_PERIOD="2d"`<br/>
+   `API_MONGO_URI="[ REMOVED FROM THE CODE ]"`<br/>
+   `API_MONGO_PASS="[ MONGODB PASSWORD ]"`<br/>
+   `API_MONGO_USER="[ MONGO DB NAME ]"`<br/>
 5. `npm run dev` to run on a local machine. For deployment use `node ./src/server.js`
 6. It should be available on the port 8000.
