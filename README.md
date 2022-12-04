@@ -46,7 +46,7 @@ Full functional Wix clone created in React, express and MongoDB. Has drag drop f
 4. Create the `.env` file in the directory with the following details.<br/>
    ` JWT_SECRET=" [RANDOM STRING USED TO CREATE JWT TOKEN ]"`<br/>
    `PORT=8000`<br/>
-   `API_DB_NAME="[ REMOVED FROM THE CODE ]"`<br/>
+   `API_DB_NAME="[DATABASE_NAME]"`<br/>
    `API_LOGIN_PERIOD="2d"`<br/>
    `API_MONGO_URI="[ REMOVED FROM THE CODE ]"`<br/>
    `API_MONGO_PASS="[ MONGODB PASSWORD ]"`<br/>
