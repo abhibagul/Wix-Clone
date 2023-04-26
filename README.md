@@ -51,5 +51,6 @@ Full functional Wix clone created in React, express and MongoDB. Has drag drop f
    `API_MONGO_URI="[ REMOVED FROM THE CODE ]"`<br/>
    `API_MONGO_PASS="[ MONGODB PASSWORD ]"`<br/>
    `API_MONGO_USER="[ MONGO DB NAME ]"`<br/>
+   `API_MONGO_LOCATION="[ mongodb for local instance, mongodb+srv for remote "]`<br/>
 5. `npm run dev` to run on a local machine. For deployment use `node ./src/server.js`
 6. It should be available on the port 8000.
