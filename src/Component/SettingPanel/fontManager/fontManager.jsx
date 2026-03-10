@@ -90,7 +90,7 @@ export default function FontManager(props) {
                 </div>
                 <div className='fontSelectorList'>
                     <FontPicker
-                        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+                        apiKey={import.meta.env.VITE_GOOGLE_API_KEY}
                         // activeFontFamily={fontOptions.fonts[fontOptions.fonts.length - 1]["font"]}
                         onChange={(nextFont) => {
                             let __new_font = createFontJson(nextFont);
